@@ -1,0 +1,1979 @@
+{
+  "tests_1_3_held_out_examples_three_shapes_unified": {
+    "circle": {
+      "reconstruction_rmse": 0.04578,
+      "forecast_rmse": 0.08218,
+      "forecast_mae": 0.0676,
+      "forecast_ade": 0.11061,
+      "forecast_fde": 0.15926,
+      "chamfer_distance": 0.00411,
+      "identical_to_delivered_inference_outputs": true
+    },
+    "spiral": {
+      "reconstruction_rmse": 0.13258,
+      "forecast_rmse": 0.33164,
+      "forecast_mae": 0.29197,
+      "forecast_ade": 0.46702,
+      "forecast_fde": 0.56016,
+      "chamfer_distance": 0.08568,
+      "identical_to_delivered_inference_outputs": true
+    },
+    "ellipse": {
+      "reconstruction_rmse": 0.03394,
+      "forecast_rmse": 0.09814,
+      "forecast_mae": 0.08846,
+      "forecast_ade": 0.12784,
+      "forecast_fde": 0.11022,
+      "chamfer_distance": 0.0043,
+      "identical_to_delivered_inference_outputs": true
+    }
+  },
+  "test_4_unknown_family_label": {
+    "neutral_file_names_and_only_t_x_y_columns_run_ok": true,
+    "outputs_identical_to_named_runs": true,
+    "extra_family_column_ignored_with_warning": true,
+    "predictions_identical_with_correct_wrong_or_no_family_column": true,
+    "cli_has_no_family_option": true
+  },
+  "test_5_observation_counts": {
+    "protocol": "all held-out test trajectories (three_shapes test split: 450 incl. ellipses; two-shape and variable models: the 300 circles+spirals); n observations drawn at random from the 140 grid times with t<=7 (t=0 always included), stored noisy values (sigma 0.05); predictions through glo.inference.predict (the same code as the CLI); metrics vs the clean dense trajectory; baseline = linear interpolation of the observations / last-observation hold",
+    "results": {
+      "three_shapes_unified": {
+        "10": {
+          "overall": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.9967092282904519,
+                "std": 0.29433706647988894,
+                "median": 0.9481712579727173
+              },
+              "forecast_rmse": {
+                "mean": 1.5439599691496955,
+                "std": 0.6519123291623641,
+                "median": 1.4159199595451355
+              },
+              "forecast_fde": {
+                "mean": 2.149521710144149,
+                "std": 1.133715309961017,
+                "median": 1.9363477230072021
+              }
+            },
+            "n_trajectories": 450,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.2669400692317221,
+                "std": 0.18052782932803607,
+                "median": 0.22018273919820786
+              },
+              "forecast_rmse": {
+                "mean": 1.240923593474759,
+                "std": 0.5981417827478089,
+                "median": 1.1515000462532043
+              },
+              "forecast_fde": {
+                "mean": 1.8536001902487542,
+                "std": 1.148644989274219,
+                "median": 1.6448494791984558
+              }
+            }
+          },
+          "circle": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.9901560529073079,
+                "std": 0.28493597330646686,
+                "median": 0.9389235079288483
+              },
+              "forecast_rmse": {
+                "mean": 1.496901006102562,
+                "std": 0.5031816198224303,
+                "median": 1.4331907033920288
+              },
+              "forecast_fde": {
+                "mean": 2.0447371376554173,
+                "std": 0.8291939883272545,
+                "median": 1.990566372871399
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.27267656793197,
+                "std": 0.17305621725803425,
+                "median": 0.2220468372106552
+              },
+              "forecast_rmse": {
+                "mean": 1.1967703258991242,
+                "std": 0.3356654935622592,
+                "median": 1.1878063678741455
+              },
+              "forecast_fde": {
+                "mean": 1.6672866314649581,
+                "std": 0.6818057473720558,
+                "median": 1.6408567428588867
+              }
+            }
+          },
+          "spiral": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 1.010790575146675,
+                "std": 0.3507820186474022,
+                "median": 0.9625350534915924
+              },
+              "forecast_rmse": {
+                "mean": 1.6407402724027633,
+                "std": 0.8929488281626367,
+                "median": 1.36130952835083
+              },
+              "forecast_fde": {
+                "mean": 2.4149740835030875,
+                "std": 1.5499523938552022,
+                "median": 1.9241371750831604
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.27066870907942453,
+                "std": 0.21236432297144525,
+                "median": 0.21480324119329453
+              },
+              "forecast_rmse": {
+                "mean": 1.3453937980532646,
+                "std": 0.9290107723143679,
+                "median": 0.9602850675582886
+              },
+              "forecast_fde": {
+                "mean": 2.176370676755905,
+                "std": 1.7156025961181027,
+                "median": 1.2717130780220032
+              }
+            }
+          },
+          "ellipse": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.9891810568173727,
+                "std": 0.23530510155730597,
+                "median": 0.959151417016983
+              },
+              "forecast_rmse": {
+                "mean": 1.4942386289437612,
+                "std": 0.4586572987807384,
+                "median": 1.418080747127533
+              },
+              "forecast_fde": {
+                "mean": 1.9888539092739423,
+                "std": 0.8116385939779337,
+                "median": 1.864328145980835
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.25747493068377175,
+                "std": 0.15029115896390446,
+                "median": 0.2233259156346321
+              },
+              "forecast_rmse": {
+                "mean": 1.1806066564718882,
+                "std": 0.28475738899975706,
+                "median": 1.1447150111198425
+              },
+              "forecast_fde": {
+                "mean": 1.7171432625253995,
+                "std": 0.6264906758501094,
+                "median": 1.7300791144371033
+              }
+            }
+          }
+        },
+        "20": {
+          "overall": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.4180554768111971,
+                "std": 0.1378241156109351,
+                "median": 0.39848533272743225
+              },
+              "forecast_rmse": {
+                "mean": 0.8949042640460863,
+                "std": 0.40661200726828484,
+                "median": 0.822761058807373
+              },
+              "forecast_fde": {
+                "mean": 1.4439824912283155,
+                "std": 0.7737757984881655,
+                "median": 1.2658728957176208
+              }
+            },
+            "n_trajectories": 450,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.10652517961959045,
+                "std": 0.08738019644076853,
+                "median": 0.08103762939572334
+              },
+              "forecast_rmse": {
+                "mean": 1.2002006733417512,
+                "std": 0.5764128455866895,
+                "median": 1.1543197631835938
+              },
+              "forecast_fde": {
+                "mean": 2.0131217140538826,
+                "std": 1.133872457173444,
+                "median": 1.8419126272201538
+              }
+            }
+          },
+          "circle": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.40593393246332804,
+                "std": 0.10883705716301764,
+                "median": 0.3993911147117615
+              },
+              "forecast_rmse": {
+                "mean": 0.8522404584288598,
+                "std": 0.27193196112501317,
+                "median": 0.8214905858039856
+              },
+              "forecast_fde": {
+                "mean": 1.3473958463966846,
+                "std": 0.4794849527443682,
+                "median": 1.2889341115951538
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.11289289916555087,
+                "std": 0.096435758428575,
+                "median": 0.08198793604969978
+              },
+              "forecast_rmse": {
+                "mean": 1.158188870747884,
+                "std": 0.31222434923385034,
+                "median": 1.1807381510734558
+              },
+              "forecast_fde": {
+                "mean": 1.8763150950272878,
+                "std": 0.5798798988011241,
+                "median": 1.8940334916114807
+              }
+            }
+          },
+          "spiral": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.428711963792642,
+                "std": 0.18825005487414548,
+                "median": 0.38175755739212036
+              },
+              "forecast_rmse": {
+                "mean": 0.9633296076456705,
+                "std": 0.5922606079652277,
+                "median": 0.7496722042560577
+              },
+              "forecast_fde": {
+                "mean": 1.6199321012198924,
+                "std": 1.123262904417189,
+                "median": 1.1300866603851318
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.09853243897358577,
+                "std": 0.08019934643337583,
+                "median": 0.07349636405706406
+              },
+              "forecast_rmse": {
+                "mean": 1.2846859002113342,
+                "std": 0.8972375873864425,
+                "median": 0.8619443476200104
+              },
+              "forecast_fde": {
+                "mean": 2.315664613842964,
+                "std": 1.7544507137801806,
+                "median": 1.4534304738044739
+              }
+            }
+          },
+          "ellipse": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.4195205341776212,
+                "std": 0.09716086359504267,
+                "median": 0.4010239839553833
+              },
+              "forecast_rmse": {
+                "mean": 0.8691427260637283,
+                "std": 0.253208351639341,
+                "median": 0.8504476845264435
+              },
+              "forecast_fde": {
+                "mean": 1.3646195260683696,
+                "std": 0.5079132417795265,
+                "median": 1.2767239809036255
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.10815020071963469,
+                "std": 0.08406564737882469,
+                "median": 0.08555453270673752
+              },
+              "forecast_rmse": {
+                "mean": 1.1577272490660349,
+                "std": 0.2890142493241345,
+                "median": 1.16979318857193
+              },
+              "forecast_fde": {
+                "mean": 1.8473854332913955,
+                "std": 0.5522005716304423,
+                "median": 1.842627465724945
+              }
+            }
+          }
+        },
+        "30": {
+          "overall": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.08134252552356985,
+                "std": 0.034394766156584856,
+                "median": 0.07501798495650291
+              },
+              "forecast_rmse": {
+                "mean": 0.20279883736537563,
+                "std": 0.13451005717296624,
+                "median": 0.1686950922012329
+              },
+              "forecast_fde": {
+                "mean": 0.363345696164502,
+                "std": 0.2907257437594643,
+                "median": 0.288345143198967
+              }
+            },
+            "n_trajectories": 450,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.0640075342812472,
+                "std": 0.04129804578895005,
+                "median": 0.05201330594718456
+              },
+              "forecast_rmse": {
+                "mean": 1.1744467534952694,
+                "std": 0.5748830480190765,
+                "median": 1.1153209805488586
+              },
+              "forecast_fde": {
+                "mean": 2.0691994751824274,
+                "std": 1.131497115351963,
+                "median": 1.8739948272705078
+              }
+            }
+          },
+          "circle": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.060456327820817626,
+                "std": 0.027196952640608882,
+                "median": 0.056387877091765404
+              },
+              "forecast_rmse": {
+                "mean": 0.13132795311510562,
+                "std": 0.07516885518625036,
+                "median": 0.10781841352581978
+              },
+              "forecast_fde": {
+                "mean": 0.24679195430129766,
+                "std": 0.16110660810064578,
+                "median": 0.20562288910150528
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.06270380879441897,
+                "std": 0.029319400056654173,
+                "median": 0.052737100049853325
+              },
+              "forecast_rmse": {
+                "mean": 1.1239713593324026,
+                "std": 0.29402025830139406,
+                "median": 1.1375447511672974
+              },
+              "forecast_fde": {
+                "mean": 1.9643476939201354,
+                "std": 0.5551696867052276,
+                "median": 1.9622684717178345
+              }
+            }
+          },
+          "spiral": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.0956514560431242,
+                "std": 0.030786115877112257,
+                "median": 0.09210885688662529
+              },
+              "forecast_rmse": {
+                "mean": 0.2933358466625214,
+                "std": 0.1708135168378129,
+                "median": 0.24142414331436157
+              },
+              "forecast_fde": {
+                "mean": 0.536400014112393,
+                "std": 0.39000001330960027,
+                "median": 0.4155553877353668
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.06089390428115924,
+                "std": 0.035255395543639184,
+                "median": 0.04960489273071289
+              },
+              "forecast_rmse": {
+                "mean": 1.2745131428043048,
+                "std": 0.9037259089032303,
+                "median": 0.8893865942955017
+              },
+              "forecast_fde": {
+                "mean": 2.352257425189018,
+                "std": 1.7640488504073926,
+                "median": 1.4626595377922058
+              }
+            }
+          },
+          "ellipse": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.08791979270676772,
+                "std": 0.03431182686003328,
+                "median": 0.08264276385307312
+              },
+              "forecast_rmse": {
+                "mean": 0.18373271231849989,
+                "std": 0.07604405068919354,
+                "median": 0.16436444222927094
+              },
+              "forecast_fde": {
+                "mean": 0.3068451200798154,
+                "std": 0.16965888688091746,
+                "median": 0.27417680621147156
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.06842488976816337,
+                "std": 0.05461783776311377,
+                "median": 0.05301947332918644
+              },
+              "forecast_rmse": {
+                "mean": 1.1248557583491008,
+                "std": 0.2707079819652379,
+                "median": 1.1080523133277893
+              },
+              "forecast_fde": {
+                "mean": 1.8909933064381281,
+                "std": 0.5458042696929787,
+                "median": 1.825620949268341
+              }
+            }
+          }
+        },
+        "40": {
+          "overall": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.2939485046433078,
+                "std": 0.09712226340339922,
+                "median": 0.2964085787534714
+              },
+              "forecast_rmse": {
+                "mean": 0.6660428999695513,
+                "std": 0.27605841951210824,
+                "median": 0.656731903553009
+              },
+              "forecast_fde": {
+                "mean": 1.0754901104668777,
+                "std": 0.5214577057095845,
+                "median": 1.0335758328437805
+              }
+            },
+            "n_trajectories": 450,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.04810286955287059,
+                "std": 0.015224022518339804,
+                "median": 0.04352414980530739
+              },
+              "forecast_rmse": {
+                "mean": 1.156714838412073,
+                "std": 0.5690743700097602,
+                "median": 1.1058202981948853
+              },
+              "forecast_fde": {
+                "mean": 2.0937275380558438,
+                "std": 1.1211676307404834,
+                "median": 1.922232449054718
+              }
+            }
+          },
+          "circle": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.29334612677494687,
+                "std": 0.08036992296185066,
+                "median": 0.29857663810253143
+              },
+              "forecast_rmse": {
+                "mean": 0.6618473981817563,
+                "std": 0.198536072089693,
+                "median": 0.6603220105171204
+              },
+              "forecast_fde": {
+                "mean": 1.0856805350383123,
+                "std": 0.36265410633543144,
+                "median": 1.1145832538604736
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.048984392459193865,
+                "std": 0.015463287535923964,
+                "median": 0.04411710053682327
+              },
+              "forecast_rmse": {
+                "mean": 1.1158038719495138,
+                "std": 0.2951213112290121,
+                "median": 1.1327360272407532
+              },
+              "forecast_fde": {
+                "mean": 1.976738332907359,
+                "std": 0.5489798125530676,
+                "median": 2.0046255588531494
+              }
+            }
+          },
+          "spiral": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.29185960546135903,
+                "std": 0.13274752604127202,
+                "median": 0.2583714723587036
+              },
+              "forecast_rmse": {
+                "mean": 0.6935069433351357,
+                "std": 0.39712662299525225,
+                "median": 0.6179670095443726
+              },
+              "forecast_fde": {
+                "mean": 1.136473391999801,
+                "std": 0.7354600865602301,
+                "median": 0.8978269994258881
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.047996220514178276,
+                "std": 0.017050495688294295,
+                "median": 0.042501091957092285
+              },
+              "forecast_rmse": {
+                "mean": 1.2558896400531132,
+                "std": 0.8934965616073922,
+                "median": 0.862945020198822
+              },
+              "forecast_fde": {
+                "mean": 2.3700768327713013,
+                "std": 1.7569832955155293,
+                "median": 1.4239110350608826
+              }
+            }
+          },
+          "ellipse": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.2966397816936175,
+                "std": 0.06484599160916278,
+                "median": 0.30104340612888336
+              },
+              "forecast_rmse": {
+                "mean": 0.6427743583917618,
+                "std": 0.17373924541610325,
+                "median": 0.6578797996044159
+              },
+              "forecast_fde": {
+                "mean": 1.0043164043625197,
+                "std": 0.36666929915999213,
+                "median": 0.9819852113723755
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.047327995685239634,
+                "std": 0.012809802266974481,
+                "median": 0.04452314041554928
+              },
+              "forecast_rmse": {
+                "mean": 1.0984510032335917,
+                "std": 0.2668336540114591,
+                "median": 1.0867623686790466
+              },
+              "forecast_fde": {
+                "mean": 1.9343674484888713,
+                "std": 0.5169433125512669,
+                "median": 1.882111132144928
+              }
+            }
+          }
+        },
+        "50": {
+          "overall": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.48075440754493076,
+                "std": 0.15748050007302547,
+                "median": 0.48114658892154694
+              },
+              "forecast_rmse": {
+                "mean": 1.0497993334796694,
+                "std": 0.44373722813908584,
+                "median": 1.0300170183181763
+              },
+              "forecast_fde": {
+                "mean": 1.6271139193740156,
+                "std": 0.8158668033594827,
+                "median": 1.5700302720069885
+              }
+            },
+            "n_trajectories": 450,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.04507662786377801,
+                "std": 0.014692950988590496,
+                "median": 0.042141931131482124
+              },
+              "forecast_rmse": {
+                "mean": 1.1486517427033849,
+                "std": 0.5648193820722829,
+                "median": 1.1030924320220947
+              },
+              "forecast_fde": {
+                "mean": 2.0960566927989324,
+                "std": 1.1222856467639142,
+                "median": 1.9127724766731262
+              }
+            }
+          },
+          "circle": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.48373578280210494,
+                "std": 0.12860325389323002,
+                "median": 0.49390310049057007
+              },
+              "forecast_rmse": {
+                "mean": 1.0587118528286616,
+                "std": 0.31254674169591584,
+                "median": 1.086952269077301
+              },
+              "forecast_fde": {
+                "mean": 1.656384643514951,
+                "std": 0.563488800091831,
+                "median": 1.7318695783615112
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.04535415728886922,
+                "std": 0.013266289910257197,
+                "median": 0.04293098486959934
+              },
+              "forecast_rmse": {
+                "mean": 1.1065189063549041,
+                "std": 0.29312279867378505,
+                "median": 1.13878333568573
+              },
+              "forecast_fde": {
+                "mean": 1.9861943538983662,
+                "std": 0.5402244080910679,
+                "median": 1.9901501536369324
+              }
+            }
+          },
+          "spiral": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.47363859037558237,
+                "std": 0.20859011047108245,
+                "median": 0.40994203090667725
+              },
+              "forecast_rmse": {
+                "mean": 1.0799041736125945,
+                "std": 0.6502827017794507,
+                "median": 0.8716989159584045
+              },
+              "forecast_fde": {
+                "mean": 1.710671883424123,
+                "std": 1.1888959990348902,
+                "median": 1.3112627267837524
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.04472675474981467,
+                "std": 0.015905960370148693,
+                "median": 0.04088686220347881
+              },
+              "forecast_rmse": {
+                "mean": 1.2500678766767184,
+                "std": 0.8864593733179008,
+                "median": 0.8688725233078003
+              },
+              "forecast_fde": {
+                "mean": 2.3722920487324397,
+                "std": 1.7620941972874087,
+                "median": 1.4348864555358887
+              }
+            }
+          },
+          "ellipse": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.484888849457105,
+                "std": 0.11947834761641438,
+                "median": 0.48661208152770996
+              },
+              "forecast_rmse": {
+                "mean": 1.010781973997752,
+                "std": 0.2600904384821662,
+                "median": 1.018847405910492
+              },
+              "forecast_fde": {
+                "mean": 1.5142852311829726,
+                "std": 0.49533178435783415,
+                "median": 1.538633108139038
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.04514897155265014,
+                "std": 0.014780045182361558,
+                "median": 0.04227465018630028
+              },
+              "forecast_rmse": {
+                "mean": 1.089368445078532,
+                "std": 0.26411491806008774,
+                "median": 1.0934043526649475
+              },
+              "forecast_fde": {
+                "mean": 1.9296836757659912,
+                "std": 0.5154620853297862,
+                "median": 1.898289144039154
+              }
+            }
+          }
+        }
+      },
+      "two_shapes_unified": {
+        "10": {
+          "overall": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.903426240036885,
+                "std": 0.3847453860424577,
+                "median": 0.8474128842353821
+              },
+              "forecast_rmse": {
+                "mean": 1.3490668169160684,
+                "std": 0.7983263565114581,
+                "median": 1.1819591522216797
+              },
+              "forecast_fde": {
+                "mean": 1.8440064616252978,
+                "std": 1.2356339426558969,
+                "median": 1.6255382895469666
+              }
+            },
+            "n_trajectories": 300,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.2716726383070151,
+                "std": 0.193712513683538,
+                "median": 0.21631253510713577
+              },
+              "forecast_rmse": {
+                "mean": 1.2710820621748766,
+                "std": 0.7024161209681556,
+                "median": 1.1517241597175598
+              },
+              "forecast_fde": {
+                "mean": 1.9218286562959352,
+                "std": 1.3299877134608724,
+                "median": 1.5827181339263916
+              }
+            }
+          },
+          "circle": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.8773123889168104,
+                "std": 0.28583868187256867,
+                "median": 0.8599503934383392
+              },
+              "forecast_rmse": {
+                "mean": 1.2507968229055404,
+                "std": 0.4510314027962112,
+                "median": 1.2215246558189392
+              },
+              "forecast_fde": {
+                "mean": 1.6765236668785413,
+                "std": 0.7824346265294465,
+                "median": 1.6742704510688782
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.27267656748493513,
+                "std": 0.1730562174772322,
+                "median": 0.22204682976007462
+              },
+              "forecast_rmse": {
+                "mean": 1.1967703258991242,
+                "std": 0.3356654918296014,
+                "median": 1.1878063678741455
+              },
+              "forecast_fde": {
+                "mean": 1.667286632657051,
+                "std": 0.6818057478445398,
+                "median": 1.6408567428588867
+              }
+            }
+          },
+          "spiral": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.9295400911569596,
+                "std": 0.46150883595726455,
+                "median": 0.8146684765815735
+              },
+              "forecast_rmse": {
+                "mean": 1.4473368109265963,
+                "std": 1.025624996403531,
+                "median": 0.9729296863079071
+              },
+              "forecast_fde": {
+                "mean": 2.0114892563720543,
+                "std": 1.5444343827505491,
+                "median": 1.37896329164505
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.2706687091290951,
+                "std": 0.2123643231808821,
+                "median": 0.21480324119329453
+              },
+              "forecast_rmse": {
+                "mean": 1.345393798450629,
+                "std": 0.9290107767351568,
+                "median": 0.9602850079536438
+              },
+              "forecast_fde": {
+                "mean": 2.1763706799348195,
+                "std": 1.715602598075542,
+                "median": 1.2717130780220032
+              }
+            }
+          }
+        },
+        "20": {
+          "overall": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.5049119905630748,
+                "std": 0.20744841678776385,
+                "median": 0.47132766246795654
+              },
+              "forecast_rmse": {
+                "mean": 1.0307024283707142,
+                "std": 0.5901695295745593,
+                "median": 0.9187856018543243
+              },
+              "forecast_fde": {
+                "mean": 1.6671525860826175,
+                "std": 1.0643538864372994,
+                "median": 1.4785406589508057
+              }
+            },
+            "n_trajectories": 300,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.10571266857286295,
+                "std": 0.08898005958591393,
+                "median": 0.078586895018816
+              },
+              "forecast_rmse": {
+                "mean": 1.221437387863795,
+                "std": 0.6747296084589747,
+                "median": 1.143660843372345
+              },
+              "forecast_fde": {
+                "mean": 2.0959898548324905,
+                "std": 1.3249286773992488,
+                "median": 1.8407737016677856
+              }
+            }
+          },
+          "circle": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.4918968329826991,
+                "std": 0.12106161552553138,
+                "median": 0.48386815190315247
+              },
+              "forecast_rmse": {
+                "mean": 0.9693677278359731,
+                "std": 0.28022175150669304,
+                "median": 0.9791740477085114
+              },
+              "forecast_fde": {
+                "mean": 1.5388001212477684,
+                "std": 0.5015316031882239,
+                "median": 1.5682857036590576
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.11289289847016334,
+                "std": 0.09643575818705964,
+                "median": 0.08198793604969978
+              },
+              "forecast_rmse": {
+                "mean": 1.158188871939977,
+                "std": 0.3122243503811519,
+                "median": 1.1807381510734558
+              },
+              "forecast_fde": {
+                "mean": 1.8763150974114735,
+                "std": 0.5798798984593165,
+                "median": 1.8940334916114807
+              }
+            }
+          },
+          "spiral": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.5179271481434504,
+                "std": 0.2665989269448847,
+                "median": 0.4406990110874176
+              },
+              "forecast_rmse": {
+                "mean": 1.0920371289054553,
+                "std": 0.7813782862862659,
+                "median": 0.7505223453044891
+              },
+              "forecast_fde": {
+                "mean": 1.7955050509174664,
+                "std": 1.4075566531026225,
+                "median": 1.0353410243988037
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.09853243867556254,
+                "std": 0.08019934630629089,
+                "median": 0.07349636778235435
+              },
+              "forecast_rmse": {
+                "mean": 1.2846859037876128,
+                "std": 0.8972375909191163,
+                "median": 0.8619443476200104
+              },
+              "forecast_fde": {
+                "mean": 2.315664612253507,
+                "std": 1.7544507133734741,
+                "median": 1.4534304738044739
+              }
+            }
+          }
+        },
+        "30": {
+          "overall": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.05486867933223645,
+                "std": 0.02737607101994643,
+                "median": 0.047637421637773514
+              },
+              "forecast_rmse": {
+                "mean": 0.1654004635817061,
+                "std": 0.12542645267268998,
+                "median": 0.12769798934459686
+              },
+              "forecast_fde": {
+                "mean": 0.3231124010930459,
+                "std": 0.2905408615191401,
+                "median": 0.23330716788768768
+              }
+            },
+            "n_trajectories": 300,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.061798856525371475,
+                "std": 0.03243615311946145,
+                "median": 0.05132138170301914
+              },
+              "forecast_rmse": {
+                "mean": 1.1992422544459502,
+                "std": 0.6762025773825775,
+                "median": 1.1169739961624146
+              },
+              "forecast_fde": {
+                "mean": 2.15830256074667,
+                "std": 1.3219906796205647,
+                "median": 1.93349689245224
+              }
+            }
+          },
+          "circle": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.04932439995308717,
+                "std": 0.025497440071646685,
+                "median": 0.04389141499996185
+              },
+              "forecast_rmse": {
+                "mean": 0.12167661739513277,
+                "std": 0.07891621900187767,
+                "median": 0.11029716953635216
+              },
+              "forecast_fde": {
+                "mean": 0.22811905823647977,
+                "std": 0.15839258991079266,
+                "median": 0.1994306966662407
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.06270380875716607,
+                "std": 0.029319400153061878,
+                "median": 0.052737100049853325
+              },
+              "forecast_rmse": {
+                "mean": 1.1239713629086812,
+                "std": 0.294020256832786,
+                "median": 1.1375447511672974
+              },
+              "forecast_fde": {
+                "mean": 1.964347693125407,
+                "std": 0.5551696814122781,
+                "median": 1.9622684717178345
+              }
+            }
+          },
+          "spiral": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.060412958711385724,
+                "std": 0.02805888470882205,
+                "median": 0.05101630464196205
+              },
+              "forecast_rmse": {
+                "mean": 0.2091243097682794,
+                "std": 0.14632932374566116,
+                "median": 0.15747851133346558
+              },
+              "forecast_fde": {
+                "mean": 0.418105743949612,
+                "std": 0.35453110090905926,
+                "median": 0.28689903020858765
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.06089390429357688,
+                "std": 0.035255396125405715,
+                "median": 0.04960489459335804
+              },
+              "forecast_rmse": {
+                "mean": 1.274513145983219,
+                "std": 0.903725912909458,
+                "median": 0.8893865942955017
+              },
+              "forecast_fde": {
+                "mean": 2.3522574283679325,
+                "std": 1.76404885349015,
+                "median": 1.4626595377922058
+              }
+            }
+          }
+        },
+        "40": {
+          "overall": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.3506545299291611,
+                "std": 0.14899184514303274,
+                "median": 0.33742812275886536
+              },
+              "forecast_rmse": {
+                "mean": 0.7155043411751588,
+                "std": 0.4317833986591265,
+                "median": 0.6538049280643463
+              },
+              "forecast_fde": {
+                "mean": 1.1420169629653294,
+                "std": 0.7574871471792549,
+                "median": 0.9878539741039276
+              }
+            },
+            "n_trajectories": 300,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.04849030659844478,
+                "std": 0.01628374812839261,
+                "median": 0.0433860719203949
+              },
+              "forecast_rmse": {
+                "mean": 1.1858467541138331,
+                "std": 0.6690458505605023,
+                "median": 1.1122754216194153
+              },
+              "forecast_fde": {
+                "mean": 2.173407580455144,
+                "std": 1.316382680953456,
+                "median": 1.9566840529441833
+              }
+            }
+          },
+          "circle": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.3506126324335734,
+                "std": 0.0939758364480419,
+                "median": 0.3470781296491623
+              },
+              "forecast_rmse": {
+                "mean": 0.6812187091509501,
+                "std": 0.23334503151468886,
+                "median": 0.6874335408210754
+              },
+              "forecast_fde": {
+                "mean": 1.0594281841317812,
+                "std": 0.4125325961792214,
+                "median": 1.0655035972595215
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.04898439275721709,
+                "std": 0.015463287851582762,
+                "median": 0.04411710239946842
+              },
+              "forecast_rmse": {
+                "mean": 1.115803869565328,
+                "std": 0.29512130924164465,
+                "median": 1.1327360272407532
+              },
+              "forecast_fde": {
+                "mean": 1.976738328933716,
+                "std": 0.5489798115105374,
+                "median": 2.0046255588531494
+              }
+            }
+          },
+          "spiral": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.3506964274247487,
+                "std": 0.1885886488931439,
+                "median": 0.2881377637386322
+              },
+              "forecast_rmse": {
+                "mean": 0.7497899731993676,
+                "std": 0.5622036053389042,
+                "median": 0.5014478862285614
+              },
+              "forecast_fde": {
+                "mean": 1.2246057417988778,
+                "std": 0.9817069830630372,
+                "median": 0.7558977007865906
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.04799622043967247,
+                "std": 0.017050495382022537,
+                "median": 0.042501093819737434
+              },
+              "forecast_rmse": {
+                "mean": 1.2558896386623382,
+                "std": 0.8934965594697043,
+                "median": 0.862945020198822
+              },
+              "forecast_fde": {
+                "mean": 2.3700768319765726,
+                "std": 1.756983296162566,
+                "median": 1.4239110350608826
+              }
+            }
+          }
+        },
+        "50": {
+          "overall": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.5571106041967869,
+                "std": 0.24391525207606263,
+                "median": 0.5357900857925415
+              },
+              "forecast_rmse": {
+                "mean": 1.082440650338928,
+                "std": 0.6760828912470092,
+                "median": 0.9923085272312164
+              },
+              "forecast_fde": {
+                "mean": 1.6792194577679038,
+                "std": 1.1608460651581562,
+                "median": 1.4625330567359924
+              }
+            },
+            "n_trajectories": 300,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.045040455870330336,
+                "std": 0.014649075693332504,
+                "median": 0.04206680878996849
+              },
+              "forecast_rmse": {
+                "mean": 1.1782933929065864,
+                "std": 0.664091243075635,
+                "median": 1.1166909337043762
+              },
+              "forecast_fde": {
+                "mean": 2.1792431993285817,
+                "std": 1.317450961243106,
+                "median": 1.9391746520996094
+              }
+            }
+          },
+          "circle": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.5585455333193143,
+                "std": 0.15629500219560122,
+                "median": 0.5576178133487701
+              },
+              "forecast_rmse": {
+                "mean": 1.0422135233879088,
+                "std": 0.3480098793796597,
+                "median": 1.0535561442375183
+              },
+              "forecast_fde": {
+                "mean": 1.5731739656130472,
+                "std": 0.583375147562799,
+                "median": 1.5901513695716858
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.04535415718952815,
+                "std": 0.013266289874384728,
+                "median": 0.04293098486959934
+              },
+              "forecast_rmse": {
+                "mean": 1.1065189063549041,
+                "std": 0.2931227981255772,
+                "median": 1.13878333568573
+              },
+              "forecast_fde": {
+                "mean": 1.9861943538983662,
+                "std": 0.5402244080328519,
+                "median": 1.9901501536369324
+              }
+            }
+          },
+          "spiral": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.5556756750742594,
+                "std": 0.3075013083486996,
+                "median": 0.4437604546546936
+              },
+              "forecast_rmse": {
+                "mean": 1.122667777289947,
+                "std": 0.8887231470162787,
+                "median": 0.7514690458774567
+              },
+              "forecast_fde": {
+                "mean": 1.7852649499227604,
+                "std": 1.5271900072943445,
+                "median": 1.0934579968452454
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.04472675455113252,
+                "std": 0.01590596030648369,
+                "median": 0.04088686406612396
+              },
+              "forecast_rmse": {
+                "mean": 1.2500678794582685,
+                "std": 0.8864593784483311,
+                "median": 0.8688725233078003
+              },
+              "forecast_fde": {
+                "mean": 2.3722920447587965,
+                "std": 1.7620941933059209,
+                "median": 1.4348864555358887
+              }
+            }
+          }
+        }
+      },
+      "variable_nobs_experimental": {
+        "10": {
+          "overall": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.1609932664533456,
+                "std": 0.13261765412886337,
+                "median": 0.11488103121519089
+              },
+              "forecast_rmse": {
+                "mean": 0.49376228857785465,
+                "std": 0.3272173429523342,
+                "median": 0.40290479362010956
+              },
+              "forecast_fde": {
+                "mean": 1.0312585298592845,
+                "std": 0.7152757951647736,
+                "median": 0.7961136996746063
+              }
+            },
+            "n_trajectories": 300,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.2716726383070151,
+                "std": 0.193712513683538,
+                "median": 0.21631253510713577
+              },
+              "forecast_rmse": {
+                "mean": 1.2710820621748766,
+                "std": 0.7024161209681556,
+                "median": 1.1517241597175598
+              },
+              "forecast_fde": {
+                "mean": 1.9218286562959352,
+                "std": 1.3299877134608724,
+                "median": 1.5827181339263916
+              }
+            }
+          },
+          "circle": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.15094932903846106,
+                "std": 0.1295659752467942,
+                "median": 0.1074765995144844
+              },
+              "forecast_rmse": {
+                "mean": 0.44853399696449436,
+                "std": 0.2867817215602247,
+                "median": 0.34815770387649536
+              },
+              "forecast_fde": {
+                "mean": 0.9495066204418738,
+                "std": 0.6286959845618423,
+                "median": 0.7575108408927917
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.27267656748493513,
+                "std": 0.1730562174772322,
+                "median": 0.22204682976007462
+              },
+              "forecast_rmse": {
+                "mean": 1.1967703258991242,
+                "std": 0.3356654918296014,
+                "median": 1.1878063678741455
+              },
+              "forecast_fde": {
+                "mean": 1.667286632657051,
+                "std": 0.6818057478445398,
+                "median": 1.6408567428588867
+              }
+            }
+          },
+          "spiral": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.17103720386823018,
+                "std": 0.13485466648968633,
+                "median": 0.12455283850431442
+              },
+              "forecast_rmse": {
+                "mean": 0.5389905801912149,
+                "std": 0.35750164546753965,
+                "median": 0.4438213109970093
+              },
+              "forecast_fde": {
+                "mean": 1.1130104392766953,
+                "std": 0.7839729178397867,
+                "median": 0.8514678776264191
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.2706687091290951,
+                "std": 0.2123643231808821,
+                "median": 0.21480324119329453
+              },
+              "forecast_rmse": {
+                "mean": 1.345393798450629,
+                "std": 0.9290107767351568,
+                "median": 0.9602850079536438
+              },
+              "forecast_fde": {
+                "mean": 2.1763706799348195,
+                "std": 1.715602598075542,
+                "median": 1.2717130780220032
+              }
+            }
+          }
+        },
+        "20": {
+          "overall": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.06967002264534433,
+                "std": 0.04392896084948694,
+                "median": 0.05939665995538235
+              },
+              "forecast_rmse": {
+                "mean": 0.4000077385082841,
+                "std": 0.25340482644887763,
+                "median": 0.3350066542625427
+              },
+              "forecast_fde": {
+                "mean": 0.9443210502713919,
+                "std": 0.623862371904649,
+                "median": 0.781724601984024
+              }
+            },
+            "n_trajectories": 300,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.10571266857286295,
+                "std": 0.08898005958591393,
+                "median": 0.078586895018816
+              },
+              "forecast_rmse": {
+                "mean": 1.221437387863795,
+                "std": 0.6747296084589747,
+                "median": 1.143660843372345
+              },
+              "forecast_fde": {
+                "mean": 2.0959898548324905,
+                "std": 1.3249286773992488,
+                "median": 1.8407737016677856
+              }
+            }
+          },
+          "circle": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.06629308310647805,
+                "std": 0.04679115661000926,
+                "median": 0.05512983165681362
+              },
+              "forecast_rmse": {
+                "mean": 0.36668568757673103,
+                "std": 0.2589470776258955,
+                "median": 0.30481377243995667
+              },
+              "forecast_fde": {
+                "mean": 0.8646642867475748,
+                "std": 0.6163825091754159,
+                "median": 0.732880026102066
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.11289289847016334,
+                "std": 0.09643575818705964,
+                "median": 0.08198793604969978
+              },
+              "forecast_rmse": {
+                "mean": 1.158188871939977,
+                "std": 0.3122243503811519,
+                "median": 1.1807381510734558
+              },
+              "forecast_fde": {
+                "mean": 1.8763150974114735,
+                "std": 0.5798798984593165,
+                "median": 1.8940334916114807
+              }
+            }
+          },
+          "spiral": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.07304696218421061,
+                "std": 0.0405867887918074,
+                "median": 0.06300178915262222
+              },
+              "forecast_rmse": {
+                "mean": 0.43332978943983713,
+                "std": 0.24321534689984106,
+                "median": 0.3899982124567032
+              },
+              "forecast_fde": {
+                "mean": 1.023977813795209,
+                "std": 0.6211205362805425,
+                "median": 0.8807203769683838
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.09853243867556254,
+                "std": 0.08019934630629089,
+                "median": 0.07349636778235435
+              },
+              "forecast_rmse": {
+                "mean": 1.2846859037876128,
+                "std": 0.8972375909191163,
+                "median": 0.8619443476200104
+              },
+              "forecast_fde": {
+                "mean": 2.315664612253507,
+                "std": 1.7544507133734741,
+                "median": 1.4534304738044739
+              }
+            }
+          }
+        },
+        "30": {
+          "overall": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.0565842380002141,
+                "std": 0.023813127826357163,
+                "median": 0.05137716233730316
+              },
+              "forecast_rmse": {
+                "mean": 0.3858446483438214,
+                "std": 0.23959561831613005,
+                "median": 0.3178040683269501
+              },
+              "forecast_fde": {
+                "mean": 0.9266263982653618,
+                "std": 0.6153194865785803,
+                "median": 0.7397581040859222
+              }
+            },
+            "n_trajectories": 300,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.061798856525371475,
+                "std": 0.03243615311946145,
+                "median": 0.05132138170301914
+              },
+              "forecast_rmse": {
+                "mean": 1.1992422544459502,
+                "std": 0.6762025773825775,
+                "median": 1.1169739961624146
+              },
+              "forecast_fde": {
+                "mean": 2.15830256074667,
+                "std": 1.3219906796205647,
+                "median": 1.93349689245224
+              }
+            }
+          },
+          "circle": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.05152909848839045,
+                "std": 0.020726336891224963,
+                "median": 0.045050254091620445
+              },
+              "forecast_rmse": {
+                "mean": 0.35069939302901426,
+                "std": 0.23954354154581992,
+                "median": 0.29056844115257263
+              },
+              "forecast_fde": {
+                "mean": 0.8493593455851078,
+                "std": 0.6114000953174925,
+                "median": 0.6807662546634674
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.06270380875716607,
+                "std": 0.029319400153061878,
+                "median": 0.052737100049853325
+              },
+              "forecast_rmse": {
+                "mean": 1.1239713629086812,
+                "std": 0.294020256832786,
+                "median": 1.1375447511672974
+              },
+              "forecast_fde": {
+                "mean": 1.964347693125407,
+                "std": 0.5551696814122781,
+                "median": 1.9622684717178345
+              }
+            }
+          },
+          "spiral": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.061639377512037755,
+                "std": 0.02556247644208787,
+                "median": 0.05602439306676388
+              },
+              "forecast_rmse": {
+                "mean": 0.4209899036586285,
+                "std": 0.23443684521418007,
+                "median": 0.37978288531303406
+              },
+              "forecast_fde": {
+                "mean": 1.0038934509456157,
+                "std": 0.609496242574661,
+                "median": 0.8844152092933655
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.06089390429357688,
+                "std": 0.035255396125405715,
+                "median": 0.04960489459335804
+              },
+              "forecast_rmse": {
+                "mean": 1.274513145983219,
+                "std": 0.903725912909458,
+                "median": 0.8893865942955017
+              },
+              "forecast_fde": {
+                "mean": 2.3522574283679325,
+                "std": 1.76404885349015,
+                "median": 1.4626595377922058
+              }
+            }
+          }
+        },
+        "40": {
+          "overall": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.0553115083836019,
+                "std": 0.02236513556725548,
+                "median": 0.05024968646466732
+              },
+              "forecast_rmse": {
+                "mean": 0.40215549914787213,
+                "std": 0.24893518379939034,
+                "median": 0.3326401263475418
+              },
+              "forecast_fde": {
+                "mean": 0.95653967063874,
+                "std": 0.6313471991074383,
+                "median": 0.7725623548030853
+              }
+            },
+            "n_trajectories": 300,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.04849030659844478,
+                "std": 0.01628374812839261,
+                "median": 0.0433860719203949
+              },
+              "forecast_rmse": {
+                "mean": 1.1858467541138331,
+                "std": 0.6690458505605023,
+                "median": 1.1122754216194153
+              },
+              "forecast_fde": {
+                "mean": 2.173407580455144,
+                "std": 1.316382680953456,
+                "median": 1.9566840529441833
+              }
+            }
+          },
+          "circle": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.049984649568796155,
+                "std": 0.017440917150267958,
+                "median": 0.04674964211881161
+              },
+              "forecast_rmse": {
+                "mean": 0.3666457009067138,
+                "std": 0.24761817912113473,
+                "median": 0.29024508595466614
+              },
+              "forecast_fde": {
+                "mean": 0.8827455239742994,
+                "std": 0.6260400637273316,
+                "median": 0.7104809284210205
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.04898439275721709,
+                "std": 0.015463287851582762,
+                "median": 0.04411710239946842
+              },
+              "forecast_rmse": {
+                "mean": 1.115803869565328,
+                "std": 0.29512130924164465,
+                "median": 1.1327360272407532
+              },
+              "forecast_fde": {
+                "mean": 1.976738328933716,
+                "std": 0.5489798115105374,
+                "median": 2.0046255588531494
+              }
+            }
+          },
+          "spiral": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.06063836719840765,
+                "std": 0.025287588599452775,
+                "median": 0.05522842891514301
+              },
+              "forecast_rmse": {
+                "mean": 0.4376652973890305,
+                "std": 0.24515463955012276,
+                "median": 0.4108128547668457
+              },
+              "forecast_fde": {
+                "mean": 1.0303338173031806,
+                "std": 0.6279978169436795,
+                "median": 0.8846540153026581
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.04799622043967247,
+                "std": 0.017050495382022537,
+                "median": 0.042501093819737434
+              },
+              "forecast_rmse": {
+                "mean": 1.2558896386623382,
+                "std": 0.8934965594697043,
+                "median": 0.862945020198822
+              },
+              "forecast_fde": {
+                "mean": 2.3700768319765726,
+                "std": 1.756983296162566,
+                "median": 1.4239110350608826
+              }
+            }
+          }
+        },
+        "50": {
+          "overall": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.055667289805909,
+                "std": 0.020981775000825945,
+                "median": 0.052620381116867065
+              },
+              "forecast_rmse": {
+                "mean": 0.41443729370832444,
+                "std": 0.2571315538713235,
+                "median": 0.34398123621940613
+              },
+              "forecast_fde": {
+                "mean": 0.9814296148220698,
+                "std": 0.6477181876124822,
+                "median": 0.8222043812274933
+              }
+            },
+            "n_trajectories": 300,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.045040455870330336,
+                "std": 0.014649075693332504,
+                "median": 0.04206680878996849
+              },
+              "forecast_rmse": {
+                "mean": 1.1782933929065864,
+                "std": 0.664091243075635,
+                "median": 1.1166909337043762
+              },
+              "forecast_fde": {
+                "mean": 2.1792431993285817,
+                "std": 1.317450961243106,
+                "median": 1.9391746520996094
+              }
+            }
+          },
+          "circle": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.05032151194910208,
+                "std": 0.01610258420503301,
+                "median": 0.047811003401875496
+              },
+              "forecast_rmse": {
+                "mean": 0.3790245427191257,
+                "std": 0.25770508419078086,
+                "median": 0.30612169206142426
+              },
+              "forecast_fde": {
+                "mean": 0.9022869047522545,
+                "std": 0.6457155192954914,
+                "median": 0.721908450126648
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.04535415718952815,
+                "std": 0.013266289874384728,
+                "median": 0.04293098486959934
+              },
+              "forecast_rmse": {
+                "mean": 1.1065189063549041,
+                "std": 0.2931227981255772,
+                "median": 1.13878333568573
+              },
+              "forecast_fde": {
+                "mean": 1.9861943538983662,
+                "std": 0.5402244080328519,
+                "median": 1.9901501536369324
+              }
+            }
+          },
+          "spiral": {
+            "model": {
+              "reconstruction_rmse": {
+                "mean": 0.061013067662715914,
+                "std": 0.02374914450041804,
+                "median": 0.057017043232917786
+              },
+              "forecast_rmse": {
+                "mean": 0.4498500446975231,
+                "std": 0.25162121474458243,
+                "median": 0.42584240436553955
+              },
+              "forecast_fde": {
+                "mean": 1.060572324891885,
+                "std": 0.6400015876187821,
+                "median": 0.9174744188785553
+              }
+            },
+            "n_trajectories": 150,
+            "baseline": {
+              "reconstruction_rmse": {
+                "mean": 0.04472675455113252,
+                "std": 0.01590596030648369,
+                "median": 0.04088686406612396
+              },
+              "forecast_rmse": {
+                "mean": 1.2500678794582685,
+                "std": 0.8864593784483311,
+                "median": 0.8688725233078003
+              },
+              "forecast_fde": {
+                "mean": 2.3722920447587965,
+                "std": 1.7620941933059209,
+                "median": 1.4348864555358887
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "test_6_reproducibility": {
+    "cli_outputs_byte_identical": true,
+    "in_process_max_abs_difference": 0.0
+  },
+  "test_8_consistency_with_existing_evaluation": {
+    "three_shapes_unified": {
+      "trajectories_compared": 90,
+      "max_abs_prediction_difference": 3.5762786865234375e-06,
+      "within_1e-4": true,
+      "cli_csv_round_trip_max_abs_difference (csv has 6 decimals)": 1.8683013915943292e-06
+    },
+    "two_shapes_unified": {
+      "trajectories_compared": 60,
+      "max_abs_prediction_difference": 2.7418136596679688e-06,
+      "within_1e-4": true
+    },
+    "circle_specialist": {
+      "trajectories_compared": 30,
+      "max_abs_prediction_difference": 1.8030405044555664e-06,
+      "within_1e-4": true
+    },
+    "spiral_specialist": {
+      "trajectories_compared": 30,
+      "max_abs_prediction_difference": 3.7550926208496094e-06,
+      "within_1e-4": true
+    },
+    "dynamics_conditioned": {
+      "trajectories_compared": 60,
+      "max_abs_prediction_difference": 2.086162567138672e-06,
+      "within_1e-4": true
+    },
+    "variable_nobs_experimental": {
+      "trajectories_compared": 60,
+      "max_abs_prediction_difference": 3.6656856536865234e-06,
+      "within_1e-4": true
+    }
+  },
+  "test_7_frozen_weights": {
+    "n_checkpoint_files_checked": 44,
+    "all_checksums_unchanged": true,
+    "changed_files": [],
+    "packaged_vs_original_identical": {
+      "three_shapes_unified": true,
+      "two_shapes_unified": true,
+      "circle_specialist": true,
+      "spiral_specialist": true,
+      "dynamics_conditioned": true,
+      "variable_nobs_experimental": true
+    }
+  }
+}

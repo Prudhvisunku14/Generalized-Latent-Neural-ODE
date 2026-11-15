@@ -1,0 +1,31 @@
+# Model D: best two-shape configuration (selected on validation ELBO, 2026-11-15).
+# Used unchanged for every validation experiment; experiment-specific keys
+# (seed, families, experiment, epochs, checkpoint) are given on the command line
+# in scripts/run_validation_experiments.sh.
+experiment: two_shapes
+epochs: 300
+batch_size: 32
+n_query: 100
+n_obs: 30
+latent_dim: 8
+encoder_hidden: 64
+dynamics_hidden: 64
+decoder_hidden: 64
+dynamics_layers: 2
+decoder_layers: 2
+cond_dim: 0
+supervision: observed
+sigma: 0.05
+kl_weight: 1.0
+kl_anneal_epochs: 0
+lr: 0.003
+lr_schedule: cosine
+min_lr: 1.0e-05
+grad_clip: 1.0
+patience: 60
+seed: 42
+solver: rk4
+step_size: 0.1
+device: cpu
+threads: 4
+require_torchdiffeq: true

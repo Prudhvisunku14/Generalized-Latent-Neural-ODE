@@ -1,0 +1,93 @@
+{
+  "checkpoint": "checkpoints/two_shapes_cond0_best.pt",
+  "experiment": "two_shapes",
+  "n_obs": 30,
+  "n_query": 200,
+  "forecast_start": 7.0,
+  "noise_std_override": null,
+  "metric_units": "original trajectory coordinate units; sample-wise means",
+  "status": "FULL TEST SPLIT",
+  "overall": {
+    "n": 300,
+    "recon_rmse": {
+      "mean": 0.7556407081087431,
+      "std": 0.2603650718717891
+    },
+    "forecast_rmse": {
+      "mean": 0.8428422803680102,
+      "std": 0.4749795698248096
+    },
+    "forecast_mae": {
+      "mean": 0.7480973174671331,
+      "std": 0.42924409944710956
+    },
+    "forecast_ade": {
+      "mean": 1.1767169763147831,
+      "std": 0.6750091986707916
+    },
+    "forecast_fde": {
+      "mean": 1.2620068031549454,
+      "std": 0.8218323819841888
+    },
+    "chamfer_full": {
+      "mean": 1.8058885576327641,
+      "std": 1.5539706514296299
+    }
+  },
+  "per_family": {
+    "circle": {
+      "n": 150,
+      "recon_rmse": {
+        "mean": 0.7551401354869207,
+        "std": 0.18666745758629438
+      },
+      "forecast_rmse": {
+        "mean": 0.7748219680786133,
+        "std": 0.20355020207549568
+      },
+      "forecast_mae": {
+        "mean": 0.6886423244078954,
+        "std": 0.18658091293163814
+      },
+      "forecast_ade": {
+        "mean": 1.0818905007839204,
+        "std": 0.292658546944032
+      },
+      "forecast_fde": {
+        "mean": 1.1063679305712382,
+        "std": 0.3538136283151169
+      },
+      "chamfer_full": {
+        "mean": 1.7064114304383595,
+        "std": 0.9174856492674018
+      }
+    },
+    "spiral": {
+      "n": 150,
+      "recon_rmse": {
+        "mean": 0.7561412807305654,
+        "std": 0.3173873035172852
+      },
+      "forecast_rmse": {
+        "mean": 0.9108625926574071,
+        "std": 0.6328704235221085
+      },
+      "forecast_mae": {
+        "mean": 0.807552310526371,
+        "std": 0.5715056993159111
+      },
+      "forecast_ade": {
+        "mean": 1.2715434518456459,
+        "std": 0.898688873057726
+      },
+      "forecast_fde": {
+        "mean": 1.4176456757386526,
+        "std": 1.0849819939777106
+      },
+      "chamfer_full": {
+        "mean": 1.9053656848271687,
+        "std": 1.9920035784927514
+      }
+    }
+  }
+}

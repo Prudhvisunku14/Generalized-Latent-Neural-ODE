@@ -1,0 +1,19 @@
+experiment: three_shapes
+families: [circle, spiral, ellipse]
+trajectories_per_family: 1000
+reference_points: 200
+observation_horizon: 7.0
+forecast_horizon: 3.0
+observation_count: 30
+noise_std: 0.05
+model:
+  latent_dim: 4
+  encoder_hidden: 25
+  dynamics_hidden: 20
+  decoder_hidden: 20
+  cond_dim: 0
+training:
+  supervision: observed
+  batch_size: 32
+  learning_rate: 0.001
+  epochs: 100

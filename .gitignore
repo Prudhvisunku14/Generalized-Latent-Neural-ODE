@@ -1,0 +1,63 @@
+# --- Python / tooling ---
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+.ipynb_checkpoints/
+.DS_Store
+*.swp
+*.tmp
+*.log.bak
+nohup.out
+
+# --- credentials / local config (none are used; guard against accidents) ---
+.env
+.env.*
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+.claude/
+.vscode/
+
+# --- smoke-test artefacts (engineering checks, not scientific results) ---
+*SMOKE_ONLY*
+
+# =====================================================================================
+# GeoLife GPS Trajectories 1.3  (Microsoft Research License Agreement, non-commercial use
+# only; the data AND derivative works may NOT be redistributed). Nothing below is published.
+# Obtain the archive yourself and place it at the project root (see README.md).
+# =====================================================================================
+Geolife*
+Geolife Trajectories 1.3.zip
+User Guide-1.3.pdf
+# segment index, per-segment arrays and splits: coordinates / user trip timestamps
+data/geolife/*
+!data/geolife/raw/
+data/geolife/raw/*
+!data/geolife/raw/SOURCE.md
+# per-file / per-segment / per-target tables and coordinate-level outputs
+results/geolife/dataset_statistics.csv
+results/geolife/audit_histograms.npz
+results/geolife/pilot/*/*.csv
+results/geolife/pilot/pilot_summary.csv
+results/geolife/main_evaluation/*.csv
+results/geolife/main_evaluation/*.npz
+# figures that draw individual users' GPS paths (regenerate locally with the scripts)
+results/geolife/figures/fig1_geolife_examples.png
+results/geolife/figures/fig2_gps_with_observations.png
+results/geolife/figures/fig3_method_comparison.png
+results/geolife/figures/fig4_best_median_worst.png
+results/geolife/pilot/*/*.png
+
+# NOTE: saved_models/**/best_model.pt and checkpoints/**/*.pt are intentionally NOT ignored
+# (each is ~100 KB; no Git LFS needed).
+
+# stale starter-package manifest (lists smoke-only checkpoints and old hashes)
+PROJECT_MANIFEST.json
+
+# GeoLife-trained models: runs unfinished at publication time; licence question (derivative work) open. Not published.
+checkpoints/geolife/
+logs/geolife/
+saved_models/geolife_trained/

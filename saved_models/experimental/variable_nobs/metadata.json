@@ -1,0 +1,97 @@
+{
+  "model_name": "variable_nobs_experimental",
+  "description": "EXPERIMENTAL ablation: Model D configuration trained with a random 10-50 observations per batch (circles + spirals)",
+  "training_families": [
+    "circle",
+    "spiral"
+  ],
+  "n_parameters": 24602,
+  "training_seed": 42,
+  "best_checkpoint_epoch": 299,
+  "epochs_configured": 300,
+  "training_n_obs": {
+    "min": 10,
+    "max": 50
+  },
+  "time_range": {
+    "full": [
+      0.0,
+      10.0
+    ],
+    "context": [
+      0.0,
+      7.0
+    ],
+    "forecast": [
+      7.0,
+      10.0
+    ]
+  },
+  "normalization": "affine, applied to x and y only: (xy - mean) / scale with one scalar scale = RMS deviation of the two_shapes TRAINING-split coordinates about their mean; inverted as xy_hat * scale + mean",
+  "ode_solver": "rk4 (fixed step 0.1)",
+  "original_checkpoint": "checkpoints/validation/ablation_variable_nobs_seed42.pt",
+  "sha256": "684b3f195f1b0106345f700b8e4d4116e07a5296a53795ce78471b710124fb80",
+  "file_size_bytes": 106372,
+  "training_dataset": "two_shapes",
+  "stored_training_val_loss_neg_elbo": -17.442301559448243,
+  "selection": {
+    "criterion": "lowest validation -ELBO with identical observation subsets (seed 2027), validation split only",
+    "pool_size": 1,
+    "validation_scores_of_selected": {
+      "val_neg_elbo": -13.96836,
+      "val_nll": -44.76018,
+      "val_kl": 30.79182,
+      "val_context_rmse": 0.06499,
+      "val_forecast_rmse": 0.53842
+    },
+    "agrees_with_best_val_forecast_rmse_in_pool": true,
+    "full_candidate_table": "saved_models/selection_report.json"
+  },
+  "test_performance (n_obs=30, original units, posterior mean; recorded AFTER selection, not used for it)": {
+    "overall": {
+      "recon_rmse": 0.05703,
+      "forecast_rmse": 0.38869,
+      "forecast_mae": 0.30497,
+      "forecast_ade": 0.48029,
+      "forecast_fde": 0.93244,
+      "chamfer_full": 0.05403
+    },
+    "circle": {
+      "recon_rmse": 0.05064,
+      "forecast_rmse": 0.34673,
+      "forecast_mae": 0.26966,
+      "forecast_ade": 0.42459,
+      "forecast_fde": 0.84745,
+      "chamfer_full": 0.0381
+    },
+    "spiral": {
+      "recon_rmse": 0.06343,
+      "forecast_rmse": 0.43065,
+      "forecast_mae": 0.34029,
+      "forecast_ade": 0.53598,
+      "forecast_fde": 1.01744,
+      "chamfer_full": 0.06997
+    },
+    "n_test_trajectories": 300
+  },
+  "training_config_keys": {
+    "lr": 0.003,
+    "lr_schedule": "cosine",
+    "min_lr": 1e-05,
+    "batch_size": 32,
+    "grad_clip": 1.0,
+    "kl_weight": 1.0,
+    "kl_anneal_epochs": 0,
+    "sigma": 0.05,
+    "supervision": "observed",
+    "n_query": 100,
+    "patience": 60,
+    "families": null,
+    "data_seed": null
+  },
+  "git_commit": "unavailable (repository has no commits)",
+  "torch_version": "2.5.1+cu121",
+  "packaged_on": "2026-11-15",
+  "dataset_metadata_sha256": "93e00c55b34d2659a977171b94337706a0763eb49135bf2b1edbde6b703e765c",
+  "warning": "experimental: robust to 10-50+ observations but its forecasts at 30 observations were about twice as inaccurate as the unified Model D (see reports/validation_study_report.md, section 8)"
+}

@@ -1,0 +1,122 @@
+{
+ "A": {
+  "rotation_direction_accuracy": {
+   "circle": 1.0,
+   "spiral": 1.0,
+   "ellipse": 1.0
+  },
+  "ellipse_geometry": {
+   "axis_ratio_true_mean": 0.5916324477770687,
+   "axis_ratio_pred_mean": 0.6685089197768913,
+   "axis_ratio_abs_err_mean": 0.08412076259104544,
+   "axis_ratio_corr": 0.8297222142989361,
+   "major_axis_orientation_err_deg_median": 4.921824354850438,
+   "forecast_rotation_direction_accuracy": 1.0
+  },
+  "variance_ratio_pred_over_truth": {
+   "circle": 1.0260086059570312,
+   "spiral": 0.9199263453483582,
+   "ellipse": 0.9690144062042236
+  }
+ },
+ "A_metrics": {
+  "overall": {
+   "recon_rmse": 0.0816,
+   "forecast_rmse": 0.211,
+   "forecast_ade": 0.2845,
+   "forecast_fde": 0.3715,
+   "chamfer_full": 0.0356
+  },
+  "circle": {
+   "recon_rmse": 0.0579,
+   "forecast_rmse": 0.1372,
+   "forecast_ade": 0.1847,
+   "forecast_fde": 0.2534,
+   "chamfer_full": 0.014
+  },
+  "spiral": {
+   "recon_rmse": 0.094,
+   "forecast_rmse": 0.2977,
+   "forecast_ade": 0.4041,
+   "forecast_fde": 0.5402,
+   "chamfer_full": 0.0686
+  },
+  "ellipse": {
+   "recon_rmse": 0.093,
+   "forecast_rmse": 0.1981,
+   "forecast_ade": 0.2646,
+   "forecast_fde": 0.321,
+   "chamfer_full": 0.0243
+  }
+ },
+ "B": {
+  "circle": {
+   "recon_rmse": [
+    0.0591,
+    0.0505,
+    "2.3e-08"
+   ],
+   "forecast_rmse": [
+    0.1358,
+    0.142,
+    "0.74"
+   ],
+   "forecast_ade": [
+    0.1821,
+    0.189,
+    "0.83"
+   ],
+   "forecast_fde": [
+    0.2567,
+    0.2948,
+    "0.042"
+   ],
+   "chamfer_full": [
+    0.0132,
+    0.0102,
+    "0.00074"
+   ]
+  },
+  "spiral": {
+   "recon_rmse": [
+    0.0956,
+    0.0609,
+    "3.4e-22"
+   ],
+   "forecast_rmse": [
+    0.2975,
+    0.2419,
+    "7e-11"
+   ],
+   "forecast_ade": [
+    0.4047,
+    0.32,
+    "1.2e-11"
+   ],
+   "forecast_fde": [
+    0.5452,
+    0.4915,
+    "0.0005"
+   ],
+   "chamfer_full": [
+    0.073,
+    0.0428,
+    "2.6e-17"
+   ]
+  }
+ },
+ "C_ood": {
+  "recon_rmse": 0.2096,
+  "forecast_rmse": 0.3212,
+  "forecast_ade": 0.4236,
+  "forecast_fde": 0.5063,
+  "chamfer_full": 0.079
+ },
+ "C_id": {
+  "recon_rmse": 0.0887,
+  "forecast_rmse": 0.185,
+  "forecast_ade": 0.2462,
+  "forecast_fde": 0.3016,
+  "chamfer_full": 0.0229
+ }
+}

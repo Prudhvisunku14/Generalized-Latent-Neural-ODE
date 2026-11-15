@@ -1,0 +1,186 @@
+{
+  "split": "dev",
+  "n_segments": 300,
+  "criterion": "lowest MEDIAN per-segment interpolation RMSE (m) of the frozen Latent ODE on development users (declared before running)",
+  "synthetic_reference": {
+    "context_rms_radius_median": 1.004577875137329,
+    "context_rms_radius_p5_p95": [
+      0.5724838107824326,
+      1.6653260111808774
+    ],
+    "context_max_radius_median": 1.2870895862579346
+  },
+  "linear_median_rmse_m": 5.920694477212155,
+  "strategies": {
+    "S1_obsmean_rms_1.0": {
+      "config": {
+        "name": "S1_obsmean_rms_1.0",
+        "center": "obs_mean",
+        "spread": "obs_rms",
+        "target": 1.0,
+        "rotate": 0.0,
+        "offset": [
+          0.0,
+          0.0
+        ]
+      },
+      "median_rmse_m": 202.37586745795215,
+      "mean_rmse_m": 380.03941008495633,
+      "win_rate_vs_linear": 0.0
+    },
+    "S2_obsmean_rms_p5": {
+      "config": {
+        "name": "S2_obsmean_rms_p5",
+        "center": "obs_mean",
+        "spread": "obs_rms",
+        "target": 0.572,
+        "rotate": 0.0,
+        "offset": [
+          0.0,
+          0.0
+        ]
+      },
+      "median_rmse_m": 233.8731333332991,
+      "mean_rmse_m": 458.30400392956733,
+      "win_rate_vs_linear": 0.0
+    },
+    "S3_obsmean_rms_p95": {
+      "config": {
+        "name": "S3_obsmean_rms_p95",
+        "center": "obs_mean",
+        "spread": "obs_rms",
+        "target": 1.665,
+        "rotate": 0.0,
+        "offset": [
+          0.0,
+          0.0
+        ]
+      },
+      "median_rmse_m": 177.98686286116504,
+      "mean_rmse_m": 343.2000606877047,
+      "win_rate_vs_linear": 0.0
+    },
+    "S4_firstobs_rms_1.0": {
+      "config": {
+        "name": "S4_firstobs_rms_1.0",
+        "center": "first_obs",
+        "spread": "obs_rms",
+        "target": 1.0,
+        "rotate": 0.0,
+        "offset": [
+          0.0,
+          0.0
+        ]
+      },
+      "median_rmse_m": 302.0151756547034,
+      "mean_rmse_m": 596.3811088484407,
+      "win_rate_vs_linear": 0.0
+    },
+    "S5_obsmean_max": {
+      "config": {
+        "name": "S5_obsmean_max",
+        "center": "obs_mean",
+        "spread": "obs_max",
+        "target": 1.287,
+        "rotate": 0.0,
+        "offset": [
+          0.0,
+          0.0
+        ]
+      },
+      "median_rmse_m": 216.6688983904101,
+      "mean_rmse_m": 424.6342535125251,
+      "win_rate_vs_linear": 0.0
+    }
+  },
+  "selected": "S3_obsmean_rms_p95",
+  "sensitivity_selected_strategy": {
+    "rotation_deg": {
+      "0": {
+        "median_rmse_m": 177.98686286116504,
+        "median_abs_change_vs_0_pct": 0.0
+      },
+      "45": {
+        "median_rmse_m": 178.45201133852254,
+        "median_abs_change_vs_0_pct": 30.633118023815204
+      },
+      "90": {
+        "median_rmse_m": 179.9348175127247,
+        "median_abs_change_vs_0_pct": 36.633439766168564
+      },
+      "180": {
+        "median_rmse_m": 166.48735877601194,
+        "median_abs_change_vs_0_pct": 9.322214026410315
+      },
+      "270": {
+        "median_rmse_m": 170.76131203781068,
+        "median_abs_change_vs_0_pct": 37.885139134300225
+      }
+    },
+    "translation_model_units": {
+      "0.0": {
+        "median_rmse_m": 177.98686286116504,
+        "median_abs_change_vs_0_pct": 0.0
+      },
+      "0.5": {
+        "median_rmse_m": 179.4854938043275,
+        "median_abs_change_vs_0_pct": 6.482161585781743
+      },
+      "1.0": {
+        "median_rmse_m": 199.14670255304034,
+        "median_abs_change_vs_0_pct": 16.526587474724526
+      },
+      "2.0": {
+        "median_rmse_m": 303.1898431425493,
+        "median_abs_change_vs_0_pct": 69.36720701127021
+      }
+    },
+    "target_scale": {
+      "0.25": {
+        "target": 0.41625,
+        "median_rmse_m": 281.98791565066097,
+        "median_abs_change_vs_1_pct": 56.82194468662238
+      },
+      "0.5": {
+        "target": 0.8325,
+        "median_rmse_m": 210.92093910917532,
+        "median_abs_change_vs_1_pct": 19.800835587746736
+      },
+      "1.0": {
+        "target": 1.665,
+        "median_rmse_m": 177.98686286116504,
+        "median_abs_change_vs_1_pct": 0.0
+      },
+      "2.0": {
+        "target": 3.33,
+        "median_rmse_m": 217.76796585372057,
+        "median_abs_change_vs_1_pct": 35.49267493944737
+      },
+      "4.0": {
+        "target": 6.66,
+        "median_rmse_m": 291.46554158863853,
+        "median_abs_change_vs_1_pct": 74.73644601729288
+      }
+    },
+    "path_length_terciles": {
+      "8-1120 m": {
+        "n": 100,
+        "latent_ode_median_rmse_m": 46.59606767873503,
+        "linear_median_rmse_m": 3.9952139101536956,
+        "latent_ode_median_relative_rmse": 0.07398974246279752
+      },
+      "1120-3045 m": {
+        "n": 100,
+        "latent_ode_median_rmse_m": 174.02831749368795,
+        "linear_median_rmse_m": 7.583077232106804,
+        "latent_ode_median_relative_rmse": 0.08087300927349089
+      },
+      "3045-39408 m": {
+        "n": 100,
+        "latent_ode_median_rmse_m": 517.5117328568854,
+        "linear_median_rmse_m": 14.957478314504204,
+        "latent_ode_median_relative_rmse": 0.07840933607326804
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+mixed20/original it=0 mse=1.034542 rmse_orig=0.9056 grad=1.053
+mixed20/original it=500 mse=0.126297 rmse_orig=0.3164 grad=1.613
+mixed20/original it=1000 mse=0.063934 rmse_orig=0.2251 grad=1.322
+mixed20/original it=1500 mse=0.042606 rmse_orig=0.1838 grad=0.017
+mixed20/original it=2000 mse=0.035454 rmse_orig=0.1676 grad=0.017
+mixed20/original it=2500 mse=0.032812 rmse_orig=0.1613 grad=0.013
+mixed20/original it=2999 mse=0.032115 rmse_orig=0.1596 grad=0.012
+{
+ "experiment": "mixed20",
+ "arch": "original",
+ "solver": "rk4",
+ "model": {
+  "latent_dim": 4,
+  "encoder_hidden": 25,
+  "dynamics_hidden": 20,
+  "decoder_hidden": 20
+ },
+ "iters": 3000,
+ "n_traj": 20,
+ "seconds": 248.2,
+ "rmse_full": 0.1595495045185089,
+ "rmse_context_t<=7": 0.1602269560098648,
+ "rmse_future_t>7": 0.15795747935771942,
+ "rmse_per_traj_max": 0.2206353098154068
+}

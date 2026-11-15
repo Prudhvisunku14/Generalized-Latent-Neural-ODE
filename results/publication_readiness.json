@@ -1,0 +1,197 @@
+{
+  "failures": [],
+  "warnings": [
+    "42 text files mention the local path /home/teaching (harmless provenance, not a credential)"
+  ],
+  "models": {
+    "three_shapes_unified": {
+      "folder": "saved_models/three_shapes_unified",
+      "sha256": "8a4813dacb8bb19ac16282003f647dc7247d8901ba7e7eef966bb3aaa95501a8",
+      "size_bytes": 106024,
+      "sha256_matches_metadata": true,
+      "identical_to_original_checkpoint": true,
+      "loads": true,
+      "n_parameters": 24602,
+      "inference_output_shape": [
+        50,
+        2
+      ],
+      "inference_finite": true,
+      "weights_unchanged_by_inference": true,
+      "has_config_preprocessing_metadata": true
+    },
+    "two_shapes_unified": {
+      "folder": "saved_models/two_shapes_unified",
+      "sha256": "13cfd82117909a50f0c8e30674395b4ca7d1f95f28c1cd8686388dd3f884dc8e",
+      "size_bytes": 106024,
+      "sha256_matches_metadata": true,
+      "identical_to_original_checkpoint": true,
+      "loads": true,
+      "n_parameters": 24602,
+      "inference_output_shape": [
+        50,
+        2
+      ],
+      "inference_finite": true,
+      "weights_unchanged_by_inference": true,
+      "has_config_preprocessing_metadata": true
+    },
+    "circle_specialist": {
+      "folder": "saved_models/specialists/circle",
+      "sha256": "b4d1f4a7afcb29719c9b8a2c3633f0a96af06d9607f1a47220c77b8138c8216d",
+      "size_bytes": 106066,
+      "sha256_matches_metadata": true,
+      "identical_to_original_checkpoint": true,
+      "loads": true,
+      "n_parameters": 24602,
+      "inference_output_shape": [
+        50,
+        2
+      ],
+      "inference_finite": true,
+      "weights_unchanged_by_inference": true,
+      "has_config_preprocessing_metadata": true
+    },
+    "spiral_specialist": {
+      "folder": "saved_models/specialists/spiral",
+      "sha256": "ad99deebf33fdeb47e57749e04a20f4785b78f3d2892d4975438336f3ac13244",
+      "size_bytes": 106066,
+      "sha256_matches_metadata": true,
+      "identical_to_original_checkpoint": true,
+      "loads": true,
+      "n_parameters": 24602,
+      "inference_output_shape": [
+        50,
+        2
+      ],
+      "inference_finite": true,
+      "weights_unchanged_by_inference": true,
+      "has_config_preprocessing_metadata": true
+    },
+    "dynamics_conditioned": {
+      "folder": "saved_models/experimental/dynamics_conditioned",
+      "sha256": "fd3297b4ac59388293d8c9f2fc7f674973e566fe9927eb160411a4f0ad5f6a8e",
+      "size_bytes": 108954,
+      "sha256_matches_metadata": true,
+      "identical_to_original_checkpoint": true,
+      "loads": true,
+      "n_parameters": 25118,
+      "inference_output_shape": [
+        50,
+        2
+      ],
+      "inference_finite": true,
+      "weights_unchanged_by_inference": true,
+      "has_config_preprocessing_metadata": true
+    },
+    "variable_nobs_experimental": {
+      "folder": "saved_models/experimental/variable_nobs",
+      "sha256": "684b3f195f1b0106345f700b8e4d4116e07a5296a53795ce78471b710124fb80",
+      "size_bytes": 106372,
+      "sha256_matches_metadata": true,
+      "identical_to_original_checkpoint": true,
+      "loads": true,
+      "n_parameters": 24602,
+      "inference_output_shape": [
+        50,
+        2
+      ],
+      "inference_finite": true,
+      "weights_unchanged_by_inference": true,
+      "has_config_preprocessing_metadata": true
+    }
+  },
+  "n_files": 383,
+  "total_bytes": 44172164,
+  "largest_files": [
+    {
+      "file": "data/processed/three_shapes/train.npz",
+      "bytes": 6313381
+    },
+    {
+      "file": "data/processed/two_shapes/train.npz",
+      "bytes": 4209623
+    },
+    {
+      "file": "data/processed/three_shapes/val.npz",
+      "bytes": 1354858
+    },
+    {
+      "file": "data/processed/three_shapes/test.npz",
+      "bytes": 1354394
+    },
+    {
+      "file": "data/processed/two_shapes/test.npz",
+      "bytes": 903947
+    },
+    {
+      "file": "data/processed/two_shapes/val.npz",
+      "bytes": 903679
+    },
+    {
+      "file": "results/validation/forecast_analysis/best_median_worst.png",
+      "bytes": 699467
+    },
+    {
+      "file": "results/validation/three_shapes/three_shape_gallery.png",
+      "bytes": 648393
+    }
+  ],
+  "forbidden_files": [],
+  "secret_like_strings": [],
+  "files_mentioning_local_home_path": [
+    "inference_outputs/circle_example/run_summary.json",
+    "inference_outputs/ellipse_example/run_summary.json",
+    "inference_outputs/my_ellipse_test/run_summary.json",
+    "inference_outputs/new_ellipse_test/run_summary.json",
+    "inference_outputs/random_unknown_test/run_summary.json",
+    "inference_outputs/spiral_example/run_summary.json",
+    "logs/A_original_arch.log",
+    "logs/B_candidate.log",
+    "logs/C_candidate_klanneal.log",
+    "logs/D_candidate_lr3e-3.log",
+    "logs/conditioning/m1_unified_seed123.log",
+    "logs/conditioning/m1_unified_seed2024.log",
+    "logs/conditioning/m1_unified_seed2025.log",
+    "logs/conditioning/m1_unified_seed2026.log",
+    "logs/conditioning/m1_unified_seed42.log",
+    "logs/conditioning/m2_param_matched_seed123.log",
+    "logs/conditioning/m2_param_matched_seed2024.log",
+    "logs/conditioning/m2_param_matched_seed2025.log",
+    "logs/conditioning/m2_param_matched_seed2026.log",
+    "logs/conditioning/m2_param_matched_seed42.log",
+    "logs/conditioning/m2aug_latent12_seed123.log",
+    "logs/conditioning/m2aug_latent12_seed2024.log",
+    "logs/conditioning/m2aug_latent12_seed42.log",
+    "logs/conditioning/m3_conditioned_seed123.log",
+    "logs/conditioning/m3_conditioned_seed2024.log",
+    "logs/conditioning/m3_conditioned_seed2025.log",
+    "logs/conditioning/m3_conditioned_seed2026.log",
+    "logs/conditioning/m3_conditioned_seed42.log",
+    "logs/validation/ablation_variable_nobs_seed42.log",
+    "logs/validation/circle_only_seed123.log",
+    "logs/validation/circle_only_seed2024.log",
+    "logs/validation/circle_only_seed42.log",
+    "logs/validation/spiral_only_seed123.log",
+    "logs/validation/spiral_only_seed2024.log",
+    "logs/validation/spiral_only_seed42.log",
+    "logs/validation/three_shapes_seed42.log",
+    "logs/validation/two_shapes_seed123.log",
+    "logs/validation/two_shapes_seed2024.log",
+    "logs/validation/two_shapes_seed2025.log",
+    "logs/validation/two_shapes_seed2026.log",
+    "results/publication_readiness.json",
+    "scripts/check_publication_readiness.py"
+  ],
+  "missing_required_files": [],
+  "glo_modules_imported": [
+    "data",
+    "evaluation",
+    "inference",
+    "model",
+    "pipeline",
+    "solver",
+    "visualization"
+  ],
+  "glo_modules_not_committed": []
+}

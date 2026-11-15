@@ -1,0 +1,148 @@
+{
+  "archive": "Geolife Trajectories 1.3.zip",
+  "archive_sha256": "1107c5ac064d0a23c8d021a8736a77e53abc75b227062e6260342c6a8d86bdb6",
+  "n_users": 182,
+  "n_users_with_labels": 69,
+  "n_trajectory_files": 18670,
+  "n_data_lines": 24876978,
+  "n_malformed_lines": 0,
+  "n_invalid_coordinates": 1,
+  "n_duplicate_timestamps": 698900,
+  "n_backward_timestamps": 0,
+  "n_files_with_backward_time": 0,
+  "n_datenum_vs_string_mismatch_gt_1s": 0,
+  "n_files_bad_header": 0,
+  "n_clean_records": 24178077,
+  "records_per_file": {
+    "p5": 28.0,
+    "p25": 200.0,
+    "p50": 504.0,
+    "p75": 1339.75,
+    "p95": 5049.0999999999985,
+    "mean": 1295.0228709159078,
+    "max": 92645.0
+  },
+  "duration_per_file_s": {
+    "p5": 224.0,
+    "p25": 1010.0,
+    "p50": 2528.0,
+    "p75": 11545.75,
+    "p95": 42952.049999999974,
+    "mean": 9675.222067487948,
+    "max": 348431.0
+  },
+  "path_length_per_file_m": {
+    "p5": 475.7181236263852,
+    "p25": 2770.9698850719133,
+    "p50": 10034.72686366162,
+    "p75": 22408.867934389185,
+    "p95": 93799.29989505404,
+    "mean": 67770.38879620931,
+    "max": 532881939.73080206
+  },
+  "total_path_length_km_within_runs": 417921.5251708156,
+  "total_duration_h": 50176.776666666665,
+  "n_steps_after_cleaning": 24159407,
+  "sampling_interval_s_percentiles_all_steps": {
+    "p5": 1,
+    "p25": 1,
+    "p50": 2,
+    "p75": 5,
+    "p95": 5,
+    "p99": 20,
+    "p99.9": 602
+  },
+  "sampling_interval_s_counts": {
+    "1s": 7541955,
+    "2s": 7902232,
+    "3s": 1242223,
+    "4s": 606828,
+    "5s": 5988005
+  },
+  "fraction_steps_dt_le_5s": 0.9636512601488936,
+  "fraction_steps_dt_gt_max_gap": 0.004984062729685376,
+  "step_speed_mps_percentiles_all_steps_log_bin_upper_edge": {
+    "p5": 0.1412537544622754,
+    "p25": 1.2589254117941675,
+    "p50": 4.4668359215096345,
+    "p75": 14.125375446227554,
+    "p95": 31.622776601683793,
+    "p99": 44.668359215096345
+  },
+  "fraction_steps_speed_gt_max_speed": 0.00233275203085915,
+  "n_steps_gt_max_speed": 55079,
+  "n_gaps_gt_max_gap": 120412,
+  "segment_thresholds": {
+    "max_gap_s": 60.0,
+    "max_speed_mps": 70.0,
+    "window_points": 200,
+    "min_extent_m": 100.0,
+    "min_context_points": 60,
+    "min_future_points": 10
+  },
+  "n_candidate_windows": 81002,
+  "window_reasons": {
+    "ok": 75100,
+    "stationary": 5875,
+    "few_context_points": 15,
+    "few_future_points": 12
+  },
+  "n_eligible_windows": 75100,
+  "n_users_with_eligible_windows": 141,
+  "n_files_with_eligible_windows": 12266,
+  "eligible_windows_per_user": {
+    "p5": 7.0,
+    "p25": 51.0,
+    "p50": 192.0,
+    "p75": 531.0,
+    "p95": 2017.0,
+    "mean": 532.6241134751773,
+    "max": 7548.0
+  },
+  "eligible_window_duration_s": {
+    "p5": 199.0,
+    "p25": 226.0,
+    "p50": 398.0,
+    "p75": 602.0,
+    "p95": 995.0,
+    "mean": 476.44551264980026,
+    "max": 3030.0
+  },
+  "eligible_window_path_length_m": {
+    "p5": 508.42483895817134,
+    "p25": 1425.479622348325,
+    "p50": 2613.4818915018677,
+    "p75": 4141.962337741965,
+    "p95": 12550.621867825235,
+    "mean": 4047.4489891109383,
+    "max": 138995.33860030223
+  },
+  "eligible_window_extent_m": {
+    "p5": 242.10149652274163,
+    "p25": 979.952107248579,
+    "p50": 2094.6612766909375,
+    "p75": 3675.1670189148035,
+    "p95": 10461.498905347784,
+    "mean": 3448.3250818260553,
+    "max": 134084.67055679683
+  },
+  "eligible_window_mean_speed_mps": {
+    "p5": 1.1085871806377108,
+    "p25": 3.0710677502846178,
+    "p50": 6.502032947747767,
+    "p75": 14.051025435941373,
+    "p95": 31.336702134930782,
+    "mean": 9.983347123308311,
+    "max": 67.0834002869455
+  },
+  "eligible_window_median_dt_s": {
+    "p5": 1.0,
+    "p25": 1.0,
+    "p50": 2.0,
+    "p75": 2.0,
+    "p95": 5.0,
+    "mean": 2.238468708388815,
+    "max": 15.0
+  },
+  "runtime_s": 17.4
+}

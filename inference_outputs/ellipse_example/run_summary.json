@@ -1,0 +1,32 @@
+{
+  "input_file": "input_trajectories/example_ellipse.csv",
+  "model": "three_shapes_unified",
+  "checkpoint": "/home/teaching/Desktop/FINALLL/Generalized_Latent_ODE_Starter_Project/Generalized_Latent_ODE/saved_models/three_shapes_unified/best_model.pt",
+  "checkpoint_sha256": "8a4813dacb8bb19ac16282003f647dc7247d8901ba7e7eef966bb3aaa95501a8",
+  "weights_digest_after_inference": "8b05fa7ca943a0436335ccaf6fc837012a908dced064af032ae04b815b2e4aaa",
+  "n_observations": 30,
+  "observation_time_range": [
+    0.0,
+    6.83417082
+  ],
+  "n_query": 200,
+  "forecast_end": 10.0,
+  "context_end": 7.0,
+  "n_reconstruction_points": 140,
+  "n_forecast_points": 60,
+  "latent_posterior_mean_z0": [
+    0.50607830286026,
+    1.0191974639892578,
+    -1.6142501831054688,
+    1.3998769521713257,
+    1.194117784500122,
+    -0.8032867312431335,
+    -0.2647814452648163,
+    1.2354481220245361
+  ],
+  "dynamics_code_c": null,
+  "ground_truth_used_for_metrics_only": "input_trajectories/ground_truth/example_ellipse.csv",
+  "warnings": [],
+  "shape_label_used": false,
+  "metrics_file": "metrics.json"
+}

@@ -1,0 +1,57 @@
+{
+  "note": "Provenance of the example trajectories; kept OUT of the input CSVs, never read by the inference code.",
+  "noise": "observations are the dataset noisy_xy (sigma 0.05) at the stored default_obs_mask times; ground truth is clean",
+  "examples": {
+    "example_circle": {
+      "dataset": "three_shapes",
+      "split": "test",
+      "array_index": 0,
+      "trajectory_id": "circle_00156",
+      "true_parameters (radius_or_r0, omega, phase, cx, cy, growth, a, b, angle)": [
+        1.283522367477417,
+        1.4208991527557373,
+        2.0538442134857178,
+        0.1400672048330307,
+        0.22340169548988342,
+        0.0,
+        1.283522367477417,
+        1.283522367477417,
+        0.0
+      ]
+    },
+    "example_spiral": {
+      "dataset": "three_shapes",
+      "split": "test",
+      "array_index": 2,
+      "trajectory_id": "spiral_00649",
+      "true_parameters (radius_or_r0, omega, phase, cx, cy, growth, a, b, angle)": [
+        0.7401180267333984,
+        -1.2505700588226318,
+        2.8912084102630615,
+        0.25565865635871887,
+        -0.2331286072731018,
+        0.08347926288843155,
+        0.7401180267333984,
+        0.7401180267333984,
+        0.0
+      ]
+    },
+    "example_ellipse": {
+      "dataset": "three_shapes",
+      "split": "test",
+      "array_index": 4,
+      "trajectory_id": "ellipse_00353",
+      "true_parameters (radius_or_r0, omega, phase, cx, cy, growth, a, b, angle)": [
+        1.311768889427185,
+        1.0591896772384644,
+        3.0990755558013916,
+        0.17165136337280273,
+        -0.30238789319992065,
+        0.0,
+        0.8905969858169556,
+        0.5276852250099182,
+        0.18547767400741577
+      ]
+    }
+  }
+}

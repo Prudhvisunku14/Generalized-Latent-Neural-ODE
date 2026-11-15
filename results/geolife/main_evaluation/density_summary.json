@@ -1,0 +1,282 @@
+{
+  "n_segments": 1000,
+  "normalisation_strategy": {
+    "name": "S3_obsmean_rms_p95",
+    "center": "obs_mean",
+    "spread": "obs_rms",
+    "target": 1.665,
+    "rotate": 0.0,
+    "offset": [
+      0.0,
+      0.0
+    ]
+  },
+  "note": "the same test segments at every level; observation subsets drawn independently per level (t=0 always observed); targets = withheld context records between first and last observation, so they differ between levels",
+  "levels": {
+    "10": {
+      "latent_ode": {
+        "median_rmse_m": 190.30365658720808,
+        "mean_rmse_m": 390.25388245947346,
+        "median_ci95": [
+          155.4015971735318,
+          221.47047890189262
+        ],
+        "median_ade_m": 229.04828838161546,
+        "win_rate_vs_linear": 0.001
+      },
+      "variable_nobs_experimental": {
+        "median_rmse_m": 137.61564717115337,
+        "mean_rmse_m": 315.8340933280514,
+        "median_ci95": [
+          114.15983682180506,
+          170.9322839196103
+        ],
+        "median_ade_m": 166.73271816388325,
+        "win_rate_vs_linear": 0.005
+      },
+      "linear": {
+        "median_rmse_m": 20.24403071323772,
+        "mean_rmse_m": 39.5109421226778,
+        "median_ci95": [
+          17.57747496413992,
+          24.342865899574424
+        ],
+        "median_ade_m": 20.201076851492438,
+        "win_rate_vs_linear": 0.0
+      },
+      "cubic": {
+        "median_rmse_m": 20.79242858254905,
+        "mean_rmse_m": 44.848586509099384,
+        "median_ci95": [
+          17.501530470245175,
+          25.191417689397895
+        ],
+        "median_ade_m": 20.39799667064304,
+        "win_rate_vs_linear": 0.503
+      },
+      "pchip": {
+        "median_rmse_m": 17.476693887858623,
+        "mean_rmse_m": 34.37508652047752,
+        "median_ci95": [
+          14.880680963624654,
+          21.102722429935522
+        ],
+        "median_ade_m": 17.29040628226314,
+        "win_rate_vs_linear": 0.693
+      },
+      "median_targets": 119.0
+    },
+    "20": {
+      "latent_ode": {
+        "median_rmse_m": 129.8352252975567,
+        "mean_rmse_m": 273.76018464531785,
+        "median_ci95": [
+          114.16215171941914,
+          154.425678551004
+        ],
+        "median_ade_m": 159.53741012881736,
+        "win_rate_vs_linear": 0.0
+      },
+      "variable_nobs_experimental": {
+        "median_rmse_m": 143.83358198743292,
+        "mean_rmse_m": 327.0292616047937,
+        "median_ci95": [
+          118.30386025059263,
+          169.17176895925948
+        ],
+        "median_ade_m": 175.07298938202626,
+        "win_rate_vs_linear": 0.001
+      },
+      "linear": {
+        "median_rmse_m": 10.80229786751384,
+        "mean_rmse_m": 20.082621062614784,
+        "median_ci95": [
+          8.93810004057197,
+          12.776996600552659
+        ],
+        "median_ade_m": 9.790558597495217,
+        "win_rate_vs_linear": 0.0
+      },
+      "cubic": {
+        "median_rmse_m": 9.03915968653185,
+        "mean_rmse_m": 18.46436248297845,
+        "median_ci95": [
+          7.534280748235036,
+          10.759027124663833
+        ],
+        "median_ade_m": 8.194108289335901,
+        "win_rate_vs_linear": 0.622
+      },
+      "pchip": {
+        "median_rmse_m": 8.665943674845426,
+        "mean_rmse_m": 16.293342994778715,
+        "median_ci95": [
+          7.148187885970705,
+          10.253442315411258
+        ],
+        "median_ade_m": 7.896943264932306,
+        "win_rate_vs_linear": 0.81
+      },
+      "median_targets": 114.0
+    },
+    "30": {
+      "latent_ode": {
+        "median_rmse_m": 126.40335445867882,
+        "mean_rmse_m": 272.70244649150885,
+        "median_ci95": [
+          110.93760331984186,
+          147.93981006760268
+        ],
+        "median_ade_m": 148.74694645186378,
+        "win_rate_vs_linear": 0.001
+      },
+      "variable_nobs_experimental": {
+        "median_rmse_m": 147.97235046731078,
+        "mean_rmse_m": 329.651066107507,
+        "median_ci95": [
+          122.42146008324475,
+          177.27975199943123
+        ],
+        "median_ade_m": 179.59342739200417,
+        "win_rate_vs_linear": 0.001
+      },
+      "linear": {
+        "median_rmse_m": 7.099444543408049,
+        "mean_rmse_m": 12.991538683709074,
+        "median_ci95": [
+          5.797533880665441,
+          8.476586659402384
+        ],
+        "median_ade_m": 6.326537355921409,
+        "win_rate_vs_linear": 0.0
+      },
+      "cubic": {
+        "median_rmse_m": 5.561430601334137,
+        "mean_rmse_m": 11.64501566796568,
+        "median_ci95": [
+          4.6431290477220974,
+          6.902339636585096
+        ],
+        "median_ade_m": 4.9229253932696935,
+        "win_rate_vs_linear": 0.686
+      },
+      "pchip": {
+        "median_rmse_m": 5.617228596625054,
+        "mean_rmse_m": 10.112770761468898,
+        "median_ci95": [
+          4.537706213019059,
+          6.6892755446248735
+        ],
+        "median_ade_m": 4.971045415351721,
+        "win_rate_vs_linear": 0.859
+      },
+      "median_targets": 107.0
+    },
+    "40": {
+      "latent_ode": {
+        "median_rmse_m": 146.5594753865689,
+        "mean_rmse_m": 314.6602334275676,
+        "median_ci95": [
+          126.3787398878657,
+          177.5302582192064
+        ],
+        "median_ade_m": 174.3241091881052,
+        "win_rate_vs_linear": 0.001
+      },
+      "variable_nobs_experimental": {
+        "median_rmse_m": 155.49339756840152,
+        "mean_rmse_m": 339.76949039319146,
+        "median_ci95": [
+          125.11404591556293,
+          181.74626925767868
+        ],
+        "median_ade_m": 183.38504989661755,
+        "win_rate_vs_linear": 0.001
+      },
+      "linear": {
+        "median_rmse_m": 4.827515632211245,
+        "mean_rmse_m": 9.209283829358482,
+        "median_ci95": [
+          3.964139172551706,
+          5.980711134596905
+        ],
+        "median_ade_m": 4.273722018348236,
+        "win_rate_vs_linear": 0.0
+      },
+      "cubic": {
+        "median_rmse_m": 3.614261078436784,
+        "mean_rmse_m": 7.284286387851277,
+        "median_ci95": [
+          3.037940012147717,
+          4.460153052384358
+        ],
+        "median_ade_m": 3.253668344646192,
+        "win_rate_vs_linear": 0.712
+      },
+      "pchip": {
+        "median_rmse_m": 3.5693817251614646,
+        "mean_rmse_m": 7.1204349266893185,
+        "median_ci95": [
+          3.0631772325221087,
+          4.480254099606991
+        ],
+        "median_ade_m": 3.3260942476126796,
+        "win_rate_vs_linear": 0.888
+      },
+      "median_targets": 98.0
+    },
+    "50": {
+      "latent_ode": {
+        "median_rmse_m": 176.91644907000634,
+        "mean_rmse_m": 373.3108035726637,
+        "median_ci95": [
+          147.12634702314625,
+          206.45593335175587
+        ],
+        "median_ade_m": 205.67300393885955,
+        "win_rate_vs_linear": 0.0
+      },
+      "variable_nobs_experimental": {
+        "median_rmse_m": 156.39201124853497,
+        "mean_rmse_m": 345.6317681774666,
+        "median_ci95": [
+          125.617418935222,
+          186.25665093750902
+        ],
+        "median_ade_m": 183.85541983726057,
+        "win_rate_vs_linear": 0.0
+      },
+      "linear": {
+        "median_rmse_m": 3.7887502719429,
+        "mean_rmse_m": 7.06712082753147,
+        "median_ci95": [
+          3.199830283507658,
+          4.556312365526251
+        ],
+        "median_ade_m": 3.3744346065671937,
+        "win_rate_vs_linear": 0.0
+      },
+      "cubic": {
+        "median_rmse_m": 2.857879497119529,
+        "mean_rmse_m": 5.503132360110296,
+        "median_ci95": [
+          2.402895365265402,
+          3.4143425894217785
+        ],
+        "median_ade_m": 2.616159071498773,
+        "win_rate_vs_linear": 0.721
+      },
+      "pchip": {
+        "median_rmse_m": 2.9307002964616125,
+        "mean_rmse_m": 5.433525265598548,
+        "median_ci95": [
+          2.5010915303225567,
+          3.499785651791749
+        ],
+        "median_ade_m": 2.647462560107549,
+        "win_rate_vs_linear": 0.883
+      },
+      "median_targets": 88.0
+    }
+  }
+}

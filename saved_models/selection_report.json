@@ -1,0 +1,399 @@
+{
+  "criterion": "lowest validation -ELBO, identical observation subsets (seed 2027), validation split only",
+  "note": "stored training val_loss values used different random observation subsets per seed and are not comparable",
+  "candidates": {
+    "two_shapes_unified": [
+      {
+        "checkpoint": "checkpoints/validation/two_shapes_seed2024.pt",
+        "sha256": "13cfd82117909a50f0c8e30674395b4ca7d1f95f28c1cd8686388dd3f884dc8e",
+        "seed": 2024,
+        "epoch": 288,
+        "stored_training_val_loss": -25.93497200012207,
+        "val_neg_elbo": -24.30457051595052,
+        "val_nll": -56.446173350016274,
+        "val_kl": 32.14160283406576,
+        "val_context_rmse": 0.05738073834746971,
+        "val_forecast_rmse": 0.22351282754375845,
+        "n_val_trajectories": 300,
+        "selected_by_criterion": "validation -ELBO (identical observation subsets)",
+        "agrees_with_best_val_forecast_rmse": true
+      },
+      {
+        "checkpoint": "checkpoints/conditioning/m1_unified_seed2026.pt",
+        "sha256": "a926395b97bafde1ec9288678e155a24e41d943bb7c7854149d612caad53a24a",
+        "seed": 2026,
+        "epoch": 298,
+        "stored_training_val_loss": -27.464161109924316,
+        "val_neg_elbo": -23.18391291300456,
+        "val_nll": -55.390673319498696,
+        "val_kl": 32.20676040649414,
+        "val_context_rmse": 0.058708924657035436,
+        "val_forecast_rmse": 0.2475466405761249,
+        "n_val_trajectories": 300
+      },
+      {
+        "checkpoint": "checkpoints/conditioning/m1_unified_seed2025.pt",
+        "sha256": "b9a1061464cb68be4574d9a67d56995df27eff647680b78ca5e674a281da322c",
+        "seed": 2025,
+        "epoch": 299,
+        "stored_training_val_loss": -21.951856994628905,
+        "val_neg_elbo": -19.363182067871094,
+        "val_nll": -51.691366831461586,
+        "val_kl": 32.32818476359049,
+        "val_context_rmse": 0.061553866541997154,
+        "val_forecast_rmse": 0.2600803036043227,
+        "n_val_trajectories": 300
+      },
+      {
+        "checkpoint": "checkpoints/improved_two_shapes/D_candidate_lr3e-3.pt",
+        "sha256": "5e71ea92fd1a256a8b97c69110028a370d347c9a302f05f2e6b258acd705fbe9",
+        "seed": 42,
+        "epoch": 296,
+        "stored_training_val_loss": -23.043498992919922,
+        "val_neg_elbo": -18.644969940185547,
+        "val_nll": -51.58405685424805,
+        "val_kl": 32.9390869140625,
+        "val_context_rmse": 0.06173416763710187,
+        "val_forecast_rmse": 0.2550000146271612,
+        "n_val_trajectories": 300
+      },
+      {
+        "checkpoint": "checkpoints/validation/two_shapes_seed2025.pt",
+        "sha256": "96217554191c2bab63c6e114e7ce9cb636930cdc553286156387b8855a6a727d",
+        "seed": 2025,
+        "epoch": 297,
+        "stored_training_val_loss": -22.315445709228516,
+        "val_neg_elbo": -18.40066909790039,
+        "val_nll": -52.02114232381185,
+        "val_kl": 33.62047322591146,
+        "val_context_rmse": 0.06162306880513406,
+        "val_forecast_rmse": 0.25311971860381016,
+        "n_val_trajectories": 300
+      },
+      {
+        "checkpoint": "checkpoints/conditioning/m1_unified_seed2024.pt",
+        "sha256": "191e0e8ad79d75bd21b6ec9a25f62b6def45d2999fd208db9440b48090b6ffc3",
+        "seed": 2024,
+        "epoch": 292,
+        "stored_training_val_loss": -18.92012596130371,
+        "val_neg_elbo": -17.426497141520183,
+        "val_nll": -51.33034896850586,
+        "val_kl": 33.90385182698568,
+        "val_context_rmse": 0.0634576336818181,
+        "val_forecast_rmse": 0.2823190193015637,
+        "n_val_trajectories": 300
+      },
+      {
+        "checkpoint": "checkpoints/conditioning/m1_unified_seed42.pt",
+        "sha256": "fbd80f8cb3e55d2cf4310beeb4951e5a31057c8046349b449de74beb6ef985e1",
+        "seed": 42,
+        "epoch": 287,
+        "stored_training_val_loss": -0.13490352630615235,
+        "val_neg_elbo": -4.766663869222005,
+        "val_nll": -38.43435287475586,
+        "val_kl": 33.66768900553385,
+        "val_context_rmse": 0.07021084399206161,
+        "val_forecast_rmse": 0.28898006989111,
+        "n_val_trajectories": 300
+      },
+      {
+        "checkpoint": "checkpoints/conditioning/m1_unified_seed123.pt",
+        "sha256": "effe0b32a9bb9604c048108dd08bf79742cd0905dc3e0135902bf4957b8d3575",
+        "seed": 123,
+        "epoch": 296,
+        "stored_training_val_loss": -3.318332481384277,
+        "val_neg_elbo": -2.880914052327474,
+        "val_nll": -37.034470876057945,
+        "val_kl": 34.15355682373047,
+        "val_context_rmse": 0.07107898696612999,
+        "val_forecast_rmse": 0.2827139693213545,
+        "n_val_trajectories": 300
+      },
+      {
+        "checkpoint": "checkpoints/validation/two_shapes_seed123.pt",
+        "sha256": "7f65cdbd926ab4034c2b0eb386961bac4fe1d5d0dbf5f96c7831190fee35f83e",
+        "seed": 123,
+        "epoch": 291,
+        "stored_training_val_loss": -2.613853645324707,
+        "val_neg_elbo": -0.31225331624348956,
+        "val_nll": -32.73793029785156,
+        "val_kl": 32.42567698160807,
+        "val_context_rmse": 0.0723491049258581,
+        "val_forecast_rmse": 0.3621776518544748,
+        "n_val_trajectories": 300
+      },
+      {
+        "checkpoint": "checkpoints/validation/two_shapes_seed2026.pt",
+        "sha256": "da62560832f634a53b8bbf27fc8bb7c17becd7381d210f0f2c2b1f8a86bd246a",
+        "seed": 2026,
+        "epoch": 297,
+        "stored_training_val_loss": 4.931827354431152,
+        "val_neg_elbo": 2.595052719116211,
+        "val_nll": -29.55195426940918,
+        "val_kl": 32.14700698852539,
+        "val_context_rmse": 0.0759464587100638,
+        "val_forecast_rmse": 0.3377383397597365,
+        "n_val_trajectories": 300
+      }
+    ],
+    "three_shapes_unified": [
+      {
+        "checkpoint": "checkpoints/validation/three_shapes_seed42.pt",
+        "sha256": "8a4813dacb8bb19ac16282003f647dc7247d8901ba7e7eef966bb3aaa95501a8",
+        "seed": 42,
+        "epoch": 298,
+        "stored_training_val_loss": 20.124681599934895,
+        "val_neg_elbo": 20.14341820610894,
+        "val_nll": -11.77443035443624,
+        "val_kl": 31.917848375108505,
+        "val_context_rmse": 0.08308714514021033,
+        "val_forecast_rmse": 0.24882008706637795,
+        "n_val_trajectories": 450,
+        "selected_by_criterion": "validation -ELBO (identical observation subsets)",
+        "agrees_with_best_val_forecast_rmse": true
+      }
+    ],
+    "circle_specialist": [
+      {
+        "checkpoint": "checkpoints/validation/circle_only_seed42.pt",
+        "sha256": "b4d1f4a7afcb29719c9b8a2c3633f0a96af06d9607f1a47220c77b8138c8216d",
+        "seed": 42,
+        "epoch": 596,
+        "stored_training_val_loss": -37.33592834472656,
+        "val_neg_elbo": -37.47169494628906,
+        "val_nll": -68.0687026977539,
+        "val_kl": 30.597007751464844,
+        "val_context_rmse": 0.04563862417395071,
+        "val_forecast_rmse": 0.09996186906954331,
+        "n_val_trajectories": 150,
+        "selected_by_criterion": "validation -ELBO (identical observation subsets)",
+        "agrees_with_best_val_forecast_rmse": true
+      },
+      {
+        "checkpoint": "checkpoints/validation/circle_only_seed2024.pt",
+        "sha256": "4e907a10687f99657075c61b1a8eefe8c07dec813e79c13904a05e9de843a9bf",
+        "seed": 2024,
+        "epoch": 586,
+        "stored_training_val_loss": -36.53031768798828,
+        "val_neg_elbo": -37.17056783040365,
+        "val_nll": -68.02262369791667,
+        "val_kl": 30.85205586751302,
+        "val_context_rmse": 0.04532704588086345,
+        "val_forecast_rmse": 0.11336473590896996,
+        "n_val_trajectories": 150
+      },
+      {
+        "checkpoint": "checkpoints/validation/circle_only_seed123.pt",
+        "sha256": "5abe8128885fa258d10496df679759bb1d110b712060e695f3cdea0a8757e3e4",
+        "seed": 123,
+        "epoch": 592,
+        "stored_training_val_loss": -33.66647148132324,
+        "val_neg_elbo": -35.21455383300781,
+        "val_nll": -66.25479380289714,
+        "val_kl": 31.040239334106445,
+        "val_context_rmse": 0.04716375489147663,
+        "val_forecast_rmse": 0.1038390753369208,
+        "n_val_trajectories": 150
+      }
+    ],
+    "spiral_specialist": [
+      {
+        "checkpoint": "checkpoints/validation/spiral_only_seed42.pt",
+        "sha256": "ad99deebf33fdeb47e57749e04a20f4785b78f3d2892d4975438336f3ac13244",
+        "seed": 42,
+        "epoch": 585,
+        "stored_training_val_loss": -13.97581787109375,
+        "val_neg_elbo": -12.074092864990234,
+        "val_nll": -44.970672607421875,
+        "val_kl": 32.89657974243164,
+        "val_context_rmse": 0.06662140581409615,
+        "val_forecast_rmse": 0.2675097299551172,
+        "n_val_trajectories": 150,
+        "selected_by_criterion": "validation -ELBO (identical observation subsets)",
+        "agrees_with_best_val_forecast_rmse": false
+      },
+      {
+        "checkpoint": "checkpoints/validation/spiral_only_seed123.pt",
+        "sha256": "0206a2a0fa3c48857680445077197730a371786120f2fe085cf0a6e9219a2f49",
+        "seed": 123,
+        "epoch": 581,
+        "stored_training_val_loss": -13.534337997436523,
+        "val_neg_elbo": -12.053883870442709,
+        "val_nll": -44.42470677693685,
+        "val_kl": 32.37082290649414,
+        "val_context_rmse": 0.06770797069857674,
+        "val_forecast_rmse": 0.26706203080164437,
+        "n_val_trajectories": 150
+      },
+      {
+        "checkpoint": "checkpoints/validation/spiral_only_seed2024.pt",
+        "sha256": "882fb38f61d898b90f83ab440e98390b2426b0e1267362b15fa009f1c0dadb9c",
+        "seed": 2024,
+        "epoch": 588,
+        "stored_training_val_loss": -14.065103149414062,
+        "val_neg_elbo": -9.396068572998047,
+        "val_nll": -43.52183151245117,
+        "val_kl": 34.125762939453125,
+        "val_context_rmse": 0.06761827632175053,
+        "val_forecast_rmse": 0.28323816533704266,
+        "n_val_trajectories": 150
+      }
+    ],
+    "dynamics_conditioned": [
+      {
+        "checkpoint": "checkpoints/conditioning/m3_conditioned_seed2025.pt",
+        "sha256": "fd3297b4ac59388293d8c9f2fc7f674973e566fe9927eb160411a4f0ad5f6a8e",
+        "seed": 2025,
+        "epoch": 299,
+        "stored_training_val_loss": -32.205736541748045,
+        "val_neg_elbo": -29.412258783976238,
+        "val_nll": -57.44744873046875,
+        "val_kl": 28.035189946492512,
+        "val_context_rmse": 0.05706316488554407,
+        "val_forecast_rmse": 0.2799438044756117,
+        "n_val_trajectories": 300,
+        "selected_by_criterion": "validation -ELBO (identical observation subsets)",
+        "agrees_with_best_val_forecast_rmse": false
+      },
+      {
+        "checkpoint": "checkpoints/conditioning/m3_conditioned_seed42.pt",
+        "sha256": "f06cc033b71ef67a06be15bed900c2b097f33b589eed588967d61e6327e55f9c",
+        "seed": 42,
+        "epoch": 290,
+        "stored_training_val_loss": -27.286639404296874,
+        "val_neg_elbo": -26.572919845581055,
+        "val_nll": -55.72077433268229,
+        "val_kl": 29.147854487101238,
+        "val_context_rmse": 0.05801253149896925,
+        "val_forecast_rmse": 0.2515751734266661,
+        "n_val_trajectories": 300
+      },
+      {
+        "checkpoint": "checkpoints/conditioning/m3_conditioned_seed2026.pt",
+        "sha256": "ab1a4a2a4057ffd20169df64461daec5754853dba22e9e8330b09791fe76f207",
+        "seed": 2026,
+        "epoch": 296,
+        "stored_training_val_loss": -29.715962600708007,
+        "val_neg_elbo": -26.477890650431316,
+        "val_nll": -56.30779012044271,
+        "val_kl": 29.829899470011394,
+        "val_context_rmse": 0.05785631716327967,
+        "val_forecast_rmse": 0.2701301531017971,
+        "n_val_trajectories": 300
+      },
+      {
+        "checkpoint": "checkpoints/conditioning/m3_conditioned_seed2024.pt",
+        "sha256": "037878247107f9a39be6e45b150bb16eaa2f9b26c28840a96c1191944d939878",
+        "seed": 2024,
+        "epoch": 293,
+        "stored_training_val_loss": -25.58776226043701,
+        "val_neg_elbo": -23.51515515645345,
+        "val_nll": -52.9674072265625,
+        "val_kl": 29.45225207010905,
+        "val_context_rmse": 0.0604906102579998,
+        "val_forecast_rmse": 0.30989095321787746,
+        "n_val_trajectories": 300
+      },
+      {
+        "checkpoint": "checkpoints/conditioning/m3_conditioned_seed123.pt",
+        "sha256": "454f896ef190b5d6f71057a189b070a09e330ccf519fd6887e43e610fb523fb4",
+        "seed": 123,
+        "epoch": 300,
+        "stored_training_val_loss": -8.486494827270509,
+        "val_neg_elbo": -7.1373748779296875,
+        "val_nll": -39.43739446004232,
+        "val_kl": 32.30001958211263,
+        "val_context_rmse": 0.06999682088366908,
+        "val_forecast_rmse": 0.44064820140600114,
+        "n_val_trajectories": 300
+      }
+    ],
+    "variable_nobs_experimental": [
+      {
+        "checkpoint": "checkpoints/validation/ablation_variable_nobs_seed42.pt",
+        "sha256": "684b3f195f1b0106345f700b8e4d4116e07a5296a53795ce78471b710124fb80",
+        "seed": 42,
+        "epoch": 299,
+        "stored_training_val_loss": -17.442301559448243,
+        "val_neg_elbo": -13.96836026509603,
+        "val_nll": -44.760180155436196,
+        "val_kl": 30.791819890340168,
+        "val_context_rmse": 0.06499402350592548,
+        "val_forecast_rmse": 0.5384187858479615,
+        "n_val_trajectories": 300,
+        "selected_by_criterion": "validation -ELBO (identical observation subsets)",
+        "agrees_with_best_val_forecast_rmse": true
+      }
+    ]
+  },
+  "selected": {
+    "two_shapes_unified": "checkpoints/validation/two_shapes_seed2024.pt",
+    "three_shapes_unified": "checkpoints/validation/three_shapes_seed42.pt",
+    "circle_specialist": "checkpoints/validation/circle_only_seed42.pt",
+    "spiral_specialist": "checkpoints/validation/spiral_only_seed42.pt",
+    "dynamics_conditioned": "checkpoints/conditioning/m3_conditioned_seed2025.pt",
+    "variable_nobs_experimental": "checkpoints/validation/ablation_variable_nobs_seed42.pt"
+  },
+  "excluded_checkpoints": [
+    {
+      "checkpoint": "checkpoints/conditioning/m2_param_matched_seed123.pt",
+      "reason": "architecture differs from Model D (latent/hidden/layers/solver)"
+    },
+    {
+      "checkpoint": "checkpoints/conditioning/m2_param_matched_seed2024.pt",
+      "reason": "architecture differs from Model D (latent/hidden/layers/solver)"
+    },
+    {
+      "checkpoint": "checkpoints/conditioning/m2_param_matched_seed2025.pt",
+      "reason": "architecture differs from Model D (latent/hidden/layers/solver)"
+    },
+    {
+      "checkpoint": "checkpoints/conditioning/m2_param_matched_seed2026.pt",
+      "reason": "architecture differs from Model D (latent/hidden/layers/solver)"
+    },
+    {
+      "checkpoint": "checkpoints/conditioning/m2_param_matched_seed42.pt",
+      "reason": "architecture differs from Model D (latent/hidden/layers/solver)"
+    },
+    {
+      "checkpoint": "checkpoints/conditioning/m2aug_latent12_seed123.pt",
+      "reason": "architecture differs from Model D (latent/hidden/layers/solver)"
+    },
+    {
+      "checkpoint": "checkpoints/conditioning/m2aug_latent12_seed2024.pt",
+      "reason": "architecture differs from Model D (latent/hidden/layers/solver)"
+    },
+    {
+      "checkpoint": "checkpoints/conditioning/m2aug_latent12_seed42.pt",
+      "reason": "architecture differs from Model D (latent/hidden/layers/solver)"
+    },
+    {
+      "checkpoint": "checkpoints/improved_two_shapes/A_original_arch.pt",
+      "reason": "architecture differs from Model D (latent/hidden/layers/solver)"
+    },
+    {
+      "checkpoint": "checkpoints/improved_two_shapes/B_candidate.pt",
+      "reason": "training setting lr=0.001 differs from the Model D recipe (0.003)"
+    },
+    {
+      "checkpoint": "checkpoints/improved_two_shapes/C_candidate_klanneal.pt",
+      "reason": "training setting lr=0.001 differs from the Model D recipe (0.003)"
+    },
+    {
+      "checkpoint": "checkpoints/improved_two_shapes/best_model.pt",
+      "reason": "byte-identical duplicate of checkpoints/improved_two_shapes/D_candidate_lr3e-3.pt"
+    },
+    {
+      "checkpoint": "checkpoints/three_shapes_SMOKE_ONLY.pt",
+      "reason": "architecture differs from Model D (latent/hidden/layers/solver)"
+    },
+    {
+      "checkpoint": "checkpoints/two_shapes_SMOKE_ONLY.pt",
+      "reason": "architecture differs from Model D (latent/hidden/layers/solver)"
+    },
+    {
+      "checkpoint": "checkpoints/two_shapes_cond0_best.pt",
+      "reason": "architecture differs from Model D (latent/hidden/layers/solver)"
+    }
+  ]
+}

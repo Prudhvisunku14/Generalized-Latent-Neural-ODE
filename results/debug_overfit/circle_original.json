@@ -1,0 +1,17 @@
+{
+ "experiment": "circle",
+ "arch": "original",
+ "model": {
+  "latent_dim": 4,
+  "encoder_hidden": 25,
+  "dynamics_hidden": 20,
+  "decoder_hidden": 20
+ },
+ "iters": 2000,
+ "n_traj": 1,
+ "seconds": 528.5,
+ "rmse_full": 0.005306337960064411,
+ "rmse_context_t<=7": 0.005038949195295572,
+ "rmse_future_t>7": 0.005883173085749149,
+ "rmse_per_traj_max": 0.005306337960064411
+}
