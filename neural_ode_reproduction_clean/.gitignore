@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+data/
+results/
+results_smoke/
+checkpoints/
+checkpoints_smoke/
+*.tmp

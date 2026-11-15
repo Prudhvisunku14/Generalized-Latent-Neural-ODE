@@ -1,0 +1,87 @@
+{
+  "model_name": "spiral_specialist",
+  "description": "Spiral-only specialist (Model D configuration)",
+  "training_families": [
+    "spiral"
+  ],
+  "n_parameters": 24602,
+  "training_seed": 42,
+  "best_checkpoint_epoch": 585,
+  "epochs_configured": 600,
+  "training_n_obs": 30,
+  "time_range": {
+    "full": [
+      0.0,
+      10.0
+    ],
+    "context": [
+      0.0,
+      7.0
+    ],
+    "forecast": [
+      7.0,
+      10.0
+    ]
+  },
+  "normalization": "affine, applied to x and y only: (xy - mean) / scale with one scalar scale = RMS deviation of the two_shapes TRAINING-split coordinates about their mean; inverted as xy_hat * scale + mean",
+  "ode_solver": "rk4 (fixed step 0.1)",
+  "original_checkpoint": "checkpoints/validation/spiral_only_seed42.pt",
+  "sha256": "ad99deebf33fdeb47e57749e04a20f4785b78f3d2892d4975438336f3ac13244",
+  "file_size_bytes": 106066,
+  "training_dataset": "two_shapes",
+  "stored_training_val_loss_neg_elbo": -13.97581787109375,
+  "selection": {
+    "criterion": "lowest validation -ELBO with identical observation subsets (seed 2027), validation split only",
+    "pool_size": 3,
+    "validation_scores_of_selected": {
+      "val_neg_elbo": -12.07409,
+      "val_nll": -44.97067,
+      "val_kl": 32.89658,
+      "val_context_rmse": 0.06662,
+      "val_forecast_rmse": 0.26751
+    },
+    "agrees_with_best_val_forecast_rmse_in_pool": false,
+    "full_candidate_table": "saved_models/selection_report.json"
+  },
+  "test_performance (n_obs=30, original units, posterior mean; recorded AFTER selection, not used for it)": {
+    "overall": {
+      "recon_rmse": 0.06323,
+      "forecast_rmse": 0.19402,
+      "forecast_mae": 0.16487,
+      "forecast_ade": 0.25979,
+      "forecast_fde": 0.3764,
+      "chamfer_full": 0.03243
+    },
+    "spiral": {
+      "recon_rmse": 0.06323,
+      "forecast_rmse": 0.19402,
+      "forecast_mae": 0.16487,
+      "forecast_ade": 0.25979,
+      "forecast_fde": 0.3764,
+      "chamfer_full": 0.03243
+    },
+    "n_test_trajectories": 150
+  },
+  "training_config_keys": {
+    "lr": 0.003,
+    "lr_schedule": "cosine",
+    "min_lr": 1e-05,
+    "batch_size": 32,
+    "grad_clip": 1.0,
+    "kl_weight": 1.0,
+    "kl_anneal_epochs": 0,
+    "sigma": 0.05,
+    "supervision": "observed",
+    "n_query": 100,
+    "patience": 120,
+    "families": [
+      "spiral"
+    ],
+    "data_seed": null
+  },
+  "git_commit": "unavailable (repository has no commits)",
+  "torch_version": "2.5.1+cu121",
+  "packaged_on": "2026-11-15",
+  "dataset_metadata_sha256": "93e00c55b34d2659a977171b94337706a0763eb49135bf2b1edbde6b703e765c",
+  "warning": "valid only for spiral trajectories"
+}

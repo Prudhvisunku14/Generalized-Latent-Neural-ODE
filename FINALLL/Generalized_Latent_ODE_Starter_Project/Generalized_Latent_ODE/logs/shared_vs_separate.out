@@ -1,0 +1,6 @@
+circle recon_rmse unified 0.0505 specialist 0.045 diff 0.0055 CI [0.0017, 0.0092] p 0.0004
+circle forecast_rmse unified 0.1488 specialist 0.0847 diff 0.0641 CI [0.0502, 0.0785] p 4.8e-15
+circle forecast_fde unified 0.3057 specialist 0.1473 diff 0.1584 CI [0.1274, 0.191] p 3.4e-17
+spiral recon_rmse unified 0.0615 specialist 0.0632 diff -0.0018 CI [-0.0057, 0.0019] p 0.64
+spiral forecast_rmse unified 0.2461 specialist 0.194 diff 0.0521 CI [0.0321, 0.0731] p 7.9e-07
+spiral forecast_fde unified 0.4897 specialist 0.3764 diff 0.1133 CI [0.0691, 0.1589] p 6.2e-06

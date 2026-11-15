@@ -1,0 +1,32 @@
+{
+  "input_file": "input_trajectories/example_circle.csv",
+  "model": "three_shapes_unified",
+  "checkpoint": "/home/teaching/Desktop/FINALLL/Generalized_Latent_ODE_Starter_Project/Generalized_Latent_ODE/saved_models/three_shapes_unified/best_model.pt",
+  "checkpoint_sha256": "8a4813dacb8bb19ac16282003f647dc7247d8901ba7e7eef966bb3aaa95501a8",
+  "weights_digest_after_inference": "8b05fa7ca943a0436335ccaf6fc837012a908dced064af032ae04b815b2e4aaa",
+  "n_observations": 30,
+  "observation_time_range": [
+    0.0,
+    6.63316584
+  ],
+  "n_query": 200,
+  "forecast_end": 10.0,
+  "context_end": 7.0,
+  "n_reconstruction_points": 140,
+  "n_forecast_points": 60,
+  "latent_posterior_mean_z0": [
+    0.6388614773750305,
+    1.0873903036117554,
+    -1.8406187295913696,
+    1.5098925828933716,
+    0.23377902805805206,
+    0.6632712483406067,
+    0.10402333736419678,
+    -0.14733946323394775
+  ],
+  "dynamics_code_c": null,
+  "ground_truth_used_for_metrics_only": "input_trajectories/ground_truth/example_circle.csv",
+  "warnings": [],
+  "shape_label_used": false,
+  "metrics_file": "metrics.json"
+}

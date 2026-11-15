@@ -1,0 +1,141 @@
+seed,representation,target,metric,test_score
+42,c (M3),omega (signed),R2,-0.017326457363249448
+42,c (M3),|omega|,R2,-0.006797705349721905
+42,c (M3),radius r0,R2,0.22163143653382011
+42,c (M3),spiral growth rate,R2,0.8293159999869285
+42,c (M3),rotation direction,accuracy,0.5333333333333333
+42,c (M3),family (circle vs spiral),accuracy,0.48333333333333334
+42,c (M3),spiral expanding vs contracting,accuracy,0.9666666666666667
+42,z0 mean (M3),omega (signed),R2,-0.019514538272245696
+42,z0 mean (M3),|omega|,R2,0.37026002194269947
+42,z0 mean (M3),radius r0,R2,0.663307323792708
+42,z0 mean (M3),spiral growth rate,R2,0.0019044168805485429
+42,z0 mean (M3),rotation direction,accuracy,0.6033333333333334
+42,z0 mean (M3),family (circle vs spiral),accuracy,0.5366666666666666
+42,z0 mean (M3),spiral expanding vs contracting,accuracy,0.5533333333333333
+42,"[z0, c] (M3)",omega (signed),R2,0.2608227060524665
+42,"[z0, c] (M3)",|omega|,R2,0.47289516847185686
+42,"[z0, c] (M3)",radius r0,R2,0.7326711821592755
+42,"[z0, c] (M3)",spiral growth rate,R2,0.9200552028010224
+42,"[z0, c] (M3)",rotation direction,accuracy,0.7466666666666667
+42,"[z0, c] (M3)",family (circle vs spiral),accuracy,0.5066666666666667
+42,"[z0, c] (M3)",spiral expanding vs contracting,accuracy,0.9933333333333333
+42,z0 mean (M1),omega (signed),R2,0.2853415782807054
+42,z0 mean (M1),|omega|,R2,-0.01844990789426726
+42,z0 mean (M1),radius r0,R2,0.2531398877494567
+42,z0 mean (M1),spiral growth rate,R2,0.2912511382521308
+42,z0 mean (M1),rotation direction,accuracy,0.7366666666666667
+42,z0 mean (M1),family (circle vs spiral),accuracy,0.5
+42,z0 mean (M1),spiral expanding vs contracting,accuracy,0.76
+123,c (M3),omega (signed),R2,-0.0038270686005255072
+123,c (M3),|omega|,R2,0.009042176398482371
+123,c (M3),radius r0,R2,-0.0024561688784487945
+123,c (M3),spiral growth rate,R2,-0.007209699683061288
+123,c (M3),rotation direction,accuracy,0.5066666666666667
+123,c (M3),family (circle vs spiral),accuracy,0.48333333333333334
+123,c (M3),spiral expanding vs contracting,accuracy,0.47333333333333333
+123,z0 mean (M3),omega (signed),R2,-0.058605917310497135
+123,z0 mean (M3),|omega|,R2,-0.04880759902279652
+123,z0 mean (M3),radius r0,R2,0.0013199897033033814
+123,z0 mean (M3),spiral growth rate,R2,0.021215668089673456
+123,z0 mean (M3),rotation direction,accuracy,0.53
+123,z0 mean (M3),family (circle vs spiral),accuracy,0.5066666666666667
+123,z0 mean (M3),spiral expanding vs contracting,accuracy,0.6533333333333333
+123,"[z0, c] (M3)",omega (signed),R2,0.15254936459042412
+123,"[z0, c] (M3)",|omega|,R2,-0.025680339150544018
+123,"[z0, c] (M3)",radius r0,R2,0.06333235618719724
+123,"[z0, c] (M3)",spiral growth rate,R2,-0.07976772868052673
+123,"[z0, c] (M3)",rotation direction,accuracy,0.6933333333333334
+123,"[z0, c] (M3)",family (circle vs spiral),accuracy,0.5266666666666666
+123,"[z0, c] (M3)",spiral expanding vs contracting,accuracy,0.5733333333333334
+123,z0 mean (M1),omega (signed),R2,0.20533683046657347
+123,z0 mean (M1),|omega|,R2,-0.08941200380985426
+123,z0 mean (M1),radius r0,R2,0.3479975406831175
+123,z0 mean (M1),spiral growth rate,R2,0.12869585494240254
+123,z0 mean (M1),rotation direction,accuracy,0.72
+123,z0 mean (M1),family (circle vs spiral),accuracy,0.48333333333333334
+123,z0 mean (M1),spiral expanding vs contracting,accuracy,0.7266666666666667
+2024,c (M3),omega (signed),R2,0.3958233976696751
+2024,c (M3),|omega|,R2,0.04707391711854436
+2024,c (M3),radius r0,R2,0.16523324965000497
+2024,c (M3),spiral growth rate,R2,0.4008148357493764
+2024,c (M3),rotation direction,accuracy,0.81
+2024,c (M3),family (circle vs spiral),accuracy,0.49333333333333335
+2024,c (M3),spiral expanding vs contracting,accuracy,0.8333333333333334
+2024,z0 mean (M3),omega (signed),R2,0.06447406626819796
+2024,z0 mean (M3),|omega|,R2,-0.023239866482462457
+2024,z0 mean (M3),radius r0,R2,0.4407176930983898
+2024,z0 mean (M3),spiral growth rate,R2,0.441508710909963
+2024,z0 mean (M3),rotation direction,accuracy,0.5866666666666667
+2024,z0 mean (M3),family (circle vs spiral),accuracy,0.48333333333333334
+2024,z0 mean (M3),spiral expanding vs contracting,accuracy,0.8266666666666667
+2024,"[z0, c] (M3)",omega (signed),R2,0.7874658952590834
+2024,"[z0, c] (M3)",|omega|,R2,0.21219357758177437
+2024,"[z0, c] (M3)",radius r0,R2,0.47282820780838153
+2024,"[z0, c] (M3)",spiral growth rate,R2,0.5790400368785562
+2024,"[z0, c] (M3)",rotation direction,accuracy,0.99
+2024,"[z0, c] (M3)",family (circle vs spiral),accuracy,0.49
+2024,"[z0, c] (M3)",spiral expanding vs contracting,accuracy,0.9
+2024,z0 mean (M1),omega (signed),R2,-0.026768366451745296
+2024,z0 mean (M1),|omega|,R2,-0.01782607361064792
+2024,z0 mean (M1),radius r0,R2,0.3389230186910257
+2024,z0 mean (M1),spiral growth rate,R2,0.61233642172551
+2024,z0 mean (M1),rotation direction,accuracy,0.5966666666666667
+2024,z0 mean (M1),family (circle vs spiral),accuracy,0.4866666666666667
+2024,z0 mean (M1),spiral expanding vs contracting,accuracy,0.9066666666666666
+2025,c (M3),omega (signed),R2,-0.00696923591666998
+2025,c (M3),|omega|,R2,0.05024133876794035
+2025,c (M3),radius r0,R2,0.2670791618597952
+2025,c (M3),spiral growth rate,R2,0.6944061586360473
+2025,c (M3),rotation direction,accuracy,0.5066666666666667
+2025,c (M3),family (circle vs spiral),accuracy,0.47
+2025,c (M3),spiral expanding vs contracting,accuracy,0.9266666666666666
+2025,z0 mean (M3),omega (signed),R2,0.005344191387863795
+2025,z0 mean (M3),|omega|,R2,0.2362986020831278
+2025,z0 mean (M3),radius r0,R2,0.47561245398575236
+2025,z0 mean (M3),spiral growth rate,R2,0.5987079903011682
+2025,z0 mean (M3),rotation direction,accuracy,0.5866666666666667
+2025,z0 mean (M3),family (circle vs spiral),accuracy,0.5
+2025,z0 mean (M3),spiral expanding vs contracting,accuracy,0.8866666666666667
+2025,"[z0, c] (M3)",omega (signed),R2,0.3305640530024464
+2025,"[z0, c] (M3)",|omega|,R2,0.3544236588058789
+2025,"[z0, c] (M3)",radius r0,R2,0.5339423666169247
+2025,"[z0, c] (M3)",spiral growth rate,R2,0.8480963175092583
+2025,"[z0, c] (M3)",rotation direction,accuracy,0.7533333333333333
+2025,"[z0, c] (M3)",family (circle vs spiral),accuracy,0.5533333333333333
+2025,"[z0, c] (M3)",spiral expanding vs contracting,accuracy,0.98
+2025,z0 mean (M1),omega (signed),R2,0.026087918767920826
+2025,z0 mean (M1),|omega|,R2,0.1009238600811988
+2025,z0 mean (M1),radius r0,R2,0.4231687705555801
+2025,z0 mean (M1),spiral growth rate,R2,0.5637209425799862
+2025,z0 mean (M1),rotation direction,accuracy,0.5466666666666666
+2025,z0 mean (M1),family (circle vs spiral),accuracy,0.5566666666666666
+2025,z0 mean (M1),spiral expanding vs contracting,accuracy,0.8733333333333333
+2026,c (M3),omega (signed),R2,-0.021557933947137897
+2026,c (M3),|omega|,R2,0.0939393002951373
+2026,c (M3),radius r0,R2,0.24124264972533505
+2026,c (M3),spiral growth rate,R2,0.7183415259470349
+2026,c (M3),rotation direction,accuracy,0.5
+2026,c (M3),family (circle vs spiral),accuracy,0.49333333333333335
+2026,c (M3),spiral expanding vs contracting,accuracy,0.9466666666666667
+2026,z0 mean (M3),omega (signed),R2,0.4256037835499824
+2026,z0 mean (M3),|omega|,R2,0.07135828626950258
+2026,z0 mean (M3),radius r0,R2,0.67510700283806
+2026,z0 mean (M3),spiral growth rate,R2,0.2871993535256375
+2026,z0 mean (M3),rotation direction,accuracy,0.8466666666666667
+2026,z0 mean (M3),family (circle vs spiral),accuracy,0.4866666666666667
+2026,z0 mean (M3),spiral expanding vs contracting,accuracy,0.7333333333333333
+2026,"[z0, c] (M3)",omega (signed),R2,0.5729132632197076
+2026,"[z0, c] (M3)",|omega|,R2,0.44949482091936255
+2026,"[z0, c] (M3)",radius r0,R2,0.7285655268008837
+2026,"[z0, c] (M3)",spiral growth rate,R2,0.8184781174399819
+2026,"[z0, c] (M3)",rotation direction,accuracy,0.9533333333333334
+2026,"[z0, c] (M3)",family (circle vs spiral),accuracy,0.5866666666666667
+2026,"[z0, c] (M3)",spiral expanding vs contracting,accuracy,0.9733333333333334
+2026,z0 mean (M1),omega (signed),R2,-0.012322387925209455
+2026,z0 mean (M1),|omega|,R2,0.0062215035013094555
+2026,z0 mean (M1),radius r0,R2,0.43877297453650166
+2026,z0 mean (M1),spiral growth rate,R2,0.5522209876088241
+2026,z0 mean (M1),rotation direction,accuracy,0.5733333333333334
+2026,z0 mean (M1),family (circle vs spiral),accuracy,0.5533333333333333
+2026,z0 mean (M1),spiral expanding vs contracting,accuracy,0.8733333333333333

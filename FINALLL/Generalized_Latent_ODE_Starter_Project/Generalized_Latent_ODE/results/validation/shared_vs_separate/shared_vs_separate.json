@@ -1,0 +1,460 @@
+{
+  "protocol": "two_shapes test split filtered by family (150 each); n_obs=30; observation seed 123; posterior mean",
+  "training_budget_note": "specialists: 700 train trajectories x 600 epochs; unified: 1400 x 300 epochs (same number of optimiser steps, same architecture/config)",
+  "circle": {
+    "unified_checkpoints": [
+      "checkpoints/improved_two_shapes/D_candidate_lr3e-3.pt",
+      "checkpoints/validation/two_shapes_seed123.pt",
+      "checkpoints/validation/two_shapes_seed2024.pt",
+      "checkpoints/validation/two_shapes_seed2025.pt",
+      "checkpoints/validation/two_shapes_seed2026.pt"
+    ],
+    "specialist_checkpoints": [
+      "checkpoints/validation/circle_only_seed42.pt",
+      "checkpoints/validation/circle_only_seed123.pt",
+      "checkpoints/validation/circle_only_seed2024.pt"
+    ],
+    "paired_seed42": {
+      "recon_rmse": {
+        "unified_mean": 0.05050954967737198,
+        "specialist_mean": 0.04498279467225075,
+        "mean_diff_unified_minus_specialist": 0.005526755470782518,
+        "bootstrap95_mean_diff": [
+          0.001712785998824984,
+          0.009230210143141447
+        ],
+        "relative_diff_pct": 12.286376404692117,
+        "wilcoxon_p": 0.0004037055133527145,
+        "fraction_traj_unified_better": 0.37333333333333335
+      },
+      "forecast_rmse": {
+        "unified_mean": 0.14881086349487305,
+        "specialist_mean": 0.08473626524209976,
+        "mean_diff_unified_minus_specialist": 0.06407461315393448,
+        "bootstrap95_mean_diff": [
+          0.05019240137189627,
+          0.0784711644053459
+        ],
+        "relative_diff_pct": 75.61651787563102,
+        "wilcoxon_p": 4.78789728197005e-15,
+        "fraction_traj_unified_better": 0.20666666666666667
+      },
+      "forecast_ade": {
+        "unified_mean": 0.1977112889289856,
+        "specialist_mean": 0.1149897649884224,
+        "mean_diff_unified_minus_specialist": 0.0827215239405632,
+        "bootstrap95_mean_diff": [
+          0.06391251794993877,
+          0.10151691902428864
+        ],
+        "relative_diff_pct": 71.93816245201641,
+        "wilcoxon_p": 4.13886523363984e-14,
+        "fraction_traj_unified_better": 0.21333333333333335
+      },
+      "forecast_fde": {
+        "unified_mean": 0.30568963289260864,
+        "specialist_mean": 0.14727447926998138,
+        "mean_diff_unified_minus_specialist": 0.15841516852378845,
+        "bootstrap95_mean_diff": [
+          0.12740416452288628,
+          0.1910126183182001
+        ],
+        "relative_diff_pct": 107.56457555241742,
+        "wilcoxon_p": 3.376114273707644e-17,
+        "fraction_traj_unified_better": 0.21333333333333335
+      },
+      "chamfer_full": {
+        "unified_mean": 0.011004652827978134,
+        "specialist_mean": 0.004010082222521305,
+        "mean_diff_unified_minus_specialist": 0.006994571536779404,
+        "bootstrap95_mean_diff": [
+          0.004571688291616738,
+          0.009490074147470296
+        ],
+        "relative_diff_pct": 174.42464140751773,
+        "wilcoxon_p": 1.835966190897939e-14,
+        "fraction_traj_unified_better": 0.20666666666666667
+      }
+    },
+    "seed_level": {
+      "recon_rmse": {
+        "unified": {
+          "n_runs": 5,
+          "mean": 0.05317263305187225,
+          "std": 0.005927958382245067,
+          "ci95_low": 0.0458132805479684,
+          "ci95_high": 0.06053198555577611,
+          "values": [
+            0.05050954967737198,
+            0.054465439170598984,
+            0.047259774059057236,
+            0.050884805619716644,
+            0.06274359673261642
+          ]
+        },
+        "specialist": {
+          "n_runs": 3,
+          "mean": 0.04573147495587667,
+          "std": 0.0008445482653364034,
+          "ci95_low": 0.04363333143152857,
+          "ci95_high": 0.047829618480224774,
+          "values": [
+            0.04498279467225075,
+            0.04664698988199234,
+            0.04556464031338692
+          ]
+        },
+        "welch_t_p": 0.04733542485745654
+      },
+      "forecast_rmse": {
+        "unified": {
+          "n_runs": 5,
+          "mean": 0.16056578010320663,
+          "std": 0.03687044442573937,
+          "ci95_low": 0.11479241598558462,
+          "ci95_high": 0.20633914422082864,
+          "values": [
+            0.14881086349487305,
+            0.21711917221546173,
+            0.11577125638723373,
+            0.15368248522281647,
+            0.1674451231956482
+          ]
+        },
+        "specialist": {
+          "n_runs": 3,
+          "mean": 0.08684478451808293,
+          "std": 0.006096629125694525,
+          "ci95_low": 0.07169869583914543,
+          "ci95_high": 0.10199087319702044,
+          "values": [
+            0.08473626524209976,
+            0.08208230137825012,
+            0.09371578693389893
+          ]
+        },
+        "welch_t_p": 0.00987770117881988
+      },
+      "forecast_ade": {
+        "unified": {
+          "n_runs": 5,
+          "mean": 0.21253118813037872,
+          "std": 0.046433935799583576,
+          "ci95_low": 0.15488508475754148,
+          "ci95_high": 0.27017729150321595,
+          "values": [
+            0.1977112889289856,
+            0.28248241543769836,
+            0.1551680564880371,
+            0.20319198071956635,
+            0.2241021990776062
+          ]
+        },
+        "specialist": {
+          "n_runs": 3,
+          "mean": 0.1174152245124181,
+          "std": 0.008099257544598873,
+          "ci95_low": 0.09729392953532312,
+          "ci95_high": 0.1375365194895131,
+          "values": [
+            0.1149897649884224,
+            0.11080581694841385,
+            0.1264500916004181
+          ]
+        },
+        "welch_t_p": 0.008933202233662384
+      },
+      "forecast_fde": {
+        "unified": {
+          "n_runs": 5,
+          "mean": 0.3161408692598343,
+          "std": 0.06934090916828292,
+          "ci95_low": 0.23005656154286488,
+          "ci95_high": 0.4022251769768037,
+          "values": [
+            0.30568963289260864,
+            0.41545817255973816,
+            0.22006754577159882,
+            0.3184337913990021,
+            0.32105520367622375
+          ]
+        },
+        "specialist": {
+          "n_runs": 3,
+          "mean": 0.15447881817817688,
+          "std": 0.01105892002697565,
+          "ci95_low": 0.12700472061237328,
+          "ci95_high": 0.18195291574398048,
+          "values": [
+            0.14727447926998138,
+            0.14895011484622955,
+            0.1672118604183197
+          ]
+        },
+        "welch_t_p": 0.005605273695043662
+      },
+      "chamfer_full": {
+        "unified": {
+          "n_runs": 5,
+          "mean": 0.012059352453798055,
+          "std": 0.004248324631805563,
+          "ci95_low": 0.006785206364966392,
+          "ci95_high": 0.017333498542629718,
+          "values": [
+            0.011004652827978134,
+            0.01812203973531723,
+            0.007312766741961241,
+            0.00950375571846962,
+            0.014353547245264053
+          ]
+        },
+        "specialist": {
+          "n_runs": 3,
+          "mean": 0.004330551717430353,
+          "std": 0.0003141942607198549,
+          "ci95_low": 0.003549986910688232,
+          "ci95_high": 0.005111116524172474,
+          "values": [
+            0.004010082222521305,
+            0.004638070240616798,
+            0.004343502689152956
+          ]
+        },
+        "welch_t_p": 0.0149326548175649
+      }
+    },
+    "specialist_best_epoch": [
+      596,
+      592,
+      586
+    ]
+  },
+  "spiral": {
+    "unified_checkpoints": [
+      "checkpoints/improved_two_shapes/D_candidate_lr3e-3.pt",
+      "checkpoints/validation/two_shapes_seed123.pt",
+      "checkpoints/validation/two_shapes_seed2024.pt",
+      "checkpoints/validation/two_shapes_seed2025.pt",
+      "checkpoints/validation/two_shapes_seed2026.pt"
+    ],
+    "specialist_checkpoints": [
+      "checkpoints/validation/spiral_only_seed42.pt",
+      "checkpoints/validation/spiral_only_seed123.pt",
+      "checkpoints/validation/spiral_only_seed2024.pt"
+    ],
+    "paired_seed42": {
+      "recon_rmse": {
+        "unified_mean": 0.061459414660930634,
+        "specialist_mean": 0.06323379278182983,
+        "mean_diff_unified_minus_specialist": -0.0017743776552379131,
+        "bootstrap95_mean_diff": [
+          -0.005707973823882639,
+          0.0019488336780341296
+        ],
+        "relative_diff_pct": -2.806059192684989,
+        "wilcoxon_p": 0.6383564540307358,
+        "fraction_traj_unified_better": 0.5
+      },
+      "forecast_rmse": {
+        "unified_mean": 0.24614909291267395,
+        "specialist_mean": 0.19401754438877106,
+        "mean_diff_unified_minus_specialist": 0.05213155597448349,
+        "bootstrap95_mean_diff": [
+          0.032076310645788905,
+          0.07308386508375406
+        ],
+        "relative_diff_pct": 26.86950612570512,
+        "wilcoxon_p": 7.920175169717427e-07,
+        "fraction_traj_unified_better": 0.32666666666666666
+      },
+      "forecast_ade": {
+        "unified_mean": 0.3262346386909485,
+        "specialist_mean": 0.2597929835319519,
+        "mean_diff_unified_minus_specialist": 0.06644168496131897,
+        "bootstrap95_mean_diff": [
+          0.03919028323143721,
+          0.0936804473400115
+        ],
+        "relative_diff_pct": 25.574857356818228,
+        "wilcoxon_p": 2.3621546878181356e-06,
+        "fraction_traj_unified_better": 0.34
+      },
+      "forecast_fde": {
+        "unified_mean": 0.4897347092628479,
+        "specialist_mean": 0.37640300393104553,
+        "mean_diff_unified_minus_specialist": 0.11333174258470535,
+        "bootstrap95_mean_diff": [
+          0.06910216715186834,
+          0.15887659601867196
+        ],
+        "relative_diff_pct": 30.109149342885413,
+        "wilcoxon_p": 6.160665558911338e-06,
+        "fraction_traj_unified_better": 0.35333333333333333
+      },
+      "chamfer_full": {
+        "unified_mean": 0.043043021112680435,
+        "specialist_mean": 0.032434407621622086,
+        "mean_diff_unified_minus_specialist": 0.01060861349105835,
+        "bootstrap95_mean_diff": [
+          0.004201632644981146,
+          0.016969753429293622
+        ],
+        "relative_diff_pct": 32.7078996318287,
+        "wilcoxon_p": 0.00014019271212040486,
+        "fraction_traj_unified_better": 0.34
+      }
+    },
+    "seed_level": {
+      "recon_rmse": {
+        "unified": {
+          "n_runs": 5,
+          "mean": 0.06800143793225288,
+          "std": 0.010209269776517402,
+          "ci95_low": 0.055326987430394214,
+          "ci95_high": 0.08067588843411155,
+          "values": [
+            0.061459414660930634,
+            0.07085796445608139,
+            0.06280220299959183,
+            0.06020743027329445,
+            0.08468017727136612
+          ]
+        },
+        "specialist": {
+          "n_runs": 3,
+          "mean": 0.0632333867251873,
+          "std": 0.0008031708026865555,
+          "ci95_low": 0.06123803881226367,
+          "ci95_high": 0.06522873463811094,
+          "values": [
+            0.06323379278182983,
+            0.06403635442256927,
+            0.062430012971162796
+          ]
+        },
+        "welch_t_p": 0.3563971543518673
+      },
+      "forecast_rmse": {
+        "unified": {
+          "n_runs": 5,
+          "mean": 0.28408142924308777,
+          "std": 0.06708340169187356,
+          "ci95_low": 0.2007997379123695,
+          "ci95_high": 0.36736312057380605,
+          "values": [
+            0.24614909291267395,
+            0.3461550176143646,
+            0.2203230857849121,
+            0.24120482802391052,
+            0.36657512187957764
+          ]
+        },
+        "specialist": {
+          "n_runs": 3,
+          "mean": 0.19830451905727386,
+          "std": 0.008598299142949817,
+          "ci95_low": 0.17694343596985307,
+          "ci95_high": 0.21966560214469466,
+          "values": [
+            0.19401754438877106,
+            0.19269254803657532,
+            0.20820346474647522
+          ]
+        },
+        "welch_t_p": 0.04499032881469414
+      },
+      "forecast_ade": {
+        "unified": {
+          "n_runs": 5,
+          "mean": 0.37523112893104554,
+          "std": 0.08717124886935575,
+          "ci95_low": 0.2670110795871502,
+          "ci95_high": 0.4834511782749409,
+          "values": [
+            0.3262346386909485,
+            0.44933032989501953,
+            0.2953433692455292,
+            0.31712159514427185,
+            0.4881257116794586
+          ]
+        },
+        "specialist": {
+          "n_runs": 3,
+          "mean": 0.26403098305066425,
+          "std": 0.00996843176480112,
+          "ci95_low": 0.23926602714030856,
+          "ci95_high": 0.28879593896101996,
+          "values": [
+            0.2597929835319519,
+            0.25688180327415466,
+            0.27541816234588623
+          ]
+        },
+        "welch_t_p": 0.045478012146837915
+      },
+      "forecast_fde": {
+        "unified": {
+          "n_runs": 5,
+          "mean": 0.5774302661418915,
+          "std": 0.14016085864824607,
+          "ci95_low": 0.4034254740145164,
+          "ci95_high": 0.7514350582692666,
+          "values": [
+            0.4897347092628479,
+            0.722835898399353,
+            0.4328143894672394,
+            0.5089526176452637,
+            0.7328137159347534
+          ]
+        },
+        "specialist": {
+          "n_runs": 3,
+          "mean": 0.3942706187566121,
+          "std": 0.026137034673817894,
+          "ci95_low": 0.3293373848641843,
+          "ci95_high": 0.45920385264903996,
+          "values": [
+            0.37640300393104553,
+            0.3821401000022888,
+            0.4242687523365021
+          ]
+        },
+        "welch_t_p": 0.04140874652069584
+      },
+      "chamfer_full": {
+        "unified": {
+          "n_runs": 5,
+          "mean": 0.056559817492961885,
+          "std": 0.022066861104053686,
+          "ci95_low": 0.02916458307198204,
+          "ci95_high": 0.08395505191394173,
+          "values": [
+            0.043043021112680435,
+            0.06651467829942703,
+            0.03873932361602783,
+            0.04358873888850212,
+            0.090913325548172
+          ]
+        },
+        "specialist": {
+          "n_runs": 3,
+          "mean": 0.032461037238438926,
+          "std": 0.0010774648167949732,
+          "ci95_low": 0.029784250225951478,
+          "ci95_high": 0.035137824250926375,
+          "values": [
+            0.032434407621622086,
+            0.03139713406562805,
+            0.033551570028066635
+          ]
+        },
+        "welch_t_p": 0.07093030859287247
+      }
+    },
+    "specialist_best_epoch": [
+      585,
+      581,
+      588
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+# Install a CUDA-enabled PyTorch build appropriate for your NVIDIA driver.
+# These minimum versions are intentionally not pinned to a single CUDA runtime.
+torch>=2.1
+torchvision>=0.16
+torchdiffeq==0.2.5
+numpy>=1.24
+matplotlib>=3.7
+pillow>=10.0

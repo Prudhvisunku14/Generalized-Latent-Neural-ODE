@@ -1,0 +1,48 @@
+{
+  "architecture": {
+    "latent_dim": 8,
+    "encoder_hidden": 64,
+    "dynamics_hidden": 64,
+    "decoder_hidden": 64,
+    "cond_dim": 4,
+    "solver": "rk4",
+    "adjoint": false,
+    "dynamics_layers": 2,
+    "decoder_layers": 2,
+    "rtol": 0.0001,
+    "atol": 1e-05,
+    "step_size": 0.1
+  },
+  "description": {
+    "encoder": "GRU(input 4 -> hidden 64), reads the time-reversed sequence of [x, y, t/T, dt/T]; Linear(64 -> 16) gives mean and log-variance of z0; Linear(64 -> 4) + tanh gives the dynamics code c",
+    "dynamics": "dz/dt = f(z, c); tanh MLP with 2 hidden layers of width 64; autonomous (no explicit time input)",
+    "decoder": "tanh MLP, 2 hidden layers of width 64, output 2 (x, y)",
+    "solver": "rk4, fixed step 0.1, integrated from t = 0"
+  },
+  "module_repr": [
+    "LatentODE(",
+    "  (encoder): RecognitionGRU(",
+    "    (gru): GRU(4, 64, batch_first=True)",
+    "    (posterior): Linear(in_features=64, out_features=16, bias=True)",
+    "    (cond): Linear(in_features=64, out_features=4, bias=True)",
+    "  )",
+    "  (dynamics): LatentDynamics(",
+    "    (network): Sequential(",
+    "      (0): Linear(in_features=12, out_features=64, bias=True)",
+    "      (1): Tanh()",
+    "      (2): Linear(in_features=64, out_features=64, bias=True)",
+    "      (3): Tanh()",
+    "      (4): Linear(in_features=64, out_features=8, bias=True)",
+    "    )",
+    "  )",
+    "  (decoder): Sequential(",
+    "    (0): Linear(in_features=8, out_features=64, bias=True)",
+    "    (1): Tanh()",
+    "    (2): Linear(in_features=64, out_features=64, bias=True)",
+    "    (3): Tanh()",
+    "    (4): Linear(in_features=64, out_features=2, bias=True)",
+    "  )",
+    ")"
+  ],
+  "n_parameters": 25118
+}

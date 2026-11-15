@@ -1,0 +1,33 @@
+{
+  "input_file": "input_trajectories/random_unknown_trajectory_30.csv",
+  "model": "three_shapes_unified",
+  "checkpoint": "/home/teaching/Desktop/FINALLL/Generalized_Latent_ODE_Starter_Project/Generalized_Latent_ODE/saved_models/three_shapes_unified/best_model.pt",
+  "checkpoint_sha256": "8a4813dacb8bb19ac16282003f647dc7247d8901ba7e7eef966bb3aaa95501a8",
+  "weights_digest_after_inference": "8b05fa7ca943a0436335ccaf6fc837012a908dced064af032ae04b815b2e4aaa",
+  "n_observations": 30,
+  "observation_time_range": [
+    0.09652,
+    6.918442
+  ],
+  "n_query": 200,
+  "forecast_end": 10.0,
+  "context_end": 7.0,
+  "n_reconstruction_points": 140,
+  "n_forecast_points": 60,
+  "latent_posterior_mean_z0": [
+    0.052809666842222214,
+    0.035698920488357544,
+    -0.3280118405818939,
+    0.710639476776123,
+    -0.1251126378774643,
+    -1.8359370231628418,
+    1.3751356601715088,
+    -0.5059106349945068
+  ],
+  "dynamics_code_c": null,
+  "ground_truth_used_for_metrics_only": null,
+  "warnings": [
+    "First observation is at t=0.09652, not t=0. Training always included an observation at t=0 and the latent state is defined at t=0; accuracy near t=0 may be poorer."
+  ],
+  "shape_label_used": false
+}

@@ -1,0 +1,3 @@
+timestamp_utc,epoch,model,device,loss,accuracy,learning_rate,elapsed_seconds,nfe_mean
+2026-10-03T12:38:06Z,1,rknet,cpu,2.2974114418029785,0.14453125,0.1,1.048183613049332,40.0
+2026-10-03T12:38:07Z,2,rknet,cpu,2.3268749713897705,0.19140625,0.1,0.9954654939938337,40.0

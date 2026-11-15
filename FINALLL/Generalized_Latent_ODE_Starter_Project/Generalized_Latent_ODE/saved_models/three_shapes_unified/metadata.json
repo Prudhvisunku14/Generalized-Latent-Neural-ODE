@@ -1,0 +1,102 @@
+{
+  "model_name": "three_shapes_unified",
+  "description": "Unified Latent ODE (Model D configuration) trained on circles + spirals + ellipses",
+  "training_families": [
+    "circle",
+    "spiral",
+    "ellipse"
+  ],
+  "n_parameters": 24602,
+  "training_seed": 42,
+  "best_checkpoint_epoch": 298,
+  "epochs_configured": 300,
+  "training_n_obs": 30,
+  "time_range": {
+    "full": [
+      0.0,
+      10.0
+    ],
+    "context": [
+      0.0,
+      7.0
+    ],
+    "forecast": [
+      7.0,
+      10.0
+    ]
+  },
+  "normalization": "affine, applied to x and y only: (xy - mean) / scale with one scalar scale = RMS deviation of the three_shapes TRAINING-split coordinates about their mean; inverted as xy_hat * scale + mean",
+  "ode_solver": "rk4 (fixed step 0.1)",
+  "original_checkpoint": "checkpoints/validation/three_shapes_seed42.pt",
+  "sha256": "8a4813dacb8bb19ac16282003f647dc7247d8901ba7e7eef966bb3aaa95501a8",
+  "file_size_bytes": 106024,
+  "training_dataset": "three_shapes",
+  "stored_training_val_loss_neg_elbo": 20.124681599934895,
+  "selection": {
+    "criterion": "lowest validation -ELBO with identical observation subsets (seed 2027), validation split only",
+    "pool_size": 1,
+    "validation_scores_of_selected": {
+      "val_neg_elbo": 20.14342,
+      "val_nll": -11.77443,
+      "val_kl": 31.91785,
+      "val_context_rmse": 0.08309,
+      "val_forecast_rmse": 0.24882
+    },
+    "agrees_with_best_val_forecast_rmse_in_pool": true,
+    "full_candidate_table": "saved_models/selection_report.json"
+  },
+  "test_performance (n_obs=30, original units, posterior mean; recorded AFTER selection, not used for it)": {
+    "overall": {
+      "recon_rmse": 0.08165,
+      "forecast_rmse": 0.21102,
+      "forecast_mae": 0.18156,
+      "forecast_ade": 0.28447,
+      "forecast_fde": 0.37152,
+      "chamfer_full": 0.03563
+    },
+    "circle": {
+      "recon_rmse": 0.05792,
+      "forecast_rmse": 0.13722,
+      "forecast_mae": 0.11763,
+      "forecast_ade": 0.18466,
+      "forecast_fde": 0.2534,
+      "chamfer_full": 0.01397
+    },
+    "spiral": {
+      "recon_rmse": 0.09398,
+      "forecast_rmse": 0.2977,
+      "forecast_mae": 0.25852,
+      "forecast_ade": 0.40412,
+      "forecast_fde": 0.54017,
+      "chamfer_full": 0.06862
+    },
+    "ellipse": {
+      "recon_rmse": 0.09304,
+      "forecast_rmse": 0.19815,
+      "forecast_mae": 0.16855,
+      "forecast_ade": 0.26461,
+      "forecast_fde": 0.32098,
+      "chamfer_full": 0.02431
+    },
+    "n_test_trajectories": 450
+  },
+  "training_config_keys": {
+    "lr": 0.003,
+    "lr_schedule": "cosine",
+    "min_lr": 1e-05,
+    "batch_size": 32,
+    "grad_clip": 1.0,
+    "kl_weight": 1.0,
+    "kl_anneal_epochs": 0,
+    "sigma": 0.05,
+    "supervision": "observed",
+    "n_query": 100,
+    "patience": 60,
+    "families": null,
+    "data_seed": null
+  },
+  "git_commit": "unavailable (repository has no commits)",
+  "torch_version": "2.5.1+cu121",
+  "packaged_on": "2026-11-15",
+  "dataset_metadata_sha256": "87e7769599587b4765682de5e44e79ee285970c601886d53436271cb209a3e93"
+}

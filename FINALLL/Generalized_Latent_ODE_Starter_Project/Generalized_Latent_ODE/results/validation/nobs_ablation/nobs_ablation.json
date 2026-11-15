@@ -1,0 +1,905 @@
+{
+  "note": "observation subsets seed 31 (same for both models); n_obs >= 2; stored noise 0.05; levels outside the training range 10-50 test extrapolation in observation count",
+  "checkpoints": {
+    "fixed_n30 (Model D)": "296",
+    "variable_n10-50 (ablation)": "299"
+  },
+  "results": {
+    "val": {
+      "fixed_n30 (Model D)": {
+        "5": {
+          "circle": {
+            "recon_rmse": 0.907378613948822,
+            "forecast_rmse": 1.0751557350158691,
+            "forecast_fde": 1.5129961967468262
+          },
+          "spiral": {
+            "recon_rmse": 0.9867968559265137,
+            "forecast_rmse": 1.2911795377731323,
+            "forecast_fde": 1.9211088418960571
+          },
+          "overall": {
+            "recon_rmse": 0.9470877051353455,
+            "forecast_rmse": 1.183167576789856,
+            "forecast_fde": 1.7170524597167969
+          }
+        },
+        "10": {
+          "circle": {
+            "recon_rmse": 0.9136142134666443,
+            "forecast_rmse": 1.3383371829986572,
+            "forecast_fde": 1.7791658639907837
+          },
+          "spiral": {
+            "recon_rmse": 0.9860642552375793,
+            "forecast_rmse": 1.6055301427841187,
+            "forecast_fde": 2.286525249481201
+          },
+          "overall": {
+            "recon_rmse": 0.949839174747467,
+            "forecast_rmse": 1.4719336032867432,
+            "forecast_fde": 2.0328457355499268
+          }
+        },
+        "15": {
+          "circle": {
+            "recon_rmse": 0.7346861958503723,
+            "forecast_rmse": 1.2814888954162598,
+            "forecast_fde": 1.8789079189300537
+          },
+          "spiral": {
+            "recon_rmse": 0.7812585234642029,
+            "forecast_rmse": 1.4774783849716187,
+            "forecast_fde": 2.276711940765381
+          },
+          "overall": {
+            "recon_rmse": 0.7579723000526428,
+            "forecast_rmse": 1.379483699798584,
+            "forecast_fde": 2.0778095722198486
+          }
+        },
+        "20": {
+          "circle": {
+            "recon_rmse": 0.4829505383968353,
+            "forecast_rmse": 0.9577429294586182,
+            "forecast_fde": 1.5107486248016357
+          },
+          "spiral": {
+            "recon_rmse": 0.5047258138656616,
+            "forecast_rmse": 1.0709419250488281,
+            "forecast_fde": 1.7094625234603882
+          },
+          "overall": {
+            "recon_rmse": 0.4938381314277649,
+            "forecast_rmse": 1.0143424272537231,
+            "forecast_fde": 1.6101056337356567
+          }
+        },
+        "25": {
+          "circle": {
+            "recon_rmse": 0.2328236848115921,
+            "forecast_rmse": 0.5153005719184875,
+            "forecast_fde": 0.8790354132652283
+          },
+          "spiral": {
+            "recon_rmse": 0.24787737429141998,
+            "forecast_rmse": 0.6091667413711548,
+            "forecast_fde": 1.0722541809082031
+          },
+          "overall": {
+            "recon_rmse": 0.24035054445266724,
+            "forecast_rmse": 0.5622336864471436,
+            "forecast_fde": 0.9756447076797485
+          }
+        },
+        "28": {
+          "circle": {
+            "recon_rmse": 0.10334689170122147,
+            "forecast_rmse": 0.26188933849334717,
+            "forecast_fde": 0.48560434579849243
+          },
+          "spiral": {
+            "recon_rmse": 0.11446265131235123,
+            "forecast_rmse": 0.3583464026451111,
+            "forecast_fde": 0.7034124732017517
+          },
+          "overall": {
+            "recon_rmse": 0.10890477150678635,
+            "forecast_rmse": 0.3101179003715515,
+            "forecast_fde": 0.5945084095001221
+          }
+        },
+        "30": {
+          "circle": {
+            "recon_rmse": 0.055119577795267105,
+            "forecast_rmse": 0.1569170355796814,
+            "forecast_fde": 0.30972450971603394
+          },
+          "spiral": {
+            "recon_rmse": 0.0662696436047554,
+            "forecast_rmse": 0.2715415060520172,
+            "forecast_fde": 0.5609708428382874
+          },
+          "overall": {
+            "recon_rmse": 0.0606946125626564,
+            "forecast_rmse": 0.2142292857170105,
+            "forecast_fde": 0.43534770607948303
+          }
+        },
+        "32": {
+          "circle": {
+            "recon_rmse": 0.09380113333463669,
+            "forecast_rmse": 0.1864989995956421,
+            "forecast_fde": 0.3144523501396179
+          },
+          "spiral": {
+            "recon_rmse": 0.11036374419927597,
+            "forecast_rmse": 0.29886719584465027,
+            "forecast_fde": 0.5502862334251404
+          },
+          "overall": {
+            "recon_rmse": 0.10208243876695633,
+            "forecast_rmse": 0.24268308281898499,
+            "forecast_fde": 0.43236929178237915
+          }
+        },
+        "35": {
+          "circle": {
+            "recon_rmse": 0.19436515867710114,
+            "forecast_rmse": 0.35586121678352356,
+            "forecast_fde": 0.5451933145523071
+          },
+          "spiral": {
+            "recon_rmse": 0.21686337888240814,
+            "forecast_rmse": 0.48762547969818115,
+            "forecast_fde": 0.7934770584106445
+          },
+          "overall": {
+            "recon_rmse": 0.20561426877975464,
+            "forecast_rmse": 0.42174336314201355,
+            "forecast_fde": 0.6693351864814758
+          }
+        },
+        "40": {
+          "circle": {
+            "recon_rmse": 0.3469138443470001,
+            "forecast_rmse": 0.6340411305427551,
+            "forecast_fde": 0.9701011180877686
+          },
+          "spiral": {
+            "recon_rmse": 0.3792570233345032,
+            "forecast_rmse": 0.8089918494224548,
+            "forecast_fde": 1.3013230562210083
+          },
+          "overall": {
+            "recon_rmse": 0.36308544874191284,
+            "forecast_rmse": 0.7215165495872498,
+            "forecast_fde": 1.1357120275497437
+          }
+        },
+        "50": {
+          "circle": {
+            "recon_rmse": 0.5727174878120422,
+            "forecast_rmse": 0.995932400226593,
+            "forecast_fde": 1.4966076612472534
+          },
+          "spiral": {
+            "recon_rmse": 0.6179795265197754,
+            "forecast_rmse": 1.2465858459472656,
+            "forecast_fde": 1.996657133102417
+          },
+          "overall": {
+            "recon_rmse": 0.5953485369682312,
+            "forecast_rmse": 1.1212592124938965,
+            "forecast_fde": 1.74663245677948
+          }
+        },
+        "70": {
+          "circle": {
+            "recon_rmse": 0.750796914100647,
+            "forecast_rmse": 1.102497935295105,
+            "forecast_fde": 1.5155096054077148
+          },
+          "spiral": {
+            "recon_rmse": 0.814691960811615,
+            "forecast_rmse": 1.3810570240020752,
+            "forecast_fde": 2.0786430835723877
+          },
+          "overall": {
+            "recon_rmse": 0.7827444672584534,
+            "forecast_rmse": 1.2417775392532349,
+            "forecast_fde": 1.7970764636993408
+          }
+        },
+        "100": {
+          "circle": {
+            "recon_rmse": 0.7709361910820007,
+            "forecast_rmse": 0.9362888336181641,
+            "forecast_fde": 1.1855970621109009
+          },
+          "spiral": {
+            "recon_rmse": 0.8392418026924133,
+            "forecast_rmse": 1.1830037832260132,
+            "forecast_fde": 1.6568914651870728
+          },
+          "overall": {
+            "recon_rmse": 0.8050889372825623,
+            "forecast_rmse": 1.0596463680267334,
+            "forecast_fde": 1.4212441444396973
+          }
+        }
+      },
+      "variable_n10-50 (ablation)": {
+        "5": {
+          "circle": {
+            "recon_rmse": 0.536730170249939,
+            "forecast_rmse": 0.9389992356300354,
+            "forecast_fde": 1.5266242027282715
+          },
+          "spiral": {
+            "recon_rmse": 0.5885178446769714,
+            "forecast_rmse": 1.1219582557678223,
+            "forecast_fde": 1.9232137203216553
+          },
+          "overall": {
+            "recon_rmse": 0.5626239776611328,
+            "forecast_rmse": 1.030478835105896,
+            "forecast_fde": 1.724919080734253
+          }
+        },
+        "10": {
+          "circle": {
+            "recon_rmse": 0.18197710812091827,
+            "forecast_rmse": 0.5240490436553955,
+            "forecast_fde": 1.1094412803649902
+          },
+          "spiral": {
+            "recon_rmse": 0.16967891156673431,
+            "forecast_rmse": 0.6131420135498047,
+            "forecast_fde": 1.234429955482483
+          },
+          "overall": {
+            "recon_rmse": 0.1758279949426651,
+            "forecast_rmse": 0.5685955882072449,
+            "forecast_fde": 1.1719354391098022
+          }
+        },
+        "15": {
+          "circle": {
+            "recon_rmse": 0.09932829439640045,
+            "forecast_rmse": 0.4587666690349579,
+            "forecast_fde": 1.065921425819397
+          },
+          "spiral": {
+            "recon_rmse": 0.10614360868930817,
+            "forecast_rmse": 0.5264849066734314,
+            "forecast_fde": 1.12200927734375
+          },
+          "overall": {
+            "recon_rmse": 0.10273595154285431,
+            "forecast_rmse": 0.49262577295303345,
+            "forecast_fde": 1.0939654111862183
+          }
+        },
+        "20": {
+          "circle": {
+            "recon_rmse": 0.06948667019605637,
+            "forecast_rmse": 0.4356929659843445,
+            "forecast_fde": 1.0503013134002686
+          },
+          "spiral": {
+            "recon_rmse": 0.08015486598014832,
+            "forecast_rmse": 0.4929456114768982,
+            "forecast_fde": 1.0867295265197754
+          },
+          "overall": {
+            "recon_rmse": 0.07482075691223145,
+            "forecast_rmse": 0.4643193185329437,
+            "forecast_fde": 1.068515419960022
+          }
+        },
+        "25": {
+          "circle": {
+            "recon_rmse": 0.059039052575826645,
+            "forecast_rmse": 0.42833077907562256,
+            "forecast_fde": 1.0476226806640625
+          },
+          "spiral": {
+            "recon_rmse": 0.07183918356895447,
+            "forecast_rmse": 0.4831605553627014,
+            "forecast_fde": 1.0784811973571777
+          },
+          "overall": {
+            "recon_rmse": 0.0654391199350357,
+            "forecast_rmse": 0.4557456374168396,
+            "forecast_fde": 1.0630519390106201
+          }
+        },
+        "28": {
+          "circle": {
+            "recon_rmse": 0.05682509019970894,
+            "forecast_rmse": 0.42836201190948486,
+            "forecast_fde": 1.0469850301742554
+          },
+          "spiral": {
+            "recon_rmse": 0.07046724855899811,
+            "forecast_rmse": 0.483219712972641,
+            "forecast_fde": 1.0811285972595215
+          },
+          "overall": {
+            "recon_rmse": 0.06364617496728897,
+            "forecast_rmse": 0.4557908773422241,
+            "forecast_fde": 1.0640567541122437
+          }
+        },
+        "30": {
+          "circle": {
+            "recon_rmse": 0.05555851012468338,
+            "forecast_rmse": 0.4320562779903412,
+            "forecast_fde": 1.0524355173110962
+          },
+          "spiral": {
+            "recon_rmse": 0.06952697783708572,
+            "forecast_rmse": 0.4791215658187866,
+            "forecast_fde": 1.076728105545044
+          },
+          "overall": {
+            "recon_rmse": 0.06254274398088455,
+            "forecast_rmse": 0.4555888772010803,
+            "forecast_fde": 1.0645817518234253
+          }
+        },
+        "32": {
+          "circle": {
+            "recon_rmse": 0.05457335337996483,
+            "forecast_rmse": 0.4351120889186859,
+            "forecast_fde": 1.058772325515747
+          },
+          "spiral": {
+            "recon_rmse": 0.0692000612616539,
+            "forecast_rmse": 0.4808535873889923,
+            "forecast_fde": 1.0776455402374268
+          },
+          "overall": {
+            "recon_rmse": 0.061886705458164215,
+            "forecast_rmse": 0.4579828977584839,
+            "forecast_fde": 1.0682090520858765
+          }
+        },
+        "35": {
+          "circle": {
+            "recon_rmse": 0.0538170225918293,
+            "forecast_rmse": 0.43475398421287537,
+            "forecast_fde": 1.0599814653396606
+          },
+          "spiral": {
+            "recon_rmse": 0.06817742437124252,
+            "forecast_rmse": 0.48257914185523987,
+            "forecast_fde": 1.0814290046691895
+          },
+          "overall": {
+            "recon_rmse": 0.06099722534418106,
+            "forecast_rmse": 0.45866653323173523,
+            "forecast_fde": 1.0707051753997803
+          }
+        },
+        "40": {
+          "circle": {
+            "recon_rmse": 0.05350178852677345,
+            "forecast_rmse": 0.44181427359580994,
+            "forecast_fde": 1.072999119758606
+          },
+          "spiral": {
+            "recon_rmse": 0.06695173680782318,
+            "forecast_rmse": 0.48517465591430664,
+            "forecast_fde": 1.0851585865020752
+          },
+          "overall": {
+            "recon_rmse": 0.06022677198052406,
+            "forecast_rmse": 0.4634944796562195,
+            "forecast_fde": 1.0790787935256958
+          }
+        },
+        "50": {
+          "circle": {
+            "recon_rmse": 0.05336657166481018,
+            "forecast_rmse": 0.45538589358329773,
+            "forecast_fde": 1.0989646911621094
+          },
+          "spiral": {
+            "recon_rmse": 0.06726742535829544,
+            "forecast_rmse": 0.49604249000549316,
+            "forecast_fde": 1.1083158254623413
+          },
+          "overall": {
+            "recon_rmse": 0.06031700223684311,
+            "forecast_rmse": 0.4757141172885895,
+            "forecast_fde": 1.1036401987075806
+          }
+        },
+        "70": {
+          "circle": {
+            "recon_rmse": 0.05600921809673309,
+            "forecast_rmse": 0.4867543578147888,
+            "forecast_fde": 1.162480115890503
+          },
+          "spiral": {
+            "recon_rmse": 0.0718192532658577,
+            "forecast_rmse": 0.5162147283554077,
+            "forecast_fde": 1.1431806087493896
+          },
+          "overall": {
+            "recon_rmse": 0.0639142319560051,
+            "forecast_rmse": 0.5014845132827759,
+            "forecast_fde": 1.1528303623199463
+          }
+        },
+        "100": {
+          "circle": {
+            "recon_rmse": 0.0686044842004776,
+            "forecast_rmse": 0.5285621881484985,
+            "forecast_fde": 1.2401047945022583
+          },
+          "spiral": {
+            "recon_rmse": 0.08739781379699707,
+            "forecast_rmse": 0.5533972382545471,
+            "forecast_fde": 1.2072312831878662
+          },
+          "overall": {
+            "recon_rmse": 0.07800114899873734,
+            "forecast_rmse": 0.5409796833992004,
+            "forecast_fde": 1.2236682176589966
+          }
+        }
+      }
+    },
+    "test": {
+      "fixed_n30 (Model D)": {
+        "5": {
+          "circle": {
+            "recon_rmse": 0.9432578682899475,
+            "forecast_rmse": 1.1271337270736694,
+            "forecast_fde": 1.5296584367752075
+          },
+          "spiral": {
+            "recon_rmse": 0.993561327457428,
+            "forecast_rmse": 1.29755699634552,
+            "forecast_fde": 1.8876135349273682
+          },
+          "overall": {
+            "recon_rmse": 0.9684095978736877,
+            "forecast_rmse": 1.2123453617095947,
+            "forecast_fde": 1.7086360454559326
+          }
+        },
+        "10": {
+          "circle": {
+            "recon_rmse": 0.9433827996253967,
+            "forecast_rmse": 1.3798996210098267,
+            "forecast_fde": 1.934705376625061
+          },
+          "spiral": {
+            "recon_rmse": 0.9584802389144897,
+            "forecast_rmse": 1.5635294914245605,
+            "forecast_fde": 2.270702600479126
+          },
+          "overall": {
+            "recon_rmse": 0.9509313702583313,
+            "forecast_rmse": 1.4717146158218384,
+            "forecast_fde": 2.1027042865753174
+          }
+        },
+        "15": {
+          "circle": {
+            "recon_rmse": 0.7515765428543091,
+            "forecast_rmse": 1.337843656539917,
+            "forecast_fde": 2.02309250831604
+          },
+          "spiral": {
+            "recon_rmse": 0.750483512878418,
+            "forecast_rmse": 1.4214121103286743,
+            "forecast_fde": 2.165905475616455
+          },
+          "overall": {
+            "recon_rmse": 0.7510299682617188,
+            "forecast_rmse": 1.3796278238296509,
+            "forecast_fde": 2.094499111175537
+          }
+        },
+        "20": {
+          "circle": {
+            "recon_rmse": 0.4866185486316681,
+            "forecast_rmse": 0.9804683327674866,
+            "forecast_fde": 1.5823805332183838
+          },
+          "spiral": {
+            "recon_rmse": 0.47946909070014954,
+            "forecast_rmse": 1.068475604057312,
+            "forecast_fde": 1.763105034828186
+          },
+          "overall": {
+            "recon_rmse": 0.4830438196659088,
+            "forecast_rmse": 1.0244719982147217,
+            "forecast_fde": 1.6727427244186401
+          }
+        },
+        "25": {
+          "circle": {
+            "recon_rmse": 0.2396506518125534,
+            "forecast_rmse": 0.5237733125686646,
+            "forecast_fde": 0.8907839059829712
+          },
+          "spiral": {
+            "recon_rmse": 0.2331305891275406,
+            "forecast_rmse": 0.6104967594146729,
+            "forecast_fde": 1.0940488576889038
+          },
+          "overall": {
+            "recon_rmse": 0.2363906055688858,
+            "forecast_rmse": 0.5671350359916687,
+            "forecast_fde": 0.992416501045227
+          }
+        },
+        "28": {
+          "circle": {
+            "recon_rmse": 0.10606919974088669,
+            "forecast_rmse": 0.2584376633167267,
+            "forecast_fde": 0.4834761917591095
+          },
+          "spiral": {
+            "recon_rmse": 0.10747764259576797,
+            "forecast_rmse": 0.3540498912334442,
+            "forecast_fde": 0.697104275226593
+          },
+          "overall": {
+            "recon_rmse": 0.10677342861890793,
+            "forecast_rmse": 0.30624374747276306,
+            "forecast_fde": 0.5902902483940125
+          }
+        },
+        "30": {
+          "circle": {
+            "recon_rmse": 0.05329987034201622,
+            "forecast_rmse": 0.14645551145076752,
+            "forecast_fde": 0.2993057072162628
+          },
+          "spiral": {
+            "recon_rmse": 0.06351308524608612,
+            "forecast_rmse": 0.248196542263031,
+            "forecast_fde": 0.5083168745040894
+          },
+          "overall": {
+            "recon_rmse": 0.05840647220611572,
+            "forecast_rmse": 0.19732603430747986,
+            "forecast_fde": 0.4038112759590149
+          }
+        },
+        "32": {
+          "circle": {
+            "recon_rmse": 0.09252233803272247,
+            "forecast_rmse": 0.18448127806186676,
+            "forecast_fde": 0.3087076246738434
+          },
+          "spiral": {
+            "recon_rmse": 0.10175373405218124,
+            "forecast_rmse": 0.24728450179100037,
+            "forecast_fde": 0.4417926073074341
+          },
+          "overall": {
+            "recon_rmse": 0.09713803976774216,
+            "forecast_rmse": 0.21588286757469177,
+            "forecast_fde": 0.3752501308917999
+          }
+        },
+        "35": {
+          "circle": {
+            "recon_rmse": 0.19599731266498566,
+            "forecast_rmse": 0.3689482510089874,
+            "forecast_fde": 0.5613438487052917
+          },
+          "spiral": {
+            "recon_rmse": 0.2020576000213623,
+            "forecast_rmse": 0.41009819507598877,
+            "forecast_fde": 0.626555323600769
+          },
+          "overall": {
+            "recon_rmse": 0.19902744889259338,
+            "forecast_rmse": 0.3895232081413269,
+            "forecast_fde": 0.593949556350708
+          }
+        },
+        "40": {
+          "circle": {
+            "recon_rmse": 0.35555151104927063,
+            "forecast_rmse": 0.6761578321456909,
+            "forecast_fde": 1.0377240180969238
+          },
+          "spiral": {
+            "recon_rmse": 0.3554708957672119,
+            "forecast_rmse": 0.7165995240211487,
+            "forecast_fde": 1.1206612586975098
+          },
+          "overall": {
+            "recon_rmse": 0.3555111587047577,
+            "forecast_rmse": 0.6963787078857422,
+            "forecast_fde": 1.0791926383972168
+          }
+        },
+        "50": {
+          "circle": {
+            "recon_rmse": 0.5862777829170227,
+            "forecast_rmse": 1.062679648399353,
+            "forecast_fde": 1.616910457611084
+          },
+          "spiral": {
+            "recon_rmse": 0.5760666728019714,
+            "forecast_rmse": 1.1217994689941406,
+            "forecast_fde": 1.7748277187347412
+          },
+          "overall": {
+            "recon_rmse": 0.5811722874641418,
+            "forecast_rmse": 1.0922396183013916,
+            "forecast_fde": 1.6958690881729126
+          }
+        },
+        "70": {
+          "circle": {
+            "recon_rmse": 0.7656512260437012,
+            "forecast_rmse": 1.135198950767517,
+            "forecast_fde": 1.578792691230774
+          },
+          "spiral": {
+            "recon_rmse": 0.7476747632026672,
+            "forecast_rmse": 1.2517192363739014,
+            "forecast_fde": 1.8428840637207031
+          },
+          "overall": {
+            "recon_rmse": 0.7566630244255066,
+            "forecast_rmse": 1.1934590339660645,
+            "forecast_fde": 1.7108381986618042
+          }
+        },
+        "100": {
+          "circle": {
+            "recon_rmse": 0.775355339050293,
+            "forecast_rmse": 0.9639843702316284,
+            "forecast_fde": 1.2232462167739868
+          },
+          "spiral": {
+            "recon_rmse": 0.7719549536705017,
+            "forecast_rmse": 1.1017228364944458,
+            "forecast_fde": 1.5536789894104004
+          },
+          "overall": {
+            "recon_rmse": 0.7736551761627197,
+            "forecast_rmse": 1.032853603363037,
+            "forecast_fde": 1.3884626626968384
+          }
+        }
+      },
+      "variable_n10-50 (ablation)": {
+        "5": {
+          "circle": {
+            "recon_rmse": 0.4961364269256592,
+            "forecast_rmse": 0.8668929934501648,
+            "forecast_fde": 1.4316812753677368
+          },
+          "spiral": {
+            "recon_rmse": 0.5464776754379272,
+            "forecast_rmse": 1.0456913709640503,
+            "forecast_fde": 1.7297800779342651
+          },
+          "overall": {
+            "recon_rmse": 0.5213070511817932,
+            "forecast_rmse": 0.9562920928001404,
+            "forecast_fde": 1.5807305574417114
+          }
+        },
+        "10": {
+          "circle": {
+            "recon_rmse": 0.15147234499454498,
+            "forecast_rmse": 0.4529603123664856,
+            "forecast_fde": 0.988374650478363
+          },
+          "spiral": {
+            "recon_rmse": 0.17380818724632263,
+            "forecast_rmse": 0.5328541994094849,
+            "forecast_fde": 1.102071762084961
+          },
+          "overall": {
+            "recon_rmse": 0.1626402735710144,
+            "forecast_rmse": 0.49290731549263,
+            "forecast_fde": 1.0452232360839844
+          }
+        },
+        "15": {
+          "circle": {
+            "recon_rmse": 0.09039003401994705,
+            "forecast_rmse": 0.3931931257247925,
+            "forecast_fde": 0.8975160717964172
+          },
+          "spiral": {
+            "recon_rmse": 0.10425937920808792,
+            "forecast_rmse": 0.4542732834815979,
+            "forecast_fde": 1.0322717428207397
+          },
+          "overall": {
+            "recon_rmse": 0.09732469916343689,
+            "forecast_rmse": 0.4237332046031952,
+            "forecast_fde": 0.9648938179016113
+          }
+        },
+        "20": {
+          "circle": {
+            "recon_rmse": 0.06779941916465759,
+            "forecast_rmse": 0.3755081593990326,
+            "forecast_fde": 0.879935622215271
+          },
+          "spiral": {
+            "recon_rmse": 0.07043378800153732,
+            "forecast_rmse": 0.4249451458454132,
+            "forecast_fde": 1.0027989149093628
+          },
+          "overall": {
+            "recon_rmse": 0.06911659985780716,
+            "forecast_rmse": 0.4002266824245453,
+            "forecast_fde": 0.9413672089576721
+          }
+        },
+        "25": {
+          "circle": {
+            "recon_rmse": 0.05741109326481819,
+            "forecast_rmse": 0.3617539703845978,
+            "forecast_fde": 0.866000771522522
+          },
+          "spiral": {
+            "recon_rmse": 0.06426375359296799,
+            "forecast_rmse": 0.4230407476425171,
+            "forecast_fde": 0.99849933385849
+          },
+          "overall": {
+            "recon_rmse": 0.06083742156624794,
+            "forecast_rmse": 0.39239737391471863,
+            "forecast_fde": 0.9322501420974731
+          }
+        },
+        "28": {
+          "circle": {
+            "recon_rmse": 0.05536336079239845,
+            "forecast_rmse": 0.36008843779563904,
+            "forecast_fde": 0.8654360175132751
+          },
+          "spiral": {
+            "recon_rmse": 0.0618927888572216,
+            "forecast_rmse": 0.423682302236557,
+            "forecast_fde": 1.0031282901763916
+          },
+          "overall": {
+            "recon_rmse": 0.05862807109951973,
+            "forecast_rmse": 0.391885370016098,
+            "forecast_fde": 0.934282124042511
+          }
+        },
+        "30": {
+          "circle": {
+            "recon_rmse": 0.05377723649144173,
+            "forecast_rmse": 0.358444482088089,
+            "forecast_fde": 0.8666825294494629
+          },
+          "spiral": {
+            "recon_rmse": 0.06130078807473183,
+            "forecast_rmse": 0.42482662200927734,
+            "forecast_fde": 1.0051422119140625
+          },
+          "overall": {
+            "recon_rmse": 0.057539019733667374,
+            "forecast_rmse": 0.391635537147522,
+            "forecast_fde": 0.9359123706817627
+          }
+        },
+        "32": {
+          "circle": {
+            "recon_rmse": 0.053695399314165115,
+            "forecast_rmse": 0.3599039316177368,
+            "forecast_fde": 0.8699190020561218
+          },
+          "spiral": {
+            "recon_rmse": 0.06035894900560379,
+            "forecast_rmse": 0.42921021580696106,
+            "forecast_fde": 1.0137238502502441
+          },
+          "overall": {
+            "recon_rmse": 0.057027168571949005,
+            "forecast_rmse": 0.39455702900886536,
+            "forecast_fde": 0.9418213963508606
+          }
+        },
+        "35": {
+          "circle": {
+            "recon_rmse": 0.05293335020542145,
+            "forecast_rmse": 0.3619667589664459,
+            "forecast_fde": 0.8753700852394104
+          },
+          "spiral": {
+            "recon_rmse": 0.059844981878995895,
+            "forecast_rmse": 0.4298587143421173,
+            "forecast_fde": 1.0196452140808105
+          },
+          "overall": {
+            "recon_rmse": 0.056389160454273224,
+            "forecast_rmse": 0.395912766456604,
+            "forecast_fde": 0.9475076198577881
+          }
+        },
+        "40": {
+          "circle": {
+            "recon_rmse": 0.05225871875882149,
+            "forecast_rmse": 0.36503297090530396,
+            "forecast_fde": 0.8795859813690186
+          },
+          "spiral": {
+            "recon_rmse": 0.05916362255811691,
+            "forecast_rmse": 0.43551331758499146,
+            "forecast_fde": 1.0312910079956055
+          },
+          "overall": {
+            "recon_rmse": 0.05571116879582405,
+            "forecast_rmse": 0.4002731144428253,
+            "forecast_fde": 0.9554384350776672
+          }
+        },
+        "50": {
+          "circle": {
+            "recon_rmse": 0.05259121581912041,
+            "forecast_rmse": 0.37434518337249756,
+            "forecast_fde": 0.8932945728302002
+          },
+          "spiral": {
+            "recon_rmse": 0.05943073332309723,
+            "forecast_rmse": 0.4469812512397766,
+            "forecast_fde": 1.0524953603744507
+          },
+          "overall": {
+            "recon_rmse": 0.05601097270846367,
+            "forecast_rmse": 0.4106631875038147,
+            "forecast_fde": 0.972895085811615
+          }
+        },
+        "70": {
+          "circle": {
+            "recon_rmse": 0.05626765638589859,
+            "forecast_rmse": 0.3959710896015167,
+            "forecast_fde": 0.9335641264915466
+          },
+          "spiral": {
+            "recon_rmse": 0.06510798633098602,
+            "forecast_rmse": 0.4684114456176758,
+            "forecast_fde": 1.0898406505584717
+          },
+          "overall": {
+            "recon_rmse": 0.0606878288090229,
+            "forecast_rmse": 0.43219125270843506,
+            "forecast_fde": 1.0117024183273315
+          }
+        },
+        "100": {
+          "circle": {
+            "recon_rmse": 0.069037526845932,
+            "forecast_rmse": 0.4318754971027374,
+            "forecast_fde": 0.992858350276947
+          },
+          "spiral": {
+            "recon_rmse": 0.08052687346935272,
+            "forecast_rmse": 0.5048438310623169,
+            "forecast_fde": 1.1565654277801514
+          },
+          "overall": {
+            "recon_rmse": 0.07478219270706177,
+            "forecast_rmse": 0.46835967898368835,
+            "forecast_fde": 1.0747119188308716
+          }
+        }
+      }
+    }
+  }
+}

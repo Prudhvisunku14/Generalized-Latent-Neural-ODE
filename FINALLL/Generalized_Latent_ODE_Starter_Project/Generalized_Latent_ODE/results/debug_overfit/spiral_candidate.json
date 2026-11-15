@@ -1,0 +1,19 @@
+{
+ "experiment": "spiral",
+ "arch": "candidate",
+ "model": {
+  "latent_dim": 8,
+  "encoder_hidden": 64,
+  "dynamics_hidden": 64,
+  "decoder_hidden": 64,
+  "dynamics_layers": 2,
+  "decoder_layers": 2
+ },
+ "iters": 2000,
+ "n_traj": 1,
+ "seconds": 442.3,
+ "rmse_full": 0.006400298792868853,
+ "rmse_context_t<=7": 0.005233282223343849,
+ "rmse_future_t>7": 0.008523058146238327,
+ "rmse_per_traj_max": 0.006400298792868853
+}

@@ -1,0 +1,14 @@
+{
+  "ground_truth_points": 200,
+  "context_end": 7.0,
+  "ground_truth_times_matching_observations": 30,
+  "metric_units": "original coordinate units",
+  "notes": [],
+  "reconstruction_rmse": 0.06127043440937996,
+  "forecast_rmse": 0.11647729575634003,
+  "forecast_mae": 0.08948787301778793,
+  "forecast_ade": 0.15109851956367493,
+  "forecast_fde": 0.2600078880786896,
+  "chamfer_distance": 0.007873237133026123,
+  "model": "three_shapes_unified"
+}

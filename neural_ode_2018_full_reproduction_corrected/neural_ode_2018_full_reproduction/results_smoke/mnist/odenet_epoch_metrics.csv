@@ -1,0 +1,3 @@
+timestamp_utc,epoch,model,device,loss,accuracy,learning_rate,elapsed_seconds,nfe_mean
+2026-10-03T12:38:08Z,1,odenet,cpu,2.3001668453216553,0.140625,0.1,1.3556156050181016,26.0
+2026-10-03T12:38:09Z,2,odenet,cpu,2.323028564453125,0.15234375,0.1,1.1214143830002286,26.0

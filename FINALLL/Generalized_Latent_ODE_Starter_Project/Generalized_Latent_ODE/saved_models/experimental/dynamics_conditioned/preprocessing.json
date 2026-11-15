@@ -1,0 +1,27 @@
+{
+  "input_columns": [
+    "t",
+    "x",
+    "y"
+  ],
+  "normalization_method": "affine, applied to x and y only: (xy - mean) / scale with one scalar scale = RMS deviation of the two_shapes TRAINING-split coordinates about their mean; inverted as xy_hat * scale + mean",
+  "normalization_mean": [
+    0.00299050487167863,
+    0.0043505416867165225
+  ],
+  "normalization_scale": 0.8903207253807982,
+  "normalization_source": "data/processed/two_shapes/metadata.json (train split statistics)",
+  "time_scale_T": 10.0,
+  "time_horizon": 10.0,
+  "context_end": 7.0,
+  "training_n_obs": 30,
+  "encoder_features": "[x_norm, y_norm, t/T, dt/T] per observation",
+  "encoder_time_order": "sequence is reversed (newest observation first) before the GRU; hidden state starts at zero",
+  "time_gap_convention": "on the reversed sequence gap[0] = 0 and gap[i] = t_rev[i-1] - t_rev[i] (positive: later minus earlier time)",
+  "integration_origin_t": 0.0,
+  "latent_state_used": "posterior mean z0 = mu (deterministic)",
+  "training_observation_noise_std": 0.05,
+  "training_time_grid": "200 points on [0, 10.0]",
+  "coordinate_abs_max_train": 4.72152853012085,
+  "first_observation_always_at_t0_in_training": true
+}

@@ -1,0 +1,7 @@
+__pycache__/
+.pytest_cache/
+.venv/
+*.pyc
+.DS_Store
+# Keep original generated datasets in this project package for demonstration.
+# Add data/processed/ to gitignore before using Git on larger datasets.

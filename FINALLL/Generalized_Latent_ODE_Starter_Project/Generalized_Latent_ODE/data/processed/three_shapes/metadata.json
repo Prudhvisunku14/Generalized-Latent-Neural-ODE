@@ -1,0 +1,42 @@
+{
+  "dataset_name": "three_shapes",
+  "families": [
+    "circle",
+    "spiral",
+    "ellipse"
+  ],
+  "family_to_id": {
+    "circle": 0,
+    "spiral": 1,
+    "ellipse": 2
+  },
+  "parameter_names": [
+    "radius_or_r0",
+    "omega",
+    "phase",
+    "cx",
+    "cy",
+    "growth",
+    "a",
+    "b",
+    "angle"
+  ],
+  "n_per_family": 1000,
+  "n_points": 200,
+  "t_end": 10.0,
+  "forecast_start": 7.0,
+  "default_n_obs": 30,
+  "base_noise_std": 0.05,
+  "seed": 42,
+  "normalization_mean": [
+    0.0013902571643734296,
+    0.0063301247833651725
+  ],
+  "normalization_scale": 0.8525610706793283,
+  "split_counts": {
+    "train": 2100,
+    "val": 450,
+    "test": 450
+  },
+  "data_note": "All full ground-truth trajectories are clean. Observation masks are restricted to t <= cutoff."
+}

@@ -1,0 +1,6 @@
+# Versions this code was validated with (CPU, Python 3.12). Newer releases should work.
+torch==2.14.1
+torchvision==0.29.1
+torchdiffeq==0.2.5
+numpy>=1.24
+matplotlib>=3.7

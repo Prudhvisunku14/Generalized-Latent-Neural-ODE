@@ -1,0 +1,18 @@
+{
+ "experiment": "mixed20",
+ "arch": "original_latent8",
+ "solver": "rk4",
+ "model": {
+  "latent_dim": 8,
+  "encoder_hidden": 25,
+  "dynamics_hidden": 20,
+  "decoder_hidden": 20
+ },
+ "iters": 3000,
+ "n_traj": 20,
+ "seconds": 251.9,
+ "rmse_full": 0.1995995193719864,
+ "rmse_context_t<=7": 0.10801581293344498,
+ "rmse_future_t>7": 0.3249244689941406,
+ "rmse_per_traj_max": 0.7009888291358948
+}

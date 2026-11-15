@@ -1,0 +1,4 @@
+Model,Test Error (%),# Params (M)
+ResNet,86.33,0.58
+RK-Net,80.86,0.21
+ODE-Net,84.77,0.21

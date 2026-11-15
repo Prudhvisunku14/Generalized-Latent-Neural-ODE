@@ -1,0 +1,52 @@
+NEURAL ODE 2018 REPRODUCTION - QUICK START
+===========================================
+
+1) Create/activate a Python environment with a CUDA-enabled PyTorch build.
+2) Install project packages:
+
+   python -m pip install -r requirements.txt
+
+3) Check the GPU:
+
+   python check_gpu.py
+
+4) QUICK pipeline test (CPU is allowed):
+
+   python run_all.py --mode smoke --no-gif
+
+5) PAPER-SCALE RUNS ON THREE COMPUTERS
+
+   PC 1:
+   python run_exp1.py --mode paper --require-cuda
+
+   PC 2:
+   python run_exp2.py --mode paper --require-cuda
+
+   PC 3:
+   python run_exp3.py --mode paper --require-cuda
+
+6) PAPER-SCALE RUNS ON ONE GPU (sequential):
+
+   python run_all.py --mode paper --require-cuda
+
+7) Resume after an interruption:
+
+   Run exactly the same command again. Checkpoint resume is automatic.
+
+8) Restart from zero intentionally:
+
+   Add --fresh to the same command.
+
+9) Use another GPU:
+
+   python check_gpu.py --gpu 1
+   python run_exp1.py --mode paper --device cuda:1 --require-cuda
+
+Each real/logging epoch prints epoch time, total elapsed time and ETA.
+Results, CSV files, checkpoints, PNG/PDF figures and GIFs are saved automatically.
+
+IMPORTANT:
+- Do not compare SMOKE-mode numerical values with the paper.
+- Exp 2/3 use "logging epochs" only to report progress; optimization still follows
+  the configured number of optimizer iterations.
+- Paper-scale outputs are created under results/ and checkpoints/.
