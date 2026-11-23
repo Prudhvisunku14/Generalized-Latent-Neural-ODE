@@ -1,0 +1,45 @@
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   README.md
+	modified:   scripts/02_train_model.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	MTP_COMPLETE_PRESENTATION_MATERIALS.zip
+	MTP_COMPLETE_PRESENTATION_MATERIALS/
+	PROJECT_COMPLETION_AUDIT.md
+	audit/
+	checkpoints/ablation_2x2/
+	checkpoints/capacity_scaling/
+	checkpoints/five_shapes/
+	configs/ablation_2x2.yaml
+	configs/capacity_scaling.yaml
+	data/processed/five_shapes/
+	logs/ablation_2x2/
+	logs/capacity_scaling/
+	logs/five_shapes/
+	presentation_results/
+	reports/five_shapes_report.md
+	results/ablation_2x2/
+	results/capacity_scaling/
+	results/five_shapes/
+	results/geolife/figures/fig9_synthetic_vs_geolife_trained.png
+	results/geolife/main_evaluation/geolife_trained_summary.json
+	results/geolife/tables/table5_synthetic_vs_geolife_trained.md
+	scripts/30_generate_five_shapes.py
+	scripts/31_evaluate_five_shapes.py
+	scripts/32_evaluate_capacity_scaling.py
+	scripts/33_evaluate_ablation_2x2.py
+	scripts/34_audit_checkpoint_selection.py
+	scripts/run_ablation_2x2.sh
+	scripts/run_capacity_scaling.sh
+	src/glo/five_shapes.py
+	tests/test_ablation_2x2.py
+	tests/test_capacity_scaling.py
+	tests/test_five_shapes.py
+
+no changes added to commit (use "git add" and/or "git commit -a")

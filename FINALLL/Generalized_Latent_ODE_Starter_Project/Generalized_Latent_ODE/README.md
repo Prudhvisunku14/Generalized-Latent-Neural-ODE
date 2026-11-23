@@ -1,187 +1,343 @@
-# Generalized Latent Neural ODE: multi-shape trajectory learning
+# Generalized Latent Neural ODE
 
-**Research starter implementation — Phase 1 (circle + spiral), Phase 2 (circle + spiral + ellipse).**
+A research codebase that studies **one shared Latent Neural ODE for several 2-D trajectory families**, and then asks whether
+a model trained on synthetic geometry can be used on **real GPS data (GeoLife)**. It is built on the Latent ODE of
+Chen et al. (2018) and uses the same model family throughout. **It is an adapted re-implementation and experimental extension of Latent Neural ODEs,
+not an exact replication of the paper, and it has not produced an improved forecasting model.** No new architecture is claimed, and nothing here shows
+generalisation to arbitrary trajectories. The honest summary of the findings is in [Results](#results) and
+[Known limitations](#known-limitations); an independent verification of the code, data and results is in [`PROJECT_COMPLETION_AUDIT.md`](PROJECT_COMPLETION_AUDIT.md).
 
-**Status:** Complete synthetic datasets, deterministic train/validation/test split generation, data validation, visualization, a variational Latent ODE model, an optional dynamics-conditioning extension, training/evaluation CLI scripts, and automated tests. A trained research-quality checkpoint is **not** included. Any quick smoke checkpoint is **not** a scientifically trained model.
+**Documentation:** [Overview](docs/PROJECT_OVERVIEW.md) · [Architecture](docs/ARCHITECTURE.md) · [Datasets](docs/DATASETS.md) · [Methodology](docs/METHODOLOGY.md) · [Experiments](docs/EXPERIMENTS.md) · [Results](docs/RESULTS.md) · [Inference guide](docs/INFERENCE_GUIDE.md) · [Reproducibility](docs/REPRODUCIBILITY.md) · [Limitations](docs/RESEARCH_LIMITATIONS.md) · [References](docs/REFERENCES.md) · [Cleanup report](docs/REPOSITORY_CLEANUP_REPORT.md)
 
-## Goal
+## Status of the work
 
-Learn a **single shared continuous-time dynamical model** capable of inferring sparse/noisy 2-D trajectories and predicting unobserved/future coordinates from different *trajectory families*. First test circle+spiral; then retrain and test the same architecture on circle+spiral+ellipse; only then consider figure-eight and other families.
+| Item | Status |
+|---|---|
+| 1. Original-style Latent ODE (4-D latent, GRU 25, MLP 20) re-implemented and trained on synthetic circles + spirals | **Completed** (it under-performed; see below) |
+| 2. Improved unified Latent ODE for circles, spirals, ellipses; 5-seed validation; unified vs specialist comparison | **Completed** |
+| 3. Dynamics-conditioning study (does conditioning the ODE on an inferred code close the unified-vs-specialist gap?) | **Completed**: hypothesis not supported at this scale |
+| 4. Pretrained inference from a CSV (no shape label, frozen weights) | **Completed** |
+| 5. Synthetic-to-real transfer: frozen synthetic model on GeoLife (held-out users) | **Completed**: the model does **not** transfer |
+| 6. GeoLife-trained models (from scratch; fine-tuned from the synthetic weights) | **Trained and evaluated** (one training run each; see Results 8): both are far worse than linear / cubic / PCHIP interpolation. Weights are not distributed. **Still to do:** a paired fine-tuned-versus-scratch analysis and the corresponding report sections (9 and 11) |
+| 7. Five trajectory families (adds figure-eight and sinusoid): dataset, zero-shot test of the three-shape model, five-shape model | **Completed** (single seed); report: [`reports/five_shapes_report.md`](reports/five_shapes_report.md). The frozen three-shape model does **not** generalise to the unseen families |
+| 8. Capacity scaling (latent 8/16/32, GRU 64/128) and a controlled 2×2 ablation (latent × GRU width) on the five-family data | **Completed, single seed, exploratory**: reports in [`results/capacity_scaling/`](results/capacity_scaling/CAPACITY_SCALING_REPORT.md) and [`results/ablation_2x2/`](results/ablation_2x2/ABLATION_2X2_REPORT.md). **Not confirmed across seeds** |
+| 9. Independent verification of implementation, data and results | **Completed**: [`PROJECT_COMPLETION_AUDIT.md`](PROJECT_COMPLETION_AUDIT.md) (scripts in `audit/`) |
+| **Not done** | multi-seed confirmation of items 7 and 8; stronger baselines (per-family parametric fit, sequence model); leave-one-family-out generalisation tests; any method that improves forecasting; a test of why forecasting error grows with model size. Also planned, not started: lines / piecewise-linear paths, equivariant inputs, uncertainty. Nothing is claimed about these. |
 
-### The generative architecture
+**What this project is and is not.** It is an adapted **re-implementation and experimental extension** of the Latent ODE of Chen et al. (2018):
+same model family, but different data, a fixed-step solver and a fixed-sigma Gaussian likelihood. It is **not an exact replication**: the paper's experiments and numbers
+were not reproduced (see [`references/SOURCES_AND_METHODS.md`](references/SOURCES_AND_METHODS.md)), and the original-size configuration (item 1) was run on this project's own synthetic data.
+It has **not** produced an improved forecasting model; "Model D" below is a larger configuration of the same architecture, not a new method.
 
-- Reverse-time GRU encoder takes sparse noisy prefix points and corresponding timestamps, predicts the mean and log-variance of latent initial state `z0`.
-- During training, reparameterization samples `z0`; at validation/test time we decode from the posterior mean for deterministic RMSE comparisons.
-- One **autonomous** MLP `dz/dt=f_theta(z)` controls every trajectory in a given experiment.
-- A differentiable ODE solver evaluates the latent path at arbitrary query times.
-- A decoder maps each latent state to `(x,y)` coordinates.
-- Variational training uses Gaussian likelihood on available noisy observations plus Gaussian KL to a `N(0,I)` prior.
+## Research motivation
 
-The conditional extension adds a GRU-inferred, constant trajectory-specific code `c`, with `dz/dt=f_theta(z,c), dc/dt=0`. This is an experimental **ablation**; one should not assume it is a new research invention without reviewing prior conditional Neural ODE literature.
+Neural ODEs model a trajectory as the flow of a learned vector field. Latent ODEs add an encoder that turns sparse, irregular,
+noisy observations into an initial latent state, which makes them natural for irregularly sampled data. A long-term goal is a
+**single continuous-time latent dynamical model that handles several kinds of movement** without being told which kind it sees.
+This repository is a controlled step in that direction. It first checks, on synthetic families with known ground truth, how far one
+shared model goes and what it costs. It then tests the hardest question: does what was learned from synthetic geometry say anything useful about real movement?
 
-## Get started on Ubuntu (Python 3.10-3.12 recommended)
+## Research objectives
+
+1. **Establish a working, validated Latent ODE baseline** for sparse, noisy 2-D trajectories (circles and logarithmic spirals), including diagnosing why
+   the first checkpoint failed and demonstrating reproducibility across seeds.
+2. **Test unification:** can one model cover circles, spirals and ellipses with no shape label, how does it compare with specialist models, and does
+   conditioning the dynamics on an inferred code help?
+3. **Test synthetic-to-real transfer:** can the pretrained model interpolate withheld positions in real GeoLife GPS trajectories without retraining, and how does it compare with
+   linear and cubic interpolation? If not, what does training on real GPS data change?
+4. **Extend to five families:** does a model trained on circles, spirals and ellipses generalise zero-shot to figure-eights and sinusoids, and can one model be trained on all five?
+5. **Probe model size (exploratory, single seed):** how do latent dimension and GRU encoder width affect reconstruction and forecasting on the five-family data?
+
+## Architecture
+
+### Original Latent ODE (Chen et al., 2018), as re-implemented here
+Reverse-time recurrent encoder → Gaussian posterior over the initial latent state z₀ (4-D) → autonomous MLP `dz/dt = f(z)` → ODE solver → decoder to (x, y).
+Sizes: GRU 25, dynamics MLP 20, decoder MLP 20 (one hidden layer each). Trained with the negative ELBO (Gaussian likelihood on observed points + KL to N(0, I)).
+
+### Improved unified model used in this project ("Model D")
+The **same model family** with larger hyper-parameters and fixed-step RK4, selected on validation ELBO:
+
+```
+sparse noisy observations [x, y, t/T, Δt/T]   (T = 10, newest first)
+        │  GRU encoder (4 → 64)
+        ▼
+Linear 64 → 16  = (μ, log σ²) of z₀ ∈ ℝ⁸          training: z₀ = μ + σε    inference: z₀ = μ
+        │  dz/dt = f_θ(z)      tanh MLP 8 → 64 → 64 → 8, autonomous
+        ▼  RK4, step 0.1, from t = 0
+latent path z(t) → decoder tanh MLP 8 → 64 → 64 → 2 → x̂(t), ŷ(t)
+```
+24,602 parameters. Adam (lr 3·10⁻³, cosine to 10⁻⁵), 300 epochs, batch 32, 30 observations at t ≤ 7, checkpoint = lowest validation −ELBO.
+Config: [`configs/model_d.yaml`](configs/model_d.yaml). Two changes against the original configuration were found necessary (latent 4 → 8 and a larger network); see
+[`reports/reconstruction_failure_analysis.md`](reports/reconstruction_failure_analysis.md) and [`reports/improved_two_shapes_results.md`](reports/improved_two_shapes_results.md).
+
+An experimental **dynamics-conditioned** variant (M3) adds a constant 4-D code c inferred by the encoder, `dz/dt = f(z, c)`. Conditioning an ODE on an inferred
+variable is established in the literature (Neural ODE Processes, GOKU-nets, CoDA, LEADS); this repository makes no novelty claim.
+
+## Supported trajectory families
+Synthetic, 2-D, analytically generated (details: [`references/DATASET_CARD.md`](references/DATASET_CARD.md)):
+**circle**, **logarithmic spiral** (expanding or contracting) and **ellipse**, with random centre, phase, angular speed and rotation direction;
+and, in the five-family extension (`five_shapes`), **figure-eight** and **sinusoid** (a sine wave drifting along x). See [`reports/five_shapes_report.md`](reports/five_shapes_report.md).
+Real GPS trajectories (GeoLife) are used only in the transfer experiments. The unified models output no shape name and take no shape label.
+Models trained on three families were tested zero-shot on the other two and did not generalise (Results 9); a five-family model was trained on all five, so its results on them are **not** zero-shot.
+
+## Datasets
+
+| Dataset | Content | In this repo |
+|---|---|---|
+| `data/processed/two_shapes`, `three_shapes` | 2,000 / 3,000 synthetic trajectories (700/150/150 per family train/val/test), 200 points on t ∈ [0, 10], σ = 0.05 noise, seed 42 | **yes** (own data; regenerate with `scripts/01_generate_dataset.py`) |
+| `data/processed/five_shapes` | 5,000 synthetic trajectories: the three families above (unchanged, identical splits) plus figure-eight and sinusoid; 700/150/150 per family | **yes** (own data; `scripts/30_generate_five_shapes.py`; refuses to overwrite) |
+| GeoLife GPS Trajectories 1.3 | 182 users, 18,670 files, 24.9 M GPS records (Microsoft Research Asia) | **no** (see licence note) |
+
+### GeoLife licence: please read
+GeoLife is distributed under the **Microsoft Research License Agreement (non-commercial use only; you may not redistribute the data or derivative works)**.
+For that reason this repository contains **no GeoLife data, no per-user trajectory coordinates, no per-segment tables and no figures that draw individual users' paths**
+(they are excluded by `.gitignore`). It contains only code, aggregate statistics and aggregate figures. To reproduce the GeoLife experiments, download the dataset
+yourself (search for *GeoLife GPS Trajectories 1.3* on the Microsoft Download Center), keep the file name `Geolife Trajectories 1.3.zip`, and place it in the project root.
+The archive is read in place and never extracted or modified. Please cite Zheng et al. (2008, 2009, 2010) (see [References](#references)).
+
+## Installation
+Python 3.10–3.12. Tested with Python 3.12, PyTorch 2.5.1, torchdiffeq 0.2.5, NumPy 1.26, SciPy 1.13, pandas 2.2, scikit-learn 1.4.
 
 ```bash
-cd Generalized_Latent_ODE
-python -m venv .venv
-source .venv/bin/activate
-# Install PyTorch for your CUDA/CPU first, following https://pytorch.org/get-started/locally/
+git clone https://github.com/Prudhvisunku14/Generalized-Latent-Neural-ODE.git
+cd Generalized-Latent-Neural-ODE
+python -m venv .venv && source .venv/bin/activate
+# install PyTorch for your CPU/CUDA first: https://pytorch.org/get-started/locally/
 pip install -r requirements.txt
-
-# Datasets are already included; rerun to regenerate with fixed seed:
-python scripts/01_generate_dataset.py --n-per-family 1000 --n-points 200 --n-obs 30 --seed 42
-python scripts/04_validate_dataset.py
-python -m pytest -q
+python -m pytest -q tests          # 119 tests, about 25 s on CPU (the five-family tests need the five-shape data and checkpoints produced by the commands below)
 ```
+The pretrained weights are ordinary files (about 100 KB each), so **Git LFS is not required**. The tiny networks train faster on CPU than on a shared GPU.
 
-### Phase 1: train one model on circle + spiral
-
+## Training
 ```bash
-python scripts/02_train_model.py --experiment two_shapes --epochs 100 --n-obs 30 --n-query 100
-python scripts/03_evaluate_model.py --checkpoint checkpoints/two_shapes_cond0_best.pt \
-    --n-obs 30 --n-query 200 --output results/phase1_evaluation.json
+# synthetic data (already included; regenerate deterministically if wanted)
+python scripts/01_generate_dataset.py --n-per-family 1000 --n-points 200 --n-obs 30 --seed 42 && python scripts/04_validate_dataset.py
+
+# Model D on circles + spirals; use --experiment three_shapes for circles + spirals + ellipses
+python scripts/02_train_model.py --config configs/model_d.yaml --experiment two_shapes --seed 42 \
+    --checkpoint checkpoints/my_two_shapes_seed42.pt          # refuses to overwrite existing checkpoints
+
+# the studies (seeds, specialists, conditioning)
+bash scripts/run_validation_experiments.sh
+bash scripts/run_conditioning_study.sh
+
+# five-family extension: generate the data, train the five-shape model, evaluate (about 80 minutes of CPU training per run)
+python scripts/30_generate_five_shapes.py
+python scripts/02_train_model.py --config configs/model_d.yaml --experiment five_shapes --checkpoint checkpoints/five_shapes/five_shapes_seed42.pt
+python scripts/31_evaluate_five_shapes.py zeroshot compare figures
+# capacity scaling and the controlled 2x2 ablation (4-5 parallel runs); evaluation scripts 32 and 33 write results/capacity_scaling and results/ablation_2x2
+bash scripts/run_capacity_scaling.sh && python scripts/32_evaluate_capacity_scaling.py
+bash scripts/run_ablation_2x2.sh && python scripts/33_evaluate_ablation_2x2.py && python scripts/34_audit_checkpoint_selection.py
 ```
+Training scripts never overwrite an existing checkpoint unless `--overwrite` is passed.
 
-### Phase 2: use the same architecture on three shapes
+## Pretrained inference
+`saved_models/` holds frozen, checksummed models (inventory: [`saved_models/README.md`](saved_models/README.md)). Give a CSV with columns `t,x,y`
+(observations at 0 ≤ t ≤ 7, ideally 30 of them) and no shape label. CPU is enough; no GPU is needed.
 
+| `--model` | Trained on | Intended use |
+|---|---|---|
+| `three_shapes_unified` (default) | circle, spiral, ellipse | main shared model |
+| `five_shapes_unified` | + figure-eight, sinusoid | five-family model |
+| `two_shapes_unified`, `circle_specialist`, `spiral_specialist` | circle + spiral / one family | shared-vs-specialist study |
+| `ablation_2x2_A` … `ablation_2x2_D` | five families | 2×2 ablation cells (single seed each) |
+| `dynamics_conditioned`, `variable_nobs_experimental` | circle + spiral | experimental |
+
+GeoLife-trained models exist locally but are **not published** (dataset licence; see the inventory).
 ```bash
-python scripts/02_train_model.py --experiment three_shapes --epochs 100 --n-obs 30 --n-query 100
-python scripts/03_evaluate_model.py --checkpoint checkpoints/three_shapes_cond0_best.pt \
-    --n-obs 30 --n-query 200 --output results/phase2_evaluation.json
+python scripts/predict_trajectory.py --list-models
+python scripts/predict_trajectory.py --model three_shapes_unified --input input_trajectories/example_circle.csv \
+    --output inference_outputs/circle_example --ground-truth input_trajectories/ground_truth/example_circle.csv
+python scripts/predict_trajectory.py --model five_shapes_unified --input input_trajectories/example_figure_eight.csv \
+    --output inference_outputs/figure_eight_example --ground-truth input_trajectories/ground_truth/example_figure_eight.csv
+```
+It writes `predicted_trajectory.csv` (reconstruction for t ≤ 7, forecast for 7 < t ≤ 10), figures and `run_summary.json` (and `metrics.json` if a ground truth is given).
+Weights are frozen and the posterior mean is used, so results are deterministic. **The models were trained with exactly 30 observations and are inaccurate at other counts**
+(see Known limitations). Full guide: [`docs/INFERENCE_GUIDE.md`](docs/INFERENCE_GUIDE.md).
+
+## Visualizations
+| | |
+|---|---|
+| ![five families](figures/datasets/fig1_five_families_dataset_samples.png) | ![architecture](figures/architecture/fig_architecture_pipeline.png) |
+| *The five trajectory families* | *Model pipeline* |
+| ![reconstruction](presentation_results/figures/fig1_reconstruction_by_family.png) | ![forecast](presentation_results/figures/fig2_forecast_by_family.png) |
+| *Reconstruction error by family (2×2 cells, single seed)* | *Forecast error by family (2×2 cells, single seed)* |
+| ![shared vs specialist](presentation_results/figures/fig3_shared_vs_specialist.png) | ![cross-family](presentation_results/figures/fig4_cross_family_generalisation.png) |
+| *Shared vs specialist (5 vs 3 runs)* | *Unseen-family generalisation (frozen three-family model)* |
+| ![ablation](presentation_results/figures/fig5_ablation_overall.png) | ![error vs time](presentation_results/figures/fig6_forecast_error_vs_time.png) |
+| *2×2 ablation, overall (single seed)* | *Forecast error versus time (single seed)* |
+| ![example predictions](results/ablation_2x2/figures/fig6_examples.png) | ![five-family examples](results/five_shapes/figures/examples_three_vs_five.png) |
+| *Example reconstructions and forecasts* | *Three- vs five-family models on examples* |
+
+## Evaluation methodology
+* Observations: 30 noisy points at t ≤ 7 (the first at t = 0), randomly spaced; **no coordinate after t = 7 reaches the encoder**. Targets are the clean trajectory on 200 points over [0, 10].
+* Metrics in original coordinate units: reconstruction RMSE (unobserved context points), forecast RMSE / MAE / ADE / FDE (t > 7), Chamfer distance, plus geometric errors (radius drift, angular velocity, growth rate).
+* Every compared model sees **identical observation subsets**. Across-seed intervals are Student-t 95% CIs; paired comparisons use trajectory-level bootstrap and Wilcoxon tests.
+* Checkpoint selection uses the **validation** split only (−ELBO); the test split was not used to choose hyper-parameters.
+* GeoLife: user-disjoint development and test sets; every method receives the same 30 observations and is scored at the **recorded timestamps against the recorded GPS positions** (never against an interpolated reference);
+  coordinates are normalised per segment using only the observed points; confidence intervals use a user-cluster bootstrap. Details: [`reports/geolife_real_world_interpolation_report.md`](reports/geolife_real_world_interpolation_report.md).
+
+## Results
+All numbers are from runs in this repository. Reports hold the full tables and caveats; all of them are single-dataset, small-scale results.
+
+### 1. The original-style configuration versus the improved model (2 shapes, validation split, seed 42)
+| Run | Architecture | Val context RMSE | Val forecast RMSE |
+|---|---|---|---|
+| A | original (latent 4, hidden 25/20/20) | 0.335 | 0.815 |
+| **D** | latent 8, hidden 64, 2 layers, lr 3·10⁻³ | **0.059** | **0.262** |
+
+The first checkpoint that was inspected had been stopped after about 3 epochs; it is not evidence about the architecture. Run A above is a properly trained original-size model.
+[`reports/improved_two_shapes_results.md`](reports/improved_two_shapes_results.md)
+
+### 2. Reproducibility of Model D (5 seeds, test split)
+Reconstruction RMSE **0.060 ± 0.007**, forecast RMSE **0.219 ± 0.050** (95% CI [0.157, 0.282]). Forecast accuracy varies noticeably with the seed. Training had not fully converged (best epoch 288–297 of 300).
+[`reports/validation_study_report.md`](reports/validation_study_report.md)
+
+### 3. Unified vs specialist models (forecast RMSE, test)
+| Family | Unified (5 seeds) | Specialist (3 seeds) |
+|---|---|---|
+| circle | 0.161 ± 0.037 | **0.087 ± 0.006** |
+| spiral | 0.284 ± 0.067 | **0.198 ± 0.009** |
+
+One shared model costs forecasting accuracy (reconstruction is close). Specialists are also far more stable across seeds.
+
+### 4. Three families, and unseen ellipses (single seed)
+| Model (150 test ellipses) | Recon RMSE | Forecast RMSE |
+|---|---|---|
+| three-shape model (ellipses in training) | 0.089 | 0.185 |
+| two-shape models, ellipses never seen | 0.210 | 0.321 |
+
+Rotation direction transfers; **shape does not** (unseen ellipses are rounded toward circles, and reconstruction is worse than interpolating the observations). Evidence for out-of-family generalisation is weak.
+
+### 5. Dynamics conditioning (5 seeds, forecast RMSE, test)
+| Model | Circle | Spiral |
+|---|---|---|
+| specialists | 0.087 ± 0.006 | 0.198 ± 0.009 |
+| M1 unified | 0.145 ± 0.007 | 0.264 ± 0.036 |
+| M2 unconditioned, parameter-matched | 0.172 ± 0.096 | 0.270 ± 0.113 |
+| M3 dynamics-conditioned | 0.176 ± 0.067 | 0.299 ± 0.068 |
+
+Conditioning did not close the gap at this scale (M3 − M1: circle +0.031, CI [−0.050, +0.112]; spiral +0.035, CI [−0.063, +0.133]). The learned code does control radial growth.
+[`reports/conditioning_study_report.md`](reports/conditioning_study_report.md)
+
+### 6. Packaged models on the held-out synthetic test split (30 observations, single checkpoints)
+| Model | Recon RMSE | Forecast RMSE |
+|---|---|---|
+| `three_shapes_unified` | 0.082 | 0.211 |
+| `two_shapes_unified` | 0.055 | 0.169 |
+| `circle_specialist` | 0.045 | 0.085 |
+| `spiral_specialist` | 0.063 | 0.194 |
+| `dynamics_conditioned` | 0.051 | 0.212 |
+| `variable_nobs_experimental` | 0.057 | 0.389 |
+
+### 7. Synthetic-to-real transfer on GeoLife (frozen three-shape model, 30 observations)
+1,000 held-out segments from 97 users; 105,037 withheld GPS positions. Median per-segment interpolation RMSE in metres:
+
+| Method | Median RMSE [95% CI] | Mean | Win rate vs linear |
+|---|---|---|---|
+| **Latent ODE (frozen, synthetic-trained)** | **126.4** [110.9, 147.9] | 272.7 | 0.1% |
+| Linear interpolation | 7.10 [5.80, 8.48] | 13.0 | n/a |
+| Cubic spline | 5.56 [4.64, 6.90] | 11.7 | 68.6% |
+| PCHIP | 5.62 [4.54, 6.69] | 10.1 | 85.9% |
+
+**The synthetic-trained model does not transfer to real GPS.** It runs on real input, but its interpolations are about 17× worse than linear
+interpolation (geometric-mean ratio 17.3, user-bootstrap CI [15.4, 19.3]), for every trajectory type, speed, observation gap, transport mode and observation count (10–50),
+and for every normalisation strategy tried. Forecasts are 3–5× worse than a constant-velocity extrapolation. The likely cause is that the learned dynamics can only produce orbit-like curves.
+[`reports/geolife_real_world_interpolation_report.md`](reports/geolife_real_world_interpolation_report.md), [`reports/geolife_dataset_audit.md`](reports/geolife_dataset_audit.md)
+
+### 8. GeoLife-trained models (evaluated; one training run each)
+Two models were trained on GeoLife development users, one from scratch and one fine-tuned from the three-shape synthetic weights, and evaluated on the **same 1,000 held-out segments from 97 test users** and the same observation subsets as the frozen model (median per-segment interpolation RMSE in metres, 30 observations):
+
+| Method | Median RMSE [95% CI] | Mean | Geometric-mean ratio vs linear |
+|---|---|---|---|
+| Linear interpolation | 7.10 [5.80, 8.48] | 12.99 | 1.000 |
+| Cubic spline | 5.56 [4.64, 6.90] | 11.65 | 0.799 |
+| PCHIP | 5.62 [4.54, 6.69] | 10.11 | 0.778 |
+| Frozen synthetic model (three-shape) | 126.40 [110.94, 147.94] | 272.70 | 17.278 |
+| GeoLife-trained, from scratch | 60.62 [51.58, 71.66] | 116.18 | 8.222 |
+| Synthetic → GeoLife fine-tuned | 47.11 [42.24, 54.63] | 84.96 | 6.415 |
+
+**Both GeoLife-trained models are better than the frozen synthetic model but remain far worse than simple interpolation** (they beat linear interpolation on 0.1% of segments). Median interpolation RMSE by number of observations (10 / 20 / 30 / 40 / 50): scratch 119.58 / 75.12 / 60.62 / 59.80 / 59.99 m; fine-tuned 191.67 / 94.78 / 47.11 / 76.73 / 115.54 m; linear 20.24 / 10.80 / 7.10 / 4.83 / 3.79 m. Fine-tuning from synthetic weights is lower than scratch at 30 observations only; it is higher at 10, 20, 40 and 50, so **no consistent benefit of synthetic pre-training is shown**. A paired fine-tuned-versus-scratch analysis has not been completed.
+Forecasting (protocol A, median metres): scratch 322, fine-tuned 371, against hold-last 229 and constant velocity 151, i.e. worse than both naive baselines.
+Caveats: one training run per model; one dataset; the weights are **not** distributed (arguably derivative works of GeoLife under its licence). Source: `results/geolife/tables/table5_synthetic_vs_geolife_trained.md`, `results/geolife/main_evaluation/geolife_trained_summary.json`. The detailed write-up (report sections 9 and 11) is still pending.
+
+### 9. Five trajectory families (single seed)
+Details and caveats: [`reports/five_shapes_report.md`](reports/five_shapes_report.md). Mean per-trajectory forecast RMSE on the 750 five-family test trajectories (identical observations for all rows):
+
+| Family | Three-shape model (frozen) | Five-shape model | Hold-last baseline |
+|---|---|---|---|
+| circle | 0.140 | 0.259 | 1.137 |
+| spiral | 0.291 | 0.427 | 1.276 |
+| ellipse | 0.189 | 0.261 | 1.120 |
+| figure_eight (unseen by the three-shape model) | 1.117 | 0.299 | 0.961 |
+| sinusoid (unseen by the three-shape model) | 0.973 | 0.386 | 0.625 |
+
+* **No zero-shot generalisation:** on the two unseen families the frozen three-shape model is worse than hold-last for forecasting and far worse than linear interpolation for reconstruction (figure-eight 0.732 vs 0.092; sinusoid 0.344 vs 0.045).
+* A five-shape model (same architecture, trained on all five families, no labels) forecasts all five far better than the naive baselines but is **worse than the three-shape model on the original three families**, and its reconstruction is not better than linear interpolation on any family. The training set size and number of optimiser steps also differ, so the cost cannot be attributed to the number of families alone.
+* Five-shape results on the five families are **not zero-shot**. One training seed each.
+
+### 10. Model size: capacity scaling and a controlled 2×2 ablation (single seed, exploratory)
+Reports: [`results/capacity_scaling/CAPACITY_SCALING_REPORT.md`](results/capacity_scaling/CAPACITY_SCALING_REPORT.md), [`results/ablation_2x2/ABLATION_2X2_REPORT.md`](results/ablation_2x2/ABLATION_2X2_REPORT.md) (corrected; the uncorrected original is kept beside it). Mean per-trajectory RMSE over 750 test trajectories (identical observations; `data_seed` fixed, so all four cells saw identical batches and training observation draws):
+
+| Cell (latent / GRU) | Parameters | Reconstruction | Forecast (7 < t <= 10) |
+|---|---:|---:|---:|
+| A (8 / 64) | 24,602 | 0.0882 | 0.3998 |
+| B (16 / 64) | 27,186 | 0.0462 | 0.5199 |
+| C (8 / 128) | 63,642 | 0.0619 | 0.4248 |
+| D (16 / 128) | 67,250 | 0.0412 | 0.5936 |
+
+Linear interpolation scores 0.0672 (reconstruction) and hold-last 1.0238 (forecast).
+* Larger encoders reconstruct much better (all three larger cells, all five families).
+* Over the full 7 to 10 window the latent-only cell B and the combined cell D forecast worse than A, but **widening the GRU alone (C) made no clearly distinguishable overall difference**, and the difference appears only late in the horizon (larger cells are better just after t = 7).
+* These differences are of the same order as the run-to-run variation between identically configured runs (+22% and +21% for two pairs; the earlier five-seed two-shape study has a forecast coefficient of variation of about 23%). **Nothing here is confirmed across training seeds**, and no cause of the forecasting differences has been established.
+
+## Known limitations
+* **Unified models forecast worse than specialists**, and seed-to-seed variation is large (forecast SD about 0.05 over 5 seeds). Most unified results are single-seed or few-seed.
+* **Observation count.** The models were trained with exactly 30 observations and become several times worse than simple interpolation at 10, 20, 40 or 50. A variable-count model (experimental) fixes reconstruction but doubles the forecast error at 30.
+* **Forecast accuracy decays** over the 3-unit horizon (phase lead, radius drift); large or expanding spirals are hardest.
+* **Out-of-family generalisation is weak**: unseen shapes are mapped toward the nearest learned one. On the five-family data the frozen three-shape model is worse than hold-last at forecasting figure-eight and sinusoid, and far worse than linear interpolation at reconstructing them (Results 9). This is one model, one seed; there is no leave-one-family-out experiment.
+* **The five-family and model-size results are single-seed and exploratory.** Nothing in Results 9 and 10 is confirmed across training seeds, and run-to-run variation between identically configured runs (about 21 to 22% in mean forecast RMSE in two pairs; about 23% coefficient of variation in the five-seed two-shape study) is of the same order as the differences between model sizes. The forecast difference between model sizes appears late in the 7 to 10 horizon; its cause is **not established** (the observed-points-only training objective is a hypothesis, not a tested explanation).
+* **Baselines are only naive.** Forecasts are compared with hold-last and constant velocity, reconstruction with linear interpolation. No per-family parametric fit or sequence-model baseline has been run, and no method that improves forecasting has been developed or tested.
+* **Reconstruction of the baseline five-shape model is not better than linear interpolation** on any family; the larger variants in Results 10 are.
+* **No transfer to real GPS** (above). Classical PCHIP / cubic interpolation is far better on GeoLife with 30 observations; a learned model has to beat 5–6 m to be useful there.
+* GeoLife evidence is from one dataset, mostly in Beijing, with 200-record windows of dense data; segment rules and the "straight / curved / turning" categories are documented choices.
+* Training solver is torchdiffeq's fixed-step `rk4` (the Runge-Kutta 3/8 rule, fourth order; step 0.1), with direct backpropagation and no adjoint. Predictions at query times that fall between solver steps are linearly interpolated, so they are not fourth-order accurate. The measured effect on RMSE is about 2e-4 (checked against rk4 at step 0.025 and tight dopri5, `audit/verify_2_solver.py`; an earlier check against dopri5 gave a mean difference of 0.0009). Most runs were still improving at the last epoch (selected epochs 288 to 299 of 300).
+* No claim is made of a new architecture, of disentangled representations, of universal trajectory generalisation, or of novelty for conditioning.
+
+## Repository structure
+```
+configs/            training configs (model_d.yaml, conditioning/, geolife.yaml, capacity_scaling.yaml, ablation_2x2.yaml)
+src/glo/            model.py, solver.py, pipeline.py, data.py, five_shapes.py, evaluation.py, inference.py, geolife.py, geolife_evaluation.py
+scripts/            01-12 data/train/evaluate/studies, 20-23 GeoLife, 30-31 five-family data and evaluation, 32 capacity scaling, 33-34 2x2 ablation and checkpoint-selection audit,
+                    run_capacity_scaling.sh, run_ablation_2x2.sh, predict_trajectory.py, package_models.py, check_publication_readiness.py
+audit/              read-only verification scripts behind PROJECT_COMPLETION_AUDIT.md, and the generators of the corrected reports (build_*.py)
+PROJECT_COMPLETION_AUDIT.md   independent verification of implementation, data, results and completion status
+saved_models/       frozen pretrained models (10 published) + README / inventory (weights, architecture, preprocessing, metadata, SHA-256)
+checkpoints/        all training checkpoints and per-epoch histories (validation/, conditioning/, improved_two_shapes/)
+data/processed/     synthetic datasets (two_shapes, three_shapes, five_shapes); data/geolife/ holds only SOURCE.md (GeoLife is not distributed)
+input_trajectories/ example CSV inputs;  inference_outputs/  example predictions
+reports/            technical reports (failure analysis, improved results, validation, conditioning, five trajectory families, GeoLife audit and transfer, implementation changes, publication readiness)
+results/            metrics, figures and tables from every experiment (GeoLife: aggregate results only); five_shapes/, capacity_scaling/, ablation_2x2/ hold the five-family studies and their reports
+docs/               architecture, datasets, methodology, experiments, results, inference guide, reproducibility, limitations, references, cleanup report
+experiments/        one README per experiment (objective, data, model, training, evaluation, results, reproduction, limitations)
+figures/            architecture and dataset figures (result figures live next to their results in results/ and presentation_results/figures/)
+tests/  unit and integration tests;  logs/  training logs;  backups/  untouched originals
 ```
 
-### Optional: dynamics-conditioned extension
-
-```bash
-python scripts/02_train_model.py --experiment two_shapes --epochs 100 --cond-dim 4
-python scripts/03_evaluate_model.py --checkpoint checkpoints/two_shapes_cond4_best.pt
-```
-
-### Quick engineering smoke test (NOT a trained benchmark)
-
-```bash
-python scripts/02_train_model.py --experiment two_shapes --epochs 1 \
-  --batch-size 4 --n-query 40 --n-obs 10 --max-train-batches 2 --max-val-batches 1 \
-  --checkpoint checkpoints/two_shapes_SMOKE_ONLY.pt
-python scripts/03_evaluate_model.py \
-  --checkpoint checkpoints/two_shapes_SMOKE_ONLY.pt \
-  --n-obs 10 --n-query 40 --max-batches 1 \
-  --output results/SMOKE_ONLY_metrics.json
-```
-
-### Solver note
-
-The official [torchdiffeq](https://github.com/rtqichen/torchdiffeq) library is the intended dependency. If it cannot be imported, the code runs a transparent fixed-step **differentiable RK4** fallback so that data, model, and gradient tests can run without a network connection. The fallback **does not** implement `dopri5` adaptive error control or adjoint differentiation. Never claim the fallback reproduces original NeurIPS paper solvers. With `torchdiffeq` installed, `--solver dopri5` uses the official adaptive implementation; `--adjoint` selects `odeint_adjoint`.
-
-## Generated datasets
-
-Data files are `data/processed/{two_shapes,three_shapes}/{train,val,test}.npz`. Every trajectory has **200 reference timestamps over [0,10]**, and metadata include full clean coordinates, one independently generated noisy observation array, an irregular default observation mask (30 points from `t<=7`), the family ID, a unique trajectory ID, and the exact mathematical generation parameters.
-
-| Experiment | Families | Train | Validation | Test | Total |
-|---|---|---:|---:|---:|---:|
-| Phase 1 | Circle, spiral | 1400 | 300 | 300 | 2000 |
-| Phase 2 | Circle, spiral, ellipse | 2100 | 450 | 450 | 3000 |
-
-Each family supplies 700/150/150 trajectories. The **same circle and spiral trajectories remain in the same split** in the two- and three-family datasets. No trajectory ID appears in multiple splits. Test normalization uses training-set statistics only. A clean dense trajectory stored in the dataset is **not an encoder input**. The noisy prefix is an encoder input; clean points are evaluation targets.
-
-### Family equations
-
-Let `angle = omega*t + phi`, with random positive/negative `omega`, random phase and center `(cx,cy)`.
-
-- **Circle:** `x=cx+r*cos(angle)`, `y=cy+r*sin(angle)`.
-- **Logarithmic spiral:** `R(t)=r0*exp(k*t)`, `x=cx+R(t)*cos(angle)`, `y=cy+R(t)*sin(angle)`; `k` is positive or negative.
-- **Rotated ellipse:** from `u=a*cos(angle), v=b*sin(angle)`, rotate `(u,v)` by `alpha` and translate by `(cx,cy)`.
-
-Parameter ranges are in `src/glo/data.py`; the generated `.npz` files contain exact sampled values for every example. These trajectories are **not the identical original paper spiral dataset**, so do not compare absolute RMSE with Table 2 as if the data were the same.
-
-### Loading a dataset in Python
-
-```python
-import numpy as np
-with np.load('data/processed/two_shapes/train.npz', allow_pickle=False) as z:
-    print(z['xy'].shape)               # (1400, 200, 2)
-    print(z['default_obs_mask'].shape) # (1400, 200)
-    print(z['family'].shape)           # (1400,)
-    print(z['time'].shape)             # (200,)
-```
-
-Shape mappings: `circle=0`, `spiral=1`, `ellipse=2` (ellipse appears only in Phase 2).
-
-## Training and evaluation protocol
-
-- **Time range:** `[0,10]`; encoder sees only samples from the prefix `t<=7`; future target points are at `t>7`.
-- **Batching:** evaluate all trajectories of a batch on a common query time grid, but use different randomly selected irregular context times for each trajectory.
-- **Observation count:** `--n-obs`; must fit within the query grid's `t<=7` prefix. The very first timestamp is always observed so the inferred latent state corresponds to a well-defined initial time.
-- **Default training objective:** `--supervision observed`, i.e. Gaussian reconstruction of *only the noisy observed points* plus KL. For an explicitly more-supervised synthetic experiment, `--supervision full_clean` uses all clean trajectory points (including future) for training targets; do not call that comparable to sparse-observation unsupervised training.
-- **No future leakage during inference:** time-ordered future points are not passed to the encoder. Future ground truth is used only for scoring (or for training targets when the optional fully supervised objective is chosen).
-- **Evaluation:** deterministic posterior mean, test split only; save full test predictions and calculate sample-wise metrics in original coordinate units.
-- **Randomness:** fixed seeds for trajectory generation, split assignment, observation masks, and initialization; rerun with multiple seeds and report mean/std for final publication.
-
-## Evaluation metrics
-
-Evaluation generates overall and per-family metrics in JSON:
-
-- `recon_rmse`: coordinate RMSE on **unobserved prefix** points (`t<=7`, excluding context points).
-- `forecast_rmse`: coordinate RMSE on **future** points (`t>7`).
-- `forecast_mae`: coordinate-wise mean absolute error on future points.
-- `forecast_ade`: mean Euclidean distance on future positions.
-- `forecast_fde`: Euclidean distance at the final future timestamp.
-- `chamfer_full`: squared symmetric Chamfer distance on all predicted/reference XY coordinates. Chamfer is geometric and intentionally ignores time ordering.
-
-Metrics are computed **for each trajectory**, then the JSON reports mean and standard deviation across trajectories. Do not compare with an original Table 2 RMSE number unless trajectory generation, normalization, and precise evaluation interval match.
-
-## Folder guide
-
-```text
-Generalized_Latent_ODE/
-├── configs/                     # Phase 1 and Phase 2 experiment choices
-├── data/processed/
-│   ├── two_shapes/              # 2000 samples (2 families), split files and metadata
-│   └── three_shapes/            # 3000 samples (3 families), split files and metadata
-├── src/glo/
-│   ├── data.py                  # Math, synthetic generation, split validation
-│   ├── solver.py                # torchdiffeq adapter + offline fallback
-│   ├── model.py                 # GRU, variational Latent ODE, optional conditioning
-│   ├── pipeline.py              # Losses, sparse inputs, metrics
-│   └── visualization.py         # Family galleries and prediction plots
-├── scripts/
-│   ├── 01_generate_dataset.py
-│   ├── 02_train_model.py
-│   ├── 03_evaluate_model.py
-│   └── 04_validate_dataset.py
-├── tests/                       # pytest tests, including no-leak and backprop checks
-├── checkpoints/                 # Model files created by training
-├── results/                     # Dataset galleries, evaluation JSON, prediction plots
-└── references/SOURCES_AND_METHODS.md
-```
-
-## Scientific validity / next experiments
-
-1. **Phase 1:** train and score on circles + spirals. Report per-shape performance and visualization, not only a pooled metric.
-2. **Phase 2:** train a *new* shared checkpoint on circles + spirals + ellipses using same architecture, compare under matched training conditions.
-3. **Model capacity:** compare 4, 8, 16 latent dimensions and parameter-matched conditional baselines.
-4. **Sparsity and noise:** vary context counts and testing noise (the `--noise-std` evaluation option supports controlled tests).
-5. **Held-out family:** train on two families and evaluate on ellipse via a *separately constructed leave-one-family-out dataset*. Do not use Phase 2's ellipse test set to claim unseen-family generalization, because its training set contains ellipses.
-6. **Broader families:** figure-eight, sinusoidal, and damped oscillator trajectories; real timestamped trajectory datasets.
-
-**Novelty boundary:** one model learning circles, ellipses and spirals is an experimental extension, not by itself proof of a novel architecture. A paper needs demonstrable improvements over strong baselines and a relevant prior-work search.
+## Reproducibility
+* Fixed seeds everywhere; each study records its seeds. Inference is bit-reproducible on CPU with one thread (verified: byte-identical outputs).
+* Checkpoints are never overwritten by the scripts; `saved_models/*/metadata.json` records the SHA-256 and the original checkpoint path, and every load verifies the checksum.
+* Everything in [`reports/`](reports/) is generated by the scripts in `scripts/` from the data and checkpoints in this repository (GeoLife steps need the dataset you download yourself).
+* The corrected 2x2 ablation report and the five-family report are generated from the saved results by `audit/build_corrected_ablation_report.py` and `audit/build_five_shapes_report.py`; `audit/verify_*.py` re-check data, solver, statistics, training runs and the written tables (read-only). The uncorrected original ablation report is preserved as `results/ablation_2x2/ABLATION_2X2_REPORT.original_uncorrected.md`.
+* `python scripts/check_publication_readiness.py` re-verifies all packaged models and the repository contents; see [`reports/publication_readiness_report.md`](reports/publication_readiness_report.md).
+* GeoLife pipeline: `python scripts/20_inspect_geolife.py && python scripts/21_evaluate_geolife_transfer.py all && python scripts/22_geolife_training_data.py` (then train, then `scripts/23_geolife_trained_models.py package evaluate`; commands in the GeoLife report, §12).
 
 ## References
+* R. T. Q. Chen, Y. Rubanova, J. Bettencourt, D. Duvenaud. *Neural Ordinary Differential Equations.* NeurIPS 2018. arXiv:1806.07366.
+* Y. Rubanova, R. T. Q. Chen, D. Duvenaud. *Latent ODEs for Irregularly-Sampled Time Series.* NeurIPS 2019. arXiv:1907.03907.
+* `torchdiffeq` (R. T. Q. Chen, MIT licence): https://github.com/rtqichen/torchdiffeq. Used as a dependency; no upstream source is vendored.
+* A. Norcliffe et al. *Neural ODE Processes.* ICLR 2021. · V. Linial et al. *Generative ODE modeling with known unknowns (GOKU-nets).* CHIL 2021. · M. Kirchmeyer et al. *Generalizing to new physical systems via context-informed dynamics model (CoDA).* ICML 2022. · Y. Yin et al. *LEADS.* NeurIPS 2021. (Literature notes and caveats: [`reports/conditioning_study_report.md`](reports/conditioning_study_report.md).)
+* GeoLife: Y. Zheng, L. Zhang, X. Xie, W.-Y. Ma. *Mining interesting locations and travel sequences from GPS trajectories.* WWW 2009. · Y. Zheng, Q. Li, Y. Chen, X. Xie, W.-Y. Ma. *Understanding mobility based on GPS data.* UbiComp 2008. · Y. Zheng, X. Xie, W.-Y. Ma. *GeoLife: A collaborative social networking service among user, location and trajectory.* IEEE Data Eng. Bull. 33(2), 2010.
 
-- Chen, Rubanova, Bettencourt and Duvenaud, *Neural Ordinary Differential Equations*, NeurIPS 2018, Section 5 (uploaded paper).
-- [rtqichen/torchdiffeq](https://github.com/rtqichen/torchdiffeq), particularly [`examples/latent_ode.py`](https://github.com/rtqichen/torchdiffeq/blob/master/examples/latent_ode.py).
-- [YuliaRubanova/latent_ode](https://github.com/YuliaRubanova/latent_ode) (Rubanova et al., 2019, separate follow-up work).
-
-See `references/SOURCES_AND_METHODS.md` for specific source-to-implementation mapping and differences.
-
-## Sampling new trajectories after training
-
-The **unconditioned** Latent ODE defines a normal prior on the initial state, so it can sample entirely new trajectories without receiving an observation sequence:
-
-```bash
-python scripts/05_sample_from_prior.py \
-  --checkpoint checkpoints/two_shapes_cond0_best.pt \
-  --n-samples 12 --output-prefix results/prior_generated
-```
-
-This generates a `.npz` file containing `generated_xy` of shape `(12,200,2)` and a PNG gallery. The generated family is **not controlled** by a class label; prior sampling does not guarantee circles or spirals unless the model has learned a sufficiently good data distribution. The optional conditional extension currently learns `c` from observations and does not define a generative prior over `c`, so unconditional sampling from it is deliberately blocked.
+## License
+**This repository has no LICENSE file.** No license has been chosen yet; until one is added, all rights are reserved by the authors. The GeoLife dataset is governed by its own Microsoft Research License Agreement (non-commercial use only).

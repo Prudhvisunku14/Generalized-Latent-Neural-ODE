@@ -1,0 +1,536 @@
+{
+  "test_segments": 1000,
+  "test_users": 97,
+  "strategies": {
+    "frozen_three_shapes": {
+      "name": "S3_obsmean_rms_p95",
+      "center": "obs_mean",
+      "spread": "obs_rms",
+      "target": 1.665,
+      "rotate": 0.0,
+      "offset": [
+        0.0,
+        0.0
+      ]
+    },
+    "others": {
+      "name": "S1_obsmean_rms_1.0",
+      "center": "obs_mean",
+      "spread": "obs_rms",
+      "target": 1.0,
+      "rotate": 0.0,
+      "offset": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "note": "same segments and observation subsets as results/geolife/main_evaluation (seeds identical); RMSE in metres; frozen_three_shapes_S1 = the frozen model with the GeoLife-trained models' normalisation (control for normalisation)",
+  "interpolation": {
+    "10": {
+      "linear": {
+        "median": 20.24403071323772,
+        "mean": 39.5109421226778,
+        "median_ci95_user_bootstrap": [
+          17.57747496413992,
+          24.342865899574424
+        ],
+        "win_rate_vs_linear": 0.0,
+        "win_rate_vs_pchip": 0.307,
+        "geometric_mean_ratio_vs_linear": 1.0
+      },
+      "cubic": {
+        "median": 20.79242858254905,
+        "mean": 44.848586509099384,
+        "median_ci95_user_bootstrap": [
+          17.501530470245175,
+          25.191417689397895
+        ],
+        "win_rate_vs_linear": 0.503,
+        "win_rate_vs_pchip": 0.372,
+        "geometric_mean_ratio_vs_linear": 1.034616775999078
+      },
+      "pchip": {
+        "median": 17.476693887858623,
+        "mean": 34.37508652047752,
+        "median_ci95_user_bootstrap": [
+          14.880680963624654,
+          21.102722429935522
+        ],
+        "win_rate_vs_linear": 0.693,
+        "win_rate_vs_pchip": 0.0,
+        "geometric_mean_ratio_vs_linear": 0.8601198556393758
+      },
+      "frozen_three_shapes": {
+        "median": 190.30365658720808,
+        "mean": 390.25388245947346,
+        "median_ci95_user_bootstrap": [
+          155.4015971735318,
+          221.47047890189262
+        ],
+        "win_rate_vs_linear": 0.001,
+        "win_rate_vs_pchip": 0.001,
+        "geometric_mean_ratio_vs_linear": 8.546629590398103
+      },
+      "frozen_three_shapes_S1": {
+        "median": 290.0953127104757,
+        "mean": 622.6720163508481,
+        "median_ci95_user_bootstrap": [
+          242.59821850435722,
+          340.0217673802256
+        ],
+        "win_rate_vs_linear": 0.0,
+        "win_rate_vs_pchip": 0.0,
+        "geometric_mean_ratio_vs_linear": 13.263310928096226
+      },
+      "geolife_scratch": {
+        "median": 119.57749290183486,
+        "mean": 241.41366990749077,
+        "median_ci95_user_bootstrap": [
+          99.49427693336357,
+          137.39157752474904
+        ],
+        "win_rate_vs_linear": 0.004,
+        "win_rate_vs_pchip": 0.005,
+        "geometric_mean_ratio_vs_linear": 5.4447025927424075
+      },
+      "geolife_finetuned_from_three_shapes": {
+        "median": 191.66779954074696,
+        "mean": 419.99249848243045,
+        "median_ci95_user_bootstrap": [
+          159.8441053418482,
+          231.1400141973493
+        ],
+        "win_rate_vs_linear": 0.004,
+        "win_rate_vs_pchip": 0.003,
+        "geometric_mean_ratio_vs_linear": 8.964832001513335
+      }
+    },
+    "20": {
+      "linear": {
+        "median": 10.80229786751384,
+        "mean": 20.082621062614784,
+        "median_ci95_user_bootstrap": [
+          8.93810004057197,
+          12.776996600552659
+        ],
+        "win_rate_vs_linear": 0.0,
+        "win_rate_vs_pchip": 0.19,
+        "geometric_mean_ratio_vs_linear": 1.0
+      },
+      "cubic": {
+        "median": 9.03915968653185,
+        "mean": 18.46436248297845,
+        "median_ci95_user_bootstrap": [
+          7.534280748235036,
+          10.759027124663833
+        ],
+        "win_rate_vs_linear": 0.622,
+        "win_rate_vs_pchip": 0.441,
+        "geometric_mean_ratio_vs_linear": 0.8671367252245955
+      },
+      "pchip": {
+        "median": 8.665943674845426,
+        "mean": 16.293342994778715,
+        "median_ci95_user_bootstrap": [
+          7.148187885970705,
+          10.253442315411258
+        ],
+        "win_rate_vs_linear": 0.81,
+        "win_rate_vs_pchip": 0.0,
+        "geometric_mean_ratio_vs_linear": 0.8062681289576312
+      },
+      "frozen_three_shapes": {
+        "median": 129.8352252975567,
+        "mean": 273.76018464531785,
+        "median_ci95_user_bootstrap": [
+          114.16215171941914,
+          154.425678551004
+        ],
+        "win_rate_vs_linear": 0.0,
+        "win_rate_vs_pchip": 0.001,
+        "geometric_mean_ratio_vs_linear": 11.743786679744169
+      },
+      "frozen_three_shapes_S1": {
+        "median": 166.01138910073252,
+        "mean": 355.51279386751213,
+        "median_ci95_user_bootstrap": [
+          139.00773015771676,
+          194.08488421489017
+        ],
+        "win_rate_vs_linear": 0.0,
+        "win_rate_vs_pchip": 0.0,
+        "geometric_mean_ratio_vs_linear": 14.631248336816386
+      },
+      "geolife_scratch": {
+        "median": 75.11896375844339,
+        "mean": 151.13609009379383,
+        "median_ci95_user_bootstrap": [
+          63.586573457217675,
+          86.18718126430292
+        ],
+        "win_rate_vs_linear": 0.003,
+        "win_rate_vs_pchip": 0.002,
+        "geometric_mean_ratio_vs_linear": 6.712007447145369
+      },
+      "geolife_finetuned_from_three_shapes": {
+        "median": 94.77859089877032,
+        "mean": 185.88884174301347,
+        "median_ci95_user_bootstrap": [
+          77.70891233531786,
+          107.57793057318602
+        ],
+        "win_rate_vs_linear": 0.001,
+        "win_rate_vs_pchip": 0.0,
+        "geometric_mean_ratio_vs_linear": 8.206799408249411
+      }
+    },
+    "30": {
+      "linear": {
+        "median": 7.099444543408049,
+        "mean": 12.991538683709074,
+        "median_ci95_user_bootstrap": [
+          5.797533880665441,
+          8.476586659402384
+        ],
+        "win_rate_vs_linear": 0.0,
+        "win_rate_vs_pchip": 0.141,
+        "geometric_mean_ratio_vs_linear": 1.0
+      },
+      "cubic": {
+        "median": 5.561430601334137,
+        "mean": 11.64501566796568,
+        "median_ci95_user_bootstrap": [
+          4.6431290477220974,
+          6.902339636585096
+        ],
+        "win_rate_vs_linear": 0.686,
+        "win_rate_vs_pchip": 0.485,
+        "geometric_mean_ratio_vs_linear": 0.7992057657670335
+      },
+      "pchip": {
+        "median": 5.617228596625054,
+        "mean": 10.112770761468898,
+        "median_ci95_user_bootstrap": [
+          4.537706213019059,
+          6.6892755446248735
+        ],
+        "win_rate_vs_linear": 0.859,
+        "win_rate_vs_pchip": 0.0,
+        "geometric_mean_ratio_vs_linear": 0.7775738164952273
+      },
+      "frozen_three_shapes": {
+        "median": 126.40335445867882,
+        "mean": 272.70244649150885,
+        "median_ci95_user_bootstrap": [
+          110.93760331984186,
+          147.93981006760268
+        ],
+        "win_rate_vs_linear": 0.001,
+        "win_rate_vs_pchip": 0.0,
+        "geometric_mean_ratio_vs_linear": 17.27832727081071
+      },
+      "frozen_three_shapes_S1": {
+        "median": 140.20276738581333,
+        "mean": 316.876389100333,
+        "median_ci95_user_bootstrap": [
+          119.71362577902251,
+          164.79784653539343
+        ],
+        "win_rate_vs_linear": 0.0,
+        "win_rate_vs_pchip": 0.0,
+        "geometric_mean_ratio_vs_linear": 18.945854365867394
+      },
+      "geolife_scratch": {
+        "median": 60.618517212999656,
+        "mean": 116.18279470819587,
+        "median_ci95_user_bootstrap": [
+          51.57610333003918,
+          71.66026950756728
+        ],
+        "win_rate_vs_linear": 0.001,
+        "win_rate_vs_pchip": 0.001,
+        "geometric_mean_ratio_vs_linear": 8.22151870507253
+      },
+      "geolife_finetuned_from_three_shapes": {
+        "median": 47.10826037847615,
+        "mean": 84.95620382870091,
+        "median_ci95_user_bootstrap": [
+          42.23981010518969,
+          54.62729713351439
+        ],
+        "win_rate_vs_linear": 0.001,
+        "win_rate_vs_pchip": 0.001,
+        "geometric_mean_ratio_vs_linear": 6.414746979159513
+      }
+    },
+    "40": {
+      "linear": {
+        "median": 4.827515632211245,
+        "mean": 9.209283829358482,
+        "median_ci95_user_bootstrap": [
+          3.964139172551706,
+          5.980711134596905
+        ],
+        "win_rate_vs_linear": 0.0,
+        "win_rate_vs_pchip": 0.112,
+        "geometric_mean_ratio_vs_linear": 1.0
+      },
+      "cubic": {
+        "median": 3.614261078436784,
+        "mean": 7.284286387851277,
+        "median_ci95_user_bootstrap": [
+          3.037940012147717,
+          4.460153052384358
+        ],
+        "win_rate_vs_linear": 0.712,
+        "win_rate_vs_pchip": 0.51,
+        "geometric_mean_ratio_vs_linear": 0.7703514860399324
+      },
+      "pchip": {
+        "median": 3.5693817251614646,
+        "mean": 7.1204349266893185,
+        "median_ci95_user_bootstrap": [
+          3.0631772325221087,
+          4.480254099606991
+        ],
+        "win_rate_vs_linear": 0.888,
+        "win_rate_vs_pchip": 0.0,
+        "geometric_mean_ratio_vs_linear": 0.7681764198268713
+      },
+      "frozen_three_shapes": {
+        "median": 146.5594753865689,
+        "mean": 314.6602334275676,
+        "median_ci95_user_bootstrap": [
+          126.3787398878657,
+          177.5302582192064
+        ],
+        "win_rate_vs_linear": 0.001,
+        "win_rate_vs_pchip": 0.0,
+        "geometric_mean_ratio_vs_linear": 28.20893268477741
+      },
+      "frozen_three_shapes_S1": {
+        "median": 170.64290357412574,
+        "mean": 381.41640146795487,
+        "median_ci95_user_bootstrap": [
+          143.0121801286072,
+          200.48709933471568
+        ],
+        "win_rate_vs_linear": 0.001,
+        "win_rate_vs_pchip": 0.0,
+        "geometric_mean_ratio_vs_linear": 31.967914267925295
+      },
+      "geolife_scratch": {
+        "median": 59.800328687241944,
+        "mean": 107.85871547980312,
+        "median_ci95_user_bootstrap": [
+          49.247681094151076,
+          68.6292498280115
+        ],
+        "win_rate_vs_linear": 0.0,
+        "win_rate_vs_pchip": 0.0,
+        "geometric_mean_ratio_vs_linear": 11.066267350188426
+      },
+      "geolife_finetuned_from_three_shapes": {
+        "median": 76.73061024273184,
+        "mean": 145.96051072468538,
+        "median_ci95_user_bootstrap": [
+          63.84349661535751,
+          90.39853637120687
+        ],
+        "win_rate_vs_linear": 0.0,
+        "win_rate_vs_pchip": 0.0,
+        "geometric_mean_ratio_vs_linear": 14.254675211323551
+      }
+    },
+    "50": {
+      "linear": {
+        "median": 3.7887502719429,
+        "mean": 7.06712082753147,
+        "median_ci95_user_bootstrap": [
+          3.199830283507658,
+          4.556312365526251
+        ],
+        "win_rate_vs_linear": 0.0,
+        "win_rate_vs_pchip": 0.117,
+        "geometric_mean_ratio_vs_linear": 1.0
+      },
+      "cubic": {
+        "median": 2.857879497119529,
+        "mean": 5.503132360110296,
+        "median_ci95_user_bootstrap": [
+          2.402895365265402,
+          3.4143425894217785
+        ],
+        "win_rate_vs_linear": 0.721,
+        "win_rate_vs_pchip": 0.521,
+        "geometric_mean_ratio_vs_linear": 0.755266542969831
+      },
+      "pchip": {
+        "median": 2.9307002964616125,
+        "mean": 5.433525265598548,
+        "median_ci95_user_bootstrap": [
+          2.5010915303225567,
+          3.499785651791749
+        ],
+        "win_rate_vs_linear": 0.883,
+        "win_rate_vs_pchip": 0.0,
+        "geometric_mean_ratio_vs_linear": 0.7642142685558305
+      },
+      "frozen_three_shapes": {
+        "median": 176.91644907000634,
+        "mean": 373.3108035726637,
+        "median_ci95_user_bootstrap": [
+          147.12634702314625,
+          206.45593335175587
+        ],
+        "win_rate_vs_linear": 0.0,
+        "win_rate_vs_pchip": 0.0,
+        "geometric_mean_ratio_vs_linear": 41.667649878471686
+      },
+      "frozen_three_shapes_S1": {
+        "median": 202.17937544396773,
+        "mean": 473.6453562340747,
+        "median_ci95_user_bootstrap": [
+          167.03110938107375,
+          248.9741263663301
+        ],
+        "win_rate_vs_linear": 0.0,
+        "win_rate_vs_pchip": 0.0,
+        "geometric_mean_ratio_vs_linear": 50.058223496779014
+      },
+      "geolife_scratch": {
+        "median": 59.99255776692725,
+        "mean": 105.96375892039578,
+        "median_ci95_user_bootstrap": [
+          49.62181090458916,
+          67.80430841207873
+        ],
+        "win_rate_vs_linear": 0.0,
+        "win_rate_vs_pchip": 0.0,
+        "geometric_mean_ratio_vs_linear": 14.003800415674792
+      },
+      "geolife_finetuned_from_three_shapes": {
+        "median": 115.53823009840926,
+        "mean": 228.50150805937025,
+        "median_ci95_user_bootstrap": [
+          95.35229075482228,
+          131.6901197666843
+        ],
+        "win_rate_vs_linear": 0.0,
+        "win_rate_vs_pchip": 0.0,
+        "geometric_mean_ratio_vs_linear": 27.06488068950708
+      }
+    }
+  },
+  "forecast_n30": {
+    "A": {
+      "hold_last": {
+        "median": 228.92010581081132,
+        "win_rate_vs_const_velocity": 0.361
+      },
+      "const_velocity": {
+        "median": 151.4338524333479,
+        "win_rate_vs_const_velocity": 0.0
+      },
+      "frozen_three_shapes": {
+        "median": 702.19087001608,
+        "win_rate_vs_const_velocity": 0.082
+      },
+      "frozen_three_shapes_S1": {
+        "median": 678.7173210949413,
+        "win_rate_vs_const_velocity": 0.084
+      },
+      "geolife_scratch": {
+        "median": 322.25505836447934,
+        "win_rate_vs_const_velocity": 0.222
+      },
+      "geolife_finetuned_from_three_shapes": {
+        "median": 370.5782097170837,
+        "win_rate_vs_const_velocity": 0.186
+      }
+    },
+    "B": {
+      "hold_last": {
+        "median": 198.55702731926442,
+        "win_rate_vs_const_velocity": 0.352
+      },
+      "const_velocity": {
+        "median": 121.39442556728616,
+        "win_rate_vs_const_velocity": 0.0
+      },
+      "frozen_three_shapes": {
+        "median": 661.4039360765131,
+        "win_rate_vs_const_velocity": 0.075
+      },
+      "frozen_three_shapes_S1": {
+        "median": 654.7238025062343,
+        "win_rate_vs_const_velocity": 0.079
+      },
+      "geolife_scratch": {
+        "median": 286.96816953084607,
+        "win_rate_vs_const_velocity": 0.205
+      },
+      "geolife_finetuned_from_three_shapes": {
+        "median": 324.2071869015851,
+        "win_rate_vs_const_velocity": 0.168
+      }
+    }
+  },
+  "paired_n30": {
+    "geolife_scratch_vs_linear": {
+      "geometric_mean_ratio": 8.22151870507253,
+      "ci95": [
+        7.433682234163452,
+        9.12241611860664
+      ],
+      "win_rate": 0.001,
+      "wilcoxon_p": 6.494689910384135e-165
+    },
+    "geolife_scratch_vs_pchip": {
+      "geometric_mean_ratio": 10.573296747734549,
+      "ci95": [
+        9.373935761151523,
+        11.916002635250365
+      ],
+      "win_rate": 0.001,
+      "wilcoxon_p": 5.327973046935429e-165
+    },
+    "geolife_scratch_vs_frozen_three_shapes": {
+      "geometric_mean_ratio": 0.47582839335157273,
+      "ci95": [
+        0.4560163950820314,
+        0.4966027258122322
+      ],
+      "win_rate": 0.883,
+      "wilcoxon_p": 2.982927241638265e-128
+    },
+    "geolife_finetuned_from_three_shapes_vs_linear": {
+      "geometric_mean_ratio": 6.414746979159513,
+      "ci95": [
+        5.888741448126124,
+        7.007602837707185
+      ],
+      "win_rate": 0.001,
+      "wilcoxon_p": 6.592837583753274e-165
+    },
+    "geolife_finetuned_from_three_shapes_vs_pchip": {
+      "geometric_mean_ratio": 8.249695196878953,
+      "ci95": [
+        7.4361123139137195,
+        9.15368291524145
+      ],
+      "win_rate": 0.001,
+      "wilcoxon_p": 5.047827744920527e-165
+    },
+    "geolife_finetuned_from_three_shapes_vs_frozen_three_shapes": {
+      "geometric_mean_ratio": 0.37125972199845503,
+      "ci95": [
+        0.3540010263410515,
+        0.38886604424664123
+      ],
+      "win_rate": 0.966,
+      "wilcoxon_p": 1.5866795144188262e-160
+    }
+  }
+}

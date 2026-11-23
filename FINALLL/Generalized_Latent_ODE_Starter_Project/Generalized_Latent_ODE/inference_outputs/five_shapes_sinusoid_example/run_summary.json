@@ -1,0 +1,32 @@
+{
+  "input_file": "input_trajectories/example_sinusoid.csv",
+  "model": "five_shapes_unified",
+  "checkpoint": "/home/teaching/Desktop/FINALLL/Generalized_Latent_ODE_Starter_Project/Generalized_Latent_ODE/saved_models/five_shapes_unified/best_model.pt",
+  "checkpoint_sha256": "25ff8da3f54a98a53642215a4000404cc71c8dccbf280ebd84e6553bac281c92",
+  "weights_digest_after_inference": "4f0077d4a5d0938e5a79e97b6b26b928d7d6ba4114b5e0de0b6a446d8c8e7bc0",
+  "n_observations": 30,
+  "observation_time_range": [
+    0.0,
+    6.83417082
+  ],
+  "n_query": 200,
+  "forecast_end": 10.0,
+  "context_end": 7.0,
+  "n_reconstruction_points": 140,
+  "n_forecast_points": 60,
+  "latent_posterior_mean_z0": [
+    2.6937365531921387,
+    0.9211156368255615,
+    0.41210421919822693,
+    -1.8450428247451782,
+    -0.3945968449115753,
+    0.171918585896492,
+    1.613739013671875,
+    -2.049227714538574
+  ],
+  "dynamics_code_c": null,
+  "ground_truth_used_for_metrics_only": "input_trajectories/ground_truth/example_sinusoid.csv",
+  "warnings": [],
+  "shape_label_used": false,
+  "metrics_file": "metrics.json"
+}

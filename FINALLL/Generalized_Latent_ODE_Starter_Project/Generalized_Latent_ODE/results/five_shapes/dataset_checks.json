@@ -1,0 +1,118 @@
+{
+  "split_counts": {
+    "train": 3500,
+    "val": 750,
+    "test": 750
+  },
+  "failures": [],
+  "identical_to_three_shapes_train": {
+    "xy": true,
+    "noisy_xy": true,
+    "default_obs_mask": true,
+    "family": true,
+    "params": true,
+    "time": true
+  },
+  "identical_to_three_shapes_val": {
+    "xy": true,
+    "noisy_xy": true,
+    "default_obs_mask": true,
+    "family": true,
+    "params": true,
+    "time": true
+  },
+  "identical_to_three_shapes_test": {
+    "xy": true,
+    "noisy_xy": true,
+    "default_obs_mask": true,
+    "family": true,
+    "params": true,
+    "time": true
+  },
+  "per_family_split_counts": {
+    "train": {
+      "circle": 700,
+      "spiral": 700,
+      "ellipse": 700,
+      "figure_eight": 700,
+      "sinusoid": 700
+    },
+    "val": {
+      "circle": 150,
+      "spiral": 150,
+      "ellipse": 150,
+      "figure_eight": 150,
+      "sinusoid": 150
+    },
+    "test": {
+      "circle": 150,
+      "spiral": 150,
+      "ellipse": 150,
+      "figure_eight": 150,
+      "sinusoid": 150
+    }
+  },
+  "n_trajectories": 5000,
+  "n_unique_ids": 5000,
+  "figure_eight": {
+    "n": 1000,
+    "all_cover_a_full_eight": true,
+    "all_have_alternating_centre_crossings": true,
+    "centre_passes_min_median_max": [
+      2,
+      4.0,
+      5
+    ],
+    "max_abs_y_offset_at_centre_over_B": 3.702727553900331e-05,
+    "y_to_x_zero_crossing_ratio_median": 2.0,
+    "y_to_x_zero_crossing_ratio_range": [
+      1.6666666666666667,
+      2.5
+    ]
+  },
+  "sinusoid": {
+    "n": 1000,
+    "all_x_monotone": true,
+    "x_linear_max_residual": 0.0,
+    "y_half_range_over_amplitude_min_median_max": [
+      0.9994121996762929,
+      0.9999406850805926,
+      0.9999999247888843
+    ]
+  },
+  "coordinate_scale_per_family": {
+    "circle": {
+      "rms_radius_about_own_centroid_median": 1.015259540681342,
+      "max_abs_coordinate_p95": 1.7197961270809172,
+      "bounding_box_diagonal_median": 2.895447442292044
+    },
+    "spiral": {
+      "rms_radius_about_own_centroid_median": 0.9999440597552594,
+      "max_abs_coordinate_p95": 3.497825396060943,
+      "bounding_box_diagonal_median": 3.3545951359583936
+    },
+    "ellipse": {
+      "rms_radius_about_own_centroid_median": 1.009214372145753,
+      "max_abs_coordinate_p95": 1.7727564871311188,
+      "bounding_box_diagonal_median": 2.898008486598116
+    },
+    "figure_eight": {
+      "rms_radius_about_own_centroid_median": 0.9668646843312336,
+      "max_abs_coordinate_p95": 1.689248889684677,
+      "bounding_box_diagonal_median": 2.764208173574865
+    },
+    "sinusoid": {
+      "rms_radius_about_own_centroid_median": 0.8871592384270821,
+      "max_abs_coordinate_p95": 1.7172176897525788,
+      "bounding_box_diagonal_median": 2.8949721898076595
+    }
+  },
+  "normalization": {
+    "five_shapes_mean": [
+      0.0005477479081453563,
+      0.004288933583313417
+    ],
+    "five_shapes_scale": 0.7943718021596441,
+    "three_shapes_scale": 0.8525610706793283
+  }
+}

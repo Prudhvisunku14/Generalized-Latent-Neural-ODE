@@ -1,0 +1,23 @@
+# Controlled 2 x 2 ablation on the five-shape dataset: latent dimension x GRU encoder width.
+# All four cells are trained with the identical protocol of configs/model_d.yaml (300 epochs, batch 32, lr 3e-3 cosine,
+# KL weight 1, sigma 0.05, seed 42) and a fixed --data-seed, so batch order and training observation subsets are identical
+# across cells. Exact commands: scripts/run_ablation_2x2.sh. The ODE field and decoder keep 64 hidden units x 2 layers.
+# Parameter counts are computed by the code (tests/test_ablation_2x2.py).
+variants:
+  A: {latent_dim: 8,  encoder_hidden: 64,  checkpoint: checkpoints/ablation_2x2/five_shapes_A_lat8_gru64_seed42.pt}
+  B: {latent_dim: 16, encoder_hidden: 64,  checkpoint: checkpoints/ablation_2x2/five_shapes_B_lat16_gru64_seed42.pt}
+  C: {latent_dim: 8,  encoder_hidden: 128, checkpoint: checkpoints/ablation_2x2/five_shapes_C_lat8_gru128_seed42.pt}
+  D: {latent_dim: 16, encoder_hidden: 128, checkpoint: checkpoints/ablation_2x2/five_shapes_D_lat16_gru128_seed42.pt}
+fixed:
+  dynamics_hidden: 64
+  decoder_hidden: 64
+  dynamics_layers: 2
+  decoder_layers: 2
+  experiment: five_shapes
+  seed: 42
+  data_seed: 42
+# Earlier single runs (data_seed unset), kept for reference only; never overwritten.
+references:
+  orig_baseline: checkpoints/five_shapes/five_shapes_seed42.pt
+  orig_medium:   checkpoints/capacity_scaling/five_shapes_medium_seed42.pt
+  orig_large:    checkpoints/capacity_scaling/five_shapes_large_seed42.pt

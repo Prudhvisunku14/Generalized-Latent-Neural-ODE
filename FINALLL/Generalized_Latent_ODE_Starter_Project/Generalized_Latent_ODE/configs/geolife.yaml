@@ -1,0 +1,34 @@
+# GeoLife synthetic-to-real transfer experiment. Thresholds were fixed from the dataset audit (reports/geolife_dataset_audit.md)
+# BEFORE any model was run on GeoLife; none of them was tuned on model accuracy.
+archive: Geolife Trajectories 1.3.zip          # relative to the project root; read in place, never extracted or modified
+archive_sha256: 1107c5ac064d0a23c8d021a8736a77e53abc75b227062e6260342c6a8d86bdb6
+segments:
+  max_gap_s: 60.0
+  max_speed_mps: 70.0
+  window_points: 200
+  min_extent_m: 100.0
+  min_context_points: 60
+  min_future_points: 10
+splits:
+  user_split_seed: 20261115
+  dev_user_fraction: 0.30          # development users: pilot + normalisation-strategy selection + sensitivity analyses
+  max_segments_per_user: 25        # caps heavy users so a few people do not dominate
+  n_dev_segments: 300
+  n_test_segments: 1000
+  sampling_seed: 7
+experiment:
+  model: three_shapes_unified
+  n_obs: 30
+  context_end: 7.0
+  observation_seed_base: 100000    # observation subset seed = base + segment number (+ 1000003 * n_obs for the density study)
+  density_levels: [10, 20, 30, 40, 50]
+  n_pilot: 10
+# Phase 11 (conditional; started only after the frozen-transfer evaluation was complete and had failed)
+real_training:
+  user_split_seed: 20261116
+  val_user_fraction: 0.20          # of the DEVELOPMENT users; test users are never used for training or selection
+  max_windows_per_user_train: 200
+  max_windows_per_user_val: 100
+  sampling_seed: 3
+  normalisation: per segment, centre = mean of the 140 context records, RMS distance about it mapped to 1.0 model unit
+  evaluation_strategy: S1_obsmean_rms_1.0   # same convention at test time, fitted on the 30 observations only

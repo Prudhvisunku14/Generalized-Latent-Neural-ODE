@@ -41,6 +41,11 @@ MODEL_REGISTRY = {
     'spiral_specialist': 'specialists/spiral',
     'dynamics_conditioned': 'experimental/dynamics_conditioned',
     'variable_nobs_experimental': 'experimental/variable_nobs',
+    'five_shapes_unified': 'five_shapes_unified',
+    'ablation_2x2_A': 'ablation_2x2/A_lat8_gru64',
+    'ablation_2x2_B': 'ablation_2x2/B_lat16_gru64',
+    'ablation_2x2_C': 'ablation_2x2/C_lat8_gru128',
+    'ablation_2x2_D': 'ablation_2x2/D_lat16_gru128',
 }
 DEFAULT_MODEL = 'three_shapes_unified'
 
@@ -102,6 +107,17 @@ def load_packaged_model(name: str, saved_root, device='cpu') -> LoadedModel:
         raise ModelUnavailableError(
             f"Model '{name}' is not available: {ckpt_path} does not exist. It was NOT substituted by another "
             f"model. Packaged models: {', '.join(have) if have else 'none'}.")
+    return load_model_folder(folder, name, device)
+
+
+def load_model_folder(folder, name: str | None = None, device='cpu') -> LoadedModel:
+    """Load and verify a packaged model folder (best_model.pt + model_config/preprocessing/metadata JSON) that is not
+    in MODEL_REGISTRY, e.g. saved_models/geolife_trained/*. Same checks as load_packaged_model."""
+    folder = Path(folder)
+    name = name or folder.name
+    ckpt_path = folder / 'best_model.pt'
+    if not ckpt_path.exists():
+        raise ModelUnavailableError(f"{ckpt_path} does not exist")
     missing = [f for f in ('model_config.json', 'preprocessing.json', 'metadata.json') if not (folder / f).exists()]
     if missing:
         raise ModelUnavailableError(f"{folder} is incomplete; missing {missing}")
@@ -205,7 +221,7 @@ def read_observations(path, preprocessing: dict, trained_n_obs: int | None = Non
     if trained_n_obs and n != trained_n_obs:
         warnings.append(f"{n} observations supplied but this model was trained with {trained_n_obs}. Variable-length input is "
                         f"technically supported, yet accuracy away from {trained_n_obs} was only validated for the counts in "
-                        f"docs/PRETRAINED_INFERENCE_GUIDE.md and can be much worse.")
+                        f"docs/INFERENCE_GUIDE.md and can be much worse.")
     lim = preprocessing.get('coordinate_abs_max_train')
     if lim and np.abs(xy).max() > 1.5 * lim:
         warnings.append(f"Coordinates reach |{np.abs(xy).max():.3g}|, beyond 1.5x the training range ({lim:.3g}). "

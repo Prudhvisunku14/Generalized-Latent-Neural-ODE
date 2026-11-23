@@ -1,0 +1,24 @@
+# Capacity-scaling study on the five-shape dataset. Every variant uses configs/model_d.yaml unchanged except the keys
+# listed here (exact launch commands: scripts/run_capacity_scaling.sh). The ODE vector field and decoder keep their
+# Model D widths (64 hidden units, 2 hidden layers, tanh); only their input/output size follows latent_dim.
+# Parameter counts are computed by the code (tests/test_capacity_scaling.py), not written here by hand.
+variants:
+  baseline:   # the existing five-shape model; NOT retrained
+    latent_dim: 8
+    encoder_hidden: 64
+    checkpoint: checkpoints/five_shapes/five_shapes_seed42.pt
+  medium:
+    latent_dim: 16
+    encoder_hidden: 128
+    checkpoint: checkpoints/capacity_scaling/five_shapes_medium_seed42.pt
+  large:
+    latent_dim: 32
+    encoder_hidden: 128
+    checkpoint: checkpoints/capacity_scaling/five_shapes_large_seed42.pt
+fixed:
+  dynamics_hidden: 64
+  decoder_hidden: 64
+  dynamics_layers: 2
+  decoder_layers: 2
+  experiment: five_shapes
+  seed: 42

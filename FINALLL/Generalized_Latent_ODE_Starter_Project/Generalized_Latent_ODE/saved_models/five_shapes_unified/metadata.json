@@ -1,0 +1,77 @@
+{
+  "model_name": "five_shapes_unified",
+  "description": "Unified Latent ODE (Model D configuration) trained on circles, spirals, ellipses, figure-eights and sinusoids",
+  "training_families": [
+    "circle",
+    "spiral",
+    "ellipse",
+    "figure_eight",
+    "sinusoid"
+  ],
+  "n_parameters": 24602,
+  "training_seed": 42,
+  "best_checkpoint_epoch": 297,
+  "epochs_configured": 300,
+  "training_n_obs": 30,
+  "ode_solver": "rk4 (fixed step 0.1)",
+  "original_checkpoint": "checkpoints/five_shapes/five_shapes_seed42.pt",
+  "sha256": "25ff8da3f54a98a53642215a4000404cc71c8dccbf280ebd84e6553bac281c92",
+  "file_size_bytes": 106130,
+  "training_dataset": "five_shapes",
+  "best_val_neg_elbo": 48.497645139694214,
+  "selection": "single run (seed 42); checkpoint with the lowest validation -ELBO during training (test data never used)",
+  "test_performance (n_obs=30, original units, posterior mean, per-trajectory RMSE averaged; recorded after training)": {
+    "overall": {
+      "recon_rmse": 0.09076,
+      "forecast_rmse": 0.32651,
+      "forecast_mae": 0.26898,
+      "forecast_ade": 0.4187,
+      "forecast_fde": 0.66109,
+      "chamfer_full": 0.05397
+    },
+    "circle": {
+      "recon_rmse": 0.07006,
+      "forecast_rmse": 0.25942,
+      "forecast_mae": 0.20621,
+      "forecast_ade": 0.32129,
+      "forecast_fde": 0.59955,
+      "chamfer_full": 0.01925
+    },
+    "spiral": {
+      "recon_rmse": 0.11314,
+      "forecast_rmse": 0.42703,
+      "forecast_mae": 0.35832,
+      "forecast_ade": 0.56243,
+      "forecast_fde": 0.86086,
+      "chamfer_full": 0.11176
+    },
+    "ellipse": {
+      "recon_rmse": 0.09731,
+      "forecast_rmse": 0.26087,
+      "forecast_mae": 0.21381,
+      "forecast_ade": 0.33377,
+      "forecast_fde": 0.52238,
+      "chamfer_full": 0.02403
+    },
+    "figure_eight": {
+      "recon_rmse": 0.10858,
+      "forecast_rmse": 0.29917,
+      "forecast_mae": 0.2437,
+      "forecast_ade": 0.37653,
+      "forecast_fde": 0.56164,
+      "chamfer_full": 0.02483
+    },
+    "sinusoid": {
+      "recon_rmse": 0.06472,
+      "forecast_rmse": 0.38605,
+      "forecast_mae": 0.32287,
+      "forecast_ade": 0.49949,
+      "forecast_fde": 0.76102,
+      "chamfer_full": 0.09
+    },
+    "n_test_trajectories": 750,
+    "source": "results/five_shapes/compare_three_vs_five.json"
+  },
+  "caveat": "single training seed; see reports/five_shapes_report.md and docs/RESEARCH_LIMITATIONS.md",
+  "torch_version": "2.5.1+cu121"
+}

@@ -25,7 +25,7 @@ p = argparse.ArgumentParser(
     description='Reconstruct (0 <= t <= 7) and forecast (7 < t <= 10) a 2-D trajectory from sparse noisy observations using a '
                 'frozen pretrained Latent Neural ODE. No retraining; no shape label is needed or used.',
     epilog='CSV format: header row "t,x,y", one observation per row, t in [0, 7] (the context interval), same coordinate units as '
-           'training. Extra columns are ignored. See docs/PRETRAINED_INFERENCE_GUIDE.md.',
+           'training. Extra columns are ignored. See docs/INFERENCE_GUIDE.md.',
     formatter_class=argparse.RawDescriptionHelpFormatter)
 p.add_argument('--model', default=inf.DEFAULT_MODEL, choices=CHOICES, metavar='NAME',
                help=f"Pretrained model to use. One of: {', '.join(CHOICES)}. Default: {inf.DEFAULT_MODEL}. A model that is not "

@@ -211,7 +211,11 @@ def test_cli_reports_bad_input_and_unavailable_model(tmp_path):
 @need_models
 @need_examples
 def test_cli_batch_mode(tmp_path):
-    r = run_cli('--input', EXAMPLES, '--output', tmp_path / 'batch', '--ground-truth-dir', EXAMPLES / 'ground_truth', '--quiet')
+    import shutil
+    inp = tmp_path / 'inputs'; inp.mkdir()          # only the three examples (other user files may live in EXAMPLES)
+    for stem in ('example_circle', 'example_spiral', 'example_ellipse'):
+        shutil.copy(EXAMPLES / f'{stem}.csv', inp)
+    r = run_cli('--input', inp, '--output', tmp_path / 'batch', '--ground-truth-dir', EXAMPLES / 'ground_truth', '--quiet')
     assert r.returncode == 0, r.stderr
     for stem in ('example_circle', 'example_spiral', 'example_ellipse'):
         assert (tmp_path / 'batch' / stem / 'predicted_trajectory.csv').exists()

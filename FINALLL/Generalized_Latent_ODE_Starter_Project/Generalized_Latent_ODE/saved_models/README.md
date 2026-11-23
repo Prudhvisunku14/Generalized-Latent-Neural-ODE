@@ -2,7 +2,7 @@
 
 Frozen, verified copies of the trained Latent Neural ODE checkpoints. Nothing here is retrained; every
 `best_model.pt` is **byte-identical (SHA-256)** to the original file in `checkpoints/`, which is left untouched.
-Use them with `scripts/predict_trajectory.py` (see `docs/PRETRAINED_INFERENCE_GUIDE.md`).
+Use them with `scripts/predict_trajectory.py` (see `docs/INFERENCE_GUIDE.md`).
 
 ## Available models
 
@@ -14,10 +14,15 @@ Use them with `scripts/predict_trajectory.py` (see `docs/PRETRAINED_INFERENCE_GU
 | `spiral_specialist` | `specialists/spiral/` | spirals only | 24,602 | 42 | 585 | `checkpoints/validation/spiral_only_seed42.pt` |
 | `dynamics_conditioned` (M3, experimental) | `experimental/dynamics_conditioned/` | circles, spirals | 25,118 | 2025 | 299 | `checkpoints/conditioning/m3_conditioned_seed2025.pt` |
 | `variable_nobs_experimental` (experimental) | `experimental/variable_nobs/` | circles, spirals; random 10–50 observations per batch | 24,602 | 42 | 299 | `checkpoints/validation/ablation_variable_nobs_seed42.pt` |
+| `five_shapes_unified` | `five_shapes_unified/` | circles, spirals, ellipses, figure-eights, sinusoids | 24,602 | 42 | 297 | `checkpoints/five_shapes/five_shapes_seed42.pt` |
+| `ablation_2x2_A` (2×2 ablation) | `ablation_2x2/A_*/` | five families, `--data-seed 42` | 24,602 | 42 | 294 | `checkpoints/ablation_2x2/five_shapes_A_lat8_gru64_seed42.pt` |
+| `ablation_2x2_B` (2×2 ablation) | `ablation_2x2/B_*/` | five families, `--data-seed 42` | 27,186 | 42 | 299 | `checkpoints/ablation_2x2/five_shapes_B_lat16_gru64_seed42.pt` |
+| `ablation_2x2_C` (2×2 ablation) | `ablation_2x2/C_*/` | five families, `--data-seed 42` | 63,642 | 42 | 299 | `checkpoints/ablation_2x2/five_shapes_C_lat8_gru128_seed42.pt` |
+| `ablation_2x2_D` (2×2 ablation) | `ablation_2x2/D_*/` | five families, `--data-seed 42` | 67,250 | 42 | 296 | `checkpoints/ablation_2x2/five_shapes_D_lat16_gru128_seed42.pt` |
 
 Each folder contains `best_model.pt`, `model_config.json` (architecture), `preprocessing.json` (normalisation and
 time conventions) and `metadata.json` (provenance, checksum, validation and test performance). Everything was found; no
-checkpoint is missing and nothing had to be retrained. `selection_report.json` lists every candidate that was scored and
+checkpoint is missing and nothing had to be retrained. `five_shapes_unified` and the four `ablation_2x2_*` models were added later by `scripts/package_five_shapes_model.py` (byte-identical copies; single training seed; each passed a load + CLI smoke test with finite 200-point output on a held-out example; those smoke tests are not accuracy evaluations). `selection_report.json` lists every candidate that was scored and
 every checkpoint that was excluded (with the reason), and `verification_report.json` records the load checks.
 
 ### How the checkpoint for each model was chosen
@@ -86,3 +91,12 @@ These are single checkpoints; do not read them as seed-averaged performance.
 ## Integrity and re-building
 `metadata.json → sha256` is checked on every load; a mismatch refuses to load. To rebuild this folder from `checkpoints/`:
 `python scripts/package_models.py --force`.
+
+## Inventory: what is and is not published on GitHub
+| Models | Published? |
+|---|---|
+| `three_shapes_unified`, `two_shapes_unified`, `circle_specialist`, `spiral_specialist`, `dynamics_conditioned`, `variable_nobs_experimental`, `five_shapes_unified`, `ablation_2x2_A` to `D` (10 models) | **Yes**, ~0.1 to 0.3 MB each; no Git LFS needed |
+| Capacity-scaling `medium`/`large` models | Training checkpoints only (`checkpoints/capacity_scaling/`); no packaged inference folder |
+| GeoLife-trained models (`saved_models/geolife_trained/`: from scratch, fine-tuned) | **No.** Kept locally. They are derived from the GeoLife dataset (Microsoft Research non-commercial licence) and the redistribution question is open. Recommended distribution: retrain locally from your own GeoLife download with `scripts/22_geolife_training_data.py` and `scripts/23_geolife_trained_models.py`, or ask the licence holder before releasing weights. |
+
+The inference CLI uses these folders; the repository keeps this folder name (`saved_models/`) instead of `models/` so that every script, test and checksum record stays valid.

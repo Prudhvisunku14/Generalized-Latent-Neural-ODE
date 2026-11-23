@@ -1,0 +1,320 @@
+{
+  "failures": [],
+  "warnings": [
+    "53 text files mention the local path /home/teaching (harmless provenance, not a credential)"
+  ],
+  "models": {
+    "three_shapes_unified": {
+      "folder": "saved_models/three_shapes_unified",
+      "sha256": "8a4813dacb8bb19ac16282003f647dc7247d8901ba7e7eef966bb3aaa95501a8",
+      "size_bytes": 106024,
+      "sha256_matches_metadata": true,
+      "identical_to_original_checkpoint": true,
+      "loads": true,
+      "n_parameters": 24602,
+      "inference_output_shape": [
+        50,
+        2
+      ],
+      "inference_finite": true,
+      "weights_unchanged_by_inference": true,
+      "has_config_preprocessing_metadata": true
+    },
+    "two_shapes_unified": {
+      "folder": "saved_models/two_shapes_unified",
+      "sha256": "13cfd82117909a50f0c8e30674395b4ca7d1f95f28c1cd8686388dd3f884dc8e",
+      "size_bytes": 106024,
+      "sha256_matches_metadata": true,
+      "identical_to_original_checkpoint": true,
+      "loads": true,
+      "n_parameters": 24602,
+      "inference_output_shape": [
+        50,
+        2
+      ],
+      "inference_finite": true,
+      "weights_unchanged_by_inference": true,
+      "has_config_preprocessing_metadata": true
+    },
+    "circle_specialist": {
+      "folder": "saved_models/specialists/circle",
+      "sha256": "b4d1f4a7afcb29719c9b8a2c3633f0a96af06d9607f1a47220c77b8138c8216d",
+      "size_bytes": 106066,
+      "sha256_matches_metadata": true,
+      "identical_to_original_checkpoint": true,
+      "loads": true,
+      "n_parameters": 24602,
+      "inference_output_shape": [
+        50,
+        2
+      ],
+      "inference_finite": true,
+      "weights_unchanged_by_inference": true,
+      "has_config_preprocessing_metadata": true
+    },
+    "spiral_specialist": {
+      "folder": "saved_models/specialists/spiral",
+      "sha256": "ad99deebf33fdeb47e57749e04a20f4785b78f3d2892d4975438336f3ac13244",
+      "size_bytes": 106066,
+      "sha256_matches_metadata": true,
+      "identical_to_original_checkpoint": true,
+      "loads": true,
+      "n_parameters": 24602,
+      "inference_output_shape": [
+        50,
+        2
+      ],
+      "inference_finite": true,
+      "weights_unchanged_by_inference": true,
+      "has_config_preprocessing_metadata": true
+    },
+    "dynamics_conditioned": {
+      "folder": "saved_models/experimental/dynamics_conditioned",
+      "sha256": "fd3297b4ac59388293d8c9f2fc7f674973e566fe9927eb160411a4f0ad5f6a8e",
+      "size_bytes": 108954,
+      "sha256_matches_metadata": true,
+      "identical_to_original_checkpoint": true,
+      "loads": true,
+      "n_parameters": 25118,
+      "inference_output_shape": [
+        50,
+        2
+      ],
+      "inference_finite": true,
+      "weights_unchanged_by_inference": true,
+      "has_config_preprocessing_metadata": true
+    },
+    "variable_nobs_experimental": {
+      "folder": "saved_models/experimental/variable_nobs",
+      "sha256": "684b3f195f1b0106345f700b8e4d4116e07a5296a53795ce78471b710124fb80",
+      "size_bytes": 106372,
+      "sha256_matches_metadata": true,
+      "identical_to_original_checkpoint": true,
+      "loads": true,
+      "n_parameters": 24602,
+      "inference_output_shape": [
+        50,
+        2
+      ],
+      "inference_finite": true,
+      "weights_unchanged_by_inference": true,
+      "has_config_preprocessing_metadata": true
+    },
+    "five_shapes_unified": {
+      "folder": "saved_models/five_shapes_unified",
+      "sha256": "25ff8da3f54a98a53642215a4000404cc71c8dccbf280ebd84e6553bac281c92",
+      "size_bytes": 106130,
+      "sha256_matches_metadata": true,
+      "identical_to_original_checkpoint": true,
+      "loads": true,
+      "n_parameters": 24602,
+      "inference_output_shape": [
+        50,
+        2
+      ],
+      "inference_finite": true,
+      "weights_unchanged_by_inference": true,
+      "has_config_preprocessing_metadata": true
+    },
+    "ablation_2x2_A": {
+      "folder": "saved_models/ablation_2x2/A_lat8_gru64",
+      "sha256": "7b3e91030c63e28196f06752f53c313d2493cff6f9a1af4667970058b1800241",
+      "size_bytes": 106544,
+      "sha256_matches_metadata": true,
+      "identical_to_original_checkpoint": true,
+      "loads": true,
+      "n_parameters": 24602,
+      "inference_output_shape": [
+        50,
+        2
+      ],
+      "inference_finite": true,
+      "weights_unchanged_by_inference": true,
+      "has_config_preprocessing_metadata": true
+    },
+    "ablation_2x2_B": {
+      "folder": "saved_models/ablation_2x2/B_lat16_gru64",
+      "sha256": "a6bef5c9d9bc065b7e3b2008ebbfcf9cc9c4bb63fdad55aed83642cc94e16813",
+      "size_bytes": 116934,
+      "sha256_matches_metadata": true,
+      "identical_to_original_checkpoint": true,
+      "loads": true,
+      "n_parameters": 27186,
+      "inference_output_shape": [
+        50,
+        2
+      ],
+      "inference_finite": true,
+      "weights_unchanged_by_inference": true,
+      "has_config_preprocessing_metadata": true
+    },
+    "ablation_2x2_C": {
+      "folder": "saved_models/ablation_2x2/C_lat8_gru128",
+      "sha256": "6c69a2c49e8a2a9933ed9b9dffe721e275044dc0c7abf6471a9936ceb267e103",
+      "size_bytes": 262726,
+      "sha256_matches_metadata": true,
+      "identical_to_original_checkpoint": true,
+      "loads": true,
+      "n_parameters": 63642,
+      "inference_output_shape": [
+        50,
+        2
+      ],
+      "inference_finite": true,
+      "weights_unchanged_by_inference": true,
+      "has_config_preprocessing_metadata": true
+    },
+    "ablation_2x2_D": {
+      "folder": "saved_models/ablation_2x2/D_lat16_gru128",
+      "sha256": "b8b58ecbfbc9315b33af4dd19178ba09c27df2e8b8a30e82f71afe1bc9c4b00c",
+      "size_bytes": 277212,
+      "sha256_matches_metadata": true,
+      "identical_to_original_checkpoint": true,
+      "loads": true,
+      "n_parameters": 67250,
+      "inference_output_shape": [
+        50,
+        2
+      ],
+      "inference_finite": true,
+      "weights_unchanged_by_inference": true,
+      "has_config_preprocessing_metadata": true
+    },
+    "geolife_trained/finetuned_from_three_shapes": {
+      "folder": "saved_models/geolife_trained/finetuned_from_three_shapes",
+      "sha256": "26b9d7fdc650e91111ab4f53ac812e1ce9bba911912f4ca48a25274a893e2c4d",
+      "size_bytes": 106892,
+      "sha256_matches_metadata": true,
+      "identical_to_original_checkpoint": true,
+      "loads": true,
+      "n_parameters": 24602,
+      "inference_output_shape": [
+        50,
+        2
+      ],
+      "inference_finite": true,
+      "weights_unchanged_by_inference": true,
+      "has_config_preprocessing_metadata": true
+    },
+    "geolife_trained/scratch": {
+      "folder": "saved_models/geolife_trained/scratch",
+      "sha256": "21926e5a38cdb368650730ad3e891b98209d05a5ab83e9340d9cd67f6b5c538b",
+      "size_bytes": 106346,
+      "sha256_matches_metadata": true,
+      "identical_to_original_checkpoint": true,
+      "loads": true,
+      "n_parameters": 24602,
+      "inference_output_shape": [
+        50,
+        2
+      ],
+      "inference_finite": true,
+      "weights_unchanged_by_inference": true,
+      "has_config_preprocessing_metadata": true
+    }
+  },
+  "n_files": 568,
+  "total_bytes": 92255293,
+  "largest_files": [
+    {
+      "file": "data/processed/five_shapes/train.npz",
+      "bytes": 10528398
+    },
+    {
+      "file": "results/ablation_2x2/predictions_test.npz",
+      "bytes": 9063529
+    },
+    {
+      "file": "data/processed/three_shapes/train.npz",
+      "bytes": 6313381
+    },
+    {
+      "file": "results/capacity_scaling/predictions_test.npz",
+      "bytes": 5734461
+    },
+    {
+      "file": "results/five_shapes/predictions_test.npz",
+      "bytes": 4630970
+    },
+    {
+      "file": "data/processed/two_shapes/train.npz",
+      "bytes": 4209623
+    },
+    {
+      "file": "data/processed/five_shapes/val.npz",
+      "bytes": 2258308
+    },
+    {
+      "file": "data/processed/five_shapes/test.npz",
+      "bytes": 2257784
+    }
+  ],
+  "forbidden_files": [],
+  "secret_like_strings": [],
+  "files_mentioning_local_home_path": [
+    "docs/REPOSITORY_CLEANUP_REPORT.md",
+    "inference_outputs/circle_example/run_summary.json",
+    "inference_outputs/ellipse_example/run_summary.json",
+    "inference_outputs/five_shapes_figure_eight_example/run_summary.json",
+    "inference_outputs/five_shapes_sinusoid_example/run_summary.json",
+    "inference_outputs/my_ellipse_test/run_summary.json",
+    "inference_outputs/new_ellipse_test/run_summary.json",
+    "inference_outputs/random_unknown_test/run_summary.json",
+    "inference_outputs/spiral_example/run_summary.json",
+    "logs/A_original_arch.log",
+    "logs/B_candidate.log",
+    "logs/C_candidate_klanneal.log",
+    "logs/D_candidate_lr3e-3.log",
+    "logs/ablation_2x2/five_shapes_A_lat8_gru64_seed42.log",
+    "logs/ablation_2x2/five_shapes_B_lat16_gru64_seed42.log",
+    "logs/ablation_2x2/five_shapes_C_lat8_gru128_seed42.log",
+    "logs/ablation_2x2/five_shapes_D_lat16_gru128_seed42.log",
+    "logs/capacity_scaling/five_shapes_large_seed42.log",
+    "logs/capacity_scaling/five_shapes_medium_seed42.log",
+    "logs/conditioning/m1_unified_seed123.log",
+    "logs/conditioning/m1_unified_seed2024.log",
+    "logs/conditioning/m1_unified_seed2025.log",
+    "logs/conditioning/m1_unified_seed2026.log",
+    "logs/conditioning/m1_unified_seed42.log",
+    "logs/conditioning/m2_param_matched_seed123.log",
+    "logs/conditioning/m2_param_matched_seed2024.log",
+    "logs/conditioning/m2_param_matched_seed2025.log",
+    "logs/conditioning/m2_param_matched_seed2026.log",
+    "logs/conditioning/m2_param_matched_seed42.log",
+    "logs/conditioning/m2aug_latent12_seed123.log",
+    "logs/conditioning/m2aug_latent12_seed2024.log",
+    "logs/conditioning/m2aug_latent12_seed42.log",
+    "logs/conditioning/m3_conditioned_seed123.log",
+    "logs/conditioning/m3_conditioned_seed2024.log",
+    "logs/conditioning/m3_conditioned_seed2025.log",
+    "logs/conditioning/m3_conditioned_seed2026.log",
+    "logs/conditioning/m3_conditioned_seed42.log",
+    "logs/five_shapes/five_shapes_seed42.log",
+    "logs/validation/ablation_variable_nobs_seed42.log",
+    "logs/validation/circle_only_seed123.log",
+    "logs/validation/circle_only_seed2024.log",
+    "logs/validation/circle_only_seed42.log",
+    "logs/validation/spiral_only_seed123.log",
+    "logs/validation/spiral_only_seed2024.log",
+    "logs/validation/spiral_only_seed42.log",
+    "logs/validation/three_shapes_seed42.log",
+    "logs/validation/two_shapes_seed123.log",
+    "logs/validation/two_shapes_seed2024.log",
+    "logs/validation/two_shapes_seed2025.log",
+    "logs/validation/two_shapes_seed2026.log",
+    "reports/publication_readiness_report.md",
+    "results/publication_readiness.json",
+    "scripts/check_publication_readiness.py"
+  ],
+  "missing_required_files": [],
+  "glo_modules_imported": [
+    "data",
+    "evaluation",
+    "inference",
+    "model",
+    "pipeline",
+    "solver",
+    "visualization"
+  ],
+  "glo_modules_not_committed": []
+}

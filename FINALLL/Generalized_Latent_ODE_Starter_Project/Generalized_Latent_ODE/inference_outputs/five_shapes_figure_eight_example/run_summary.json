@@ -1,0 +1,32 @@
+{
+  "input_file": "input_trajectories/example_figure_eight.csv",
+  "model": "five_shapes_unified",
+  "checkpoint": "/home/teaching/Desktop/FINALLL/Generalized_Latent_ODE_Starter_Project/Generalized_Latent_ODE/saved_models/five_shapes_unified/best_model.pt",
+  "checkpoint_sha256": "25ff8da3f54a98a53642215a4000404cc71c8dccbf280ebd84e6553bac281c92",
+  "weights_digest_after_inference": "4f0077d4a5d0938e5a79e97b6b26b928d7d6ba4114b5e0de0b6a446d8c8e7bc0",
+  "n_observations": 30,
+  "observation_time_range": [
+    0.0,
+    6.93467331
+  ],
+  "n_query": 200,
+  "forecast_end": 10.0,
+  "context_end": 7.0,
+  "n_reconstruction_points": 140,
+  "n_forecast_points": 60,
+  "latent_posterior_mean_z0": [
+    0.483711838722229,
+    1.6393429040908813,
+    -2.278827428817749,
+    1.5411195755004883,
+    1.7655030488967896,
+    -1.3975361585617065,
+    -2.6037344932556152,
+    2.111635684967041
+  ],
+  "dynamics_code_c": null,
+  "ground_truth_used_for_metrics_only": "input_trajectories/ground_truth/example_figure_eight.csv",
+  "warnings": [],
+  "shape_label_used": false,
+  "metrics_file": "metrics.json"
+}

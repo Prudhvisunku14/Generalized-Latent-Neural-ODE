@@ -1,0 +1,54 @@
+| Comparison | Family | Metric | mean diff. [95% bootstrap CI] | median diff. | % improved | rel. change of mean | Wilcoxon p (Holm) |
+|---|---|---|---|---:|---:|---:|---:|
+| medium − baseline | circle | recon | -0.0352 [-0.0392, -0.0315] | -0.0307 | 98% | -50.3% | 6.9e-25 |
+| medium − baseline | circle | forecast | +0.1144 [+0.0886, +0.1396] | +0.1035 | 20% | +44.1% | 1.4e-13 |
+| medium − baseline | spiral | recon | -0.0715 [-0.0776, -0.0655] | -0.0650 | 99% | -63.2% | 7.3e-25 |
+| medium − baseline | spiral | forecast | +0.0756 [+0.0357, +0.1178] | +0.0086 | 47% | +17.7% | 0.2 |
+| medium − baseline | ellipse | recon | -0.0587 [-0.0643, -0.0535] | -0.0526 | 100% | -60.3% | 6.9e-25 |
+| medium − baseline | ellipse | forecast | +0.1036 [+0.0807, +0.1267] | +0.0963 | 21% | +39.7% | 1.8e-12 |
+| medium − baseline | figure_eight | recon | -0.0538 [-0.0620, -0.0462] | -0.0446 | 95% | -49.5% | 7e-24 |
+| medium − baseline | figure_eight | forecast | +0.1396 [+0.1094, +0.1689] | +0.1427 | 20% | +46.7% | 3.6e-13 |
+| medium − baseline | sinusoid | recon | -0.0353 [-0.0391, -0.0317] | -0.0299 | 97% | -54.6% | 8.4e-25 |
+| medium − baseline | sinusoid | forecast | +0.3936 [+0.3705, +0.4165] | +0.3922 | 2% | +102.0% | 6.9e-25 |
+| large − baseline | circle | recon | -0.0315 [-0.0353, -0.0279] | -0.0276 | 97% | -45.0% | 1.4e-24 |
+| large − baseline | circle | forecast | +0.1105 [+0.0734, +0.1478] | +0.0671 | 34% | +42.6% | 2.6e-06 |
+| large − baseline | spiral | recon | -0.0677 [-0.0740, -0.0615] | -0.0615 | 99% | -59.9% | 9.4e-25 |
+| large − baseline | spiral | forecast | +0.1135 [+0.0733, +0.1583] | +0.0426 | 37% | +26.6% | 4.9e-05 |
+| large − baseline | ellipse | recon | -0.0525 [-0.0578, -0.0476] | -0.0454 | 100% | -54.0% | 6.9e-25 |
+| large − baseline | ellipse | forecast | +0.1236 [+0.0936, +0.1542] | +0.1021 | 28% | +47.4% | 1.8e-10 |
+| large − baseline | figure_eight | recon | -0.0514 [-0.0598, -0.0434] | -0.0408 | 95% | -47.4% | 2.2e-22 |
+| large − baseline | figure_eight | forecast | +0.1859 [+0.1499, +0.2219] | +0.2079 | 21% | +62.1% | 7.8e-14 |
+| large − baseline | sinusoid | recon | -0.0344 [-0.0380, -0.0309] | -0.0301 | 96% | -53.2% | 8.4e-25 |
+| large − baseline | sinusoid | forecast | +0.8214 [+0.7934, +0.8501] | +0.8002 | 0% | +212.8% | 6.9e-25 |
+| large − medium | circle | recon | +0.0038 [+0.0019, +0.0056] | +0.0039 | 27% | +10.8% | 2.2e-06 |
+| large − medium | circle | forecast | -0.0039 [-0.0331, +0.0262] | -0.0280 | 55% | -1.0% | 1 |
+| large − medium | spiral | recon | +0.0037 [+0.0017, +0.0058] | +0.0025 | 37% | +8.9% | 0.011 |
+| large − medium | spiral | forecast | +0.0379 [+0.0054, +0.0719] | +0.0041 | 48% | +7.5% | 0.67 |
+| large − medium | ellipse | recon | +0.0061 [+0.0040, +0.0084] | +0.0050 | 29% | +15.9% | 3.2e-07 |
+| large − medium | ellipse | forecast | +0.0201 [-0.0089, +0.0501] | -0.0120 | 51% | +5.5% | 1 |
+| large − medium | figure_eight | recon | +0.0024 [-0.0002, +0.0049] | +0.0023 | 43% | +4.3% | 0.23 |
+| large − medium | figure_eight | forecast | +0.0463 [+0.0186, +0.0743] | +0.0363 | 43% | +10.6% | 0.056 |
+| large − medium | sinusoid | recon | +0.0009 [-0.0003, +0.0022] | +0.0001 | 49% | +3.0% | 1 |
+| large − medium | sinusoid | forecast | +0.4277 [+0.4120, +0.4439] | +0.4193 | 0% | +54.9% | 6.9e-25 |
+| medium − three_shape | circle | recon | -0.0274 [-0.0309, -0.0239] | -0.0240 | 94% | -44.0% | 2e-23 |
+| medium − three_shape | circle | forecast | +0.2337 [+0.2119, +0.2564] | +0.2152 | 1% | +166.8% | 6.2e-25 |
+| medium − three_shape | spiral | recon | -0.0516 [-0.0559, -0.0474] | -0.0493 | 99% | -55.3% | 6.5e-25 |
+| medium − three_shape | spiral | forecast | +0.2119 [+0.1593, +0.2668] | +0.0739 | 37% | +72.9% | 2.2e-09 |
+| medium − three_shape | ellipse | recon | -0.0501 [-0.0553, -0.0452] | -0.0452 | 98% | -56.5% | 6.2e-25 |
+| medium − three_shape | ellipse | forecast | +0.1759 [+0.1540, +0.1984] | +0.1694 | 9% | +93.3% | 4.1e-23 |
+| medium − three_shape | figure_eight | recon | -0.6773 [-0.7207, -0.6344] | -0.6275 | 100% | -92.5% | 4.6e-25 |
+| medium − three_shape | figure_eight | forecast | -0.6786 [-0.7452, -0.6133] | -0.6467 | 99% | -60.7% | 4.6e-25 |
+| medium − three_shape | sinusoid | recon | -0.3147 [-0.3302, -0.2996] | -0.3175 | 100% | -91.5% | 4.6e-25 |
+| medium − three_shape | sinusoid | forecast | -0.1938 [-0.2223, -0.1648] | -0.1989 | 84% | -19.9% | 1.9e-19 |
+| large − three_shape | circle | recon | -0.0236 [-0.0271, -0.0203] | -0.0206 | 91% | -38.0% | 2.8e-22 |
+| large − three_shape | circle | forecast | +0.2298 [+0.1963, +0.2631] | +0.1861 | 9% | +164.0% | 3.6e-22 |
+| large − three_shape | spiral | recon | -0.0479 [-0.0524, -0.0435] | -0.0453 | 97% | -51.3% | 1.4e-24 |
+| large − three_shape | spiral | forecast | +0.2497 [+0.1991, +0.3029] | +0.1431 | 27% | +85.9% | 2.3e-14 |
+| large − three_shape | ellipse | recon | -0.0440 [-0.0489, -0.0392] | -0.0387 | 97% | -49.6% | 1.5e-24 |
+| large − three_shape | ellipse | forecast | +0.1960 [+0.1654, +0.2274] | +0.1657 | 17% | +103.9% | 1e-19 |
+| large − three_shape | figure_eight | recon | -0.6749 [-0.7184, -0.6320] | -0.6219 | 100% | -92.2% | 4.6e-25 |
+| large − three_shape | figure_eight | forecast | -0.6323 [-0.6931, -0.5709] | -0.5935 | 98% | -56.6% | 6.2e-25 |
+| large − three_shape | sinusoid | recon | -0.3138 [-0.3292, -0.2989] | -0.3159 | 100% | -91.2% | 4.6e-25 |
+| large − three_shape | sinusoid | forecast | +0.2340 [+0.2038, +0.2651] | +0.1988 | 9% | +24.0% | 1.8e-23 |
+
+Difference = second model minus first; negative = the second model has lower error. "% improved" = share of the 150 paired trajectories on which the second model has lower RMSE. Holm correction within the 30 capacity-pair tests and, separately, the 20 tests against the three-shape model.

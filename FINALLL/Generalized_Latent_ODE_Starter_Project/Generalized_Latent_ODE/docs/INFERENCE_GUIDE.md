@@ -79,8 +79,9 @@ Options (`--help` explains each):
 Batch example, scoring against the ground truth of the three provided examples:
 
 ```bash
-python scripts/predict_trajectory.py --input input_trajectories/ --output inference_outputs/batch \
-    --ground-truth-dir input_trajectories/ground_truth
+python scripts/predict_trajectory.py --input input_trajectories/example_circle.csv input_trajectories/example_spiral.csv \
+    input_trajectories/example_ellipse.csv --output inference_outputs/batch --ground-truth-dir input_trajectories/ground_truth
+# (--input also accepts a directory; every *.csv in it must then be a valid observation file with t <= 7)
 ```
 
 ## 4. Outputs

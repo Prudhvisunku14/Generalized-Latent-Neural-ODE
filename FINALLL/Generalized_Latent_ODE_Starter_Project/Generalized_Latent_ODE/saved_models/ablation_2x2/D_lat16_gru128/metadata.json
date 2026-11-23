@@ -1,0 +1,24 @@
+{
+  "model_name": "ablation_2x2_D",
+  "description": "Controlled 2x2 ablation cell D: latent dim 16, GRU width 128 (five_shapes, seed 42, data_seed 42)",
+  "training_families": [
+    "circle",
+    "spiral",
+    "ellipse",
+    "figure_eight",
+    "sinusoid"
+  ],
+  "n_parameters": 67250,
+  "training_seed": 42,
+  "best_checkpoint_epoch": 296,
+  "training_n_obs": 30,
+  "ode_solver": "rk4 (fixed step 0.1)",
+  "original_checkpoint": "checkpoints/ablation_2x2/five_shapes_D_lat16_gru128_seed42.pt",
+  "sha256": "b8b58ecbfbc9315b33af4dd19178ba09c27df2e8b8a30e82f71afe1bc9c4b00c",
+  "file_size_bytes": 277212,
+  "training_dataset": "five_shapes",
+  "selection": "lowest validation -ELBO during training (test data never used)",
+  "test_performance": "see results/ablation_2x2/ and ABLATION_2X2_REPORT.md (not duplicated here)",
+  "caveat": "single training seed; differences between cells are of the same order as seed-to-seed variation",
+  "torch_version": "2.5.1+cu121"
+}

@@ -139,4 +139,30 @@ No model, training code or checkpoint was changed. All 44 checkpoint files have 
 - `scripts/predict_trajectory.py` (CLI), `scripts/make_example_inputs.py`, `scripts/validate_inference_system.py`.
 - Tests: `tests/test_inference.py` (32 tests; 51 in total). A mutation check confirmed the consistency test fails for a wrong T (2.5), a 1% scale error (0.036) or a shifted mean (0.008),
   whereas correct inference differs from the evaluation pipeline by about 3e-6.
-- Docs: `saved_models/README.md`, `docs/PRETRAINED_INFERENCE_GUIDE.md`.
+- Docs: `saved_models/README.md`, `docs/INFERENCE_GUIDE.md`.
+
+---
+
+# GeoLife synthetic-to-real transfer (2026-11-15, fifth session)
+
+No pre-existing checkpoint, saved model, synthetic dataset or earlier result was modified. Every stage of `scripts/21` and `scripts/23`
+checks the SHA-256 of the 44 pre-existing checkpoint files (plus `saved_models/*/best_model.pt`) before and after it runs.
+
+- New data module `src/glo/geolife.py`: `.plt` parsing (format verified on all 18,670 files), GMT timestamps cross-checked with the day-number field,
+  invalid-coordinate and time-order cleaning, local azimuthal equidistant projection (WGS-84 Gaussian radius), run splitting (gap > 60 s,
+  speed > 70 m/s), 200-record segments, sparse-observation tasks, and per-segment similarity transforms fitted on the observations only.
+- New `src/glo/geolife_evaluation.py`: linear / not-a-knot cubic / PCHIP baselines (extrapolation refused), hold-last and constant-velocity
+  forecast baselines, metrics in metres (the pipeline's RMSE definition), trajectory descriptors, and a user-cluster bootstrap. The Latent ODE is called only
+  through the unchanged `glo.inference.predict`.
+- `src/glo/inference.py`: added `load_model_folder()` (the same verification as `load_packaged_model`, for folders outside `MODEL_REGISTRY`);
+  `load_packaged_model` now delegates to it. The registry and the behaviour for existing models are unchanged, and all existing tests pass.
+- `scripts/02_train_model.py`: opt-in `--data-root` and `--init-checkpoint` (fine-tuning; the architecture must match) and the experiment name
+  `geolife_regular`. Defaults are unchanged.
+- `tests/test_inference.py::test_cli_batch_mode` now batches copies of the three example files in a temporary folder. User-added files in
+  `input_trajectories/` (e.g. a 200-point ground-truth CSV with t > 7, which the CLI correctly rejects) had made it fail. The files were left in place.
+- New scripts `20_inspect_geolife.py`, `21_evaluate_geolife_transfer.py`, `22_geolife_training_data.py`, `23_geolife_trained_models.py`;
+  config `configs/geolife.yaml`; tests `tests/test_geolife.py` (20 tests, plus a user-split disjointness check).
+- New checkpoints (Phase 11, new files only): `checkpoints/geolife/geolife_scratch_seed42.pt`,
+  `checkpoints/geolife/geolife_finetune_from_three_shapes_seed42.pt`; packaged copies in `saved_models/geolife_trained/`.
+- `.gitignore`: GeoLife archive and GeoLife-derived data and per-segment CSV files (the MSR-LA licence forbids redistribution).
+- Reports: `reports/geolife_dataset_audit.md`, `reports/geolife_real_world_interpolation_report.md`.

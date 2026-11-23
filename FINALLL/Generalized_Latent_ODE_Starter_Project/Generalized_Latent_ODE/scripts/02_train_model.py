@@ -23,7 +23,9 @@ from glo.solver import solver_status, HAS_TORCHDIFFEQ
 p = argparse.ArgumentParser(description='Train variational Latent ODE on 2 or 3 shape families')
 p.add_argument('--config', default='', help='YAML file of argument defaults (keys use underscores); CLI flags override it')
 p.add_argument('--families', nargs='+', default=None, help='Train on a subset of the dataset families, e.g. circle')
-p.add_argument('--experiment', choices=['two_shapes', 'three_shapes'], default='two_shapes')
+p.add_argument('--experiment', choices=['two_shapes', 'three_shapes', 'five_shapes', 'geolife_regular'], default='two_shapes')
+p.add_argument('--data-root', default='data/processed', help='Folder containing <experiment>/{train,val}.npz (relative to the project root)')
+p.add_argument('--init-checkpoint', default='', help='Initialise all weights from this checkpoint (fine-tuning); architecture must match')
 p.add_argument('--epochs', type=int, default=100)
 p.add_argument('--batch-size', type=int, default=32)
 p.add_argument('--n-query', type=int, default=100)
@@ -83,8 +85,8 @@ if args.require_torchdiffeq and not HAS_TORCHDIFFEQ:
 seed_everything(args.seed)
 device = torch.device(a_dev if (a_dev := args.device) != 'auto' else ('cuda' if torch.cuda.is_available() else 'cpu'))
 if device.type == 'cpu': torch.set_num_threads(args.threads)
-train_data = TrajectoryDataset(root / 'data/processed', args.experiment, 'train', args.families)
-val_data = TrajectoryDataset(root / 'data/processed', args.experiment, 'val', args.families)
+train_data = TrajectoryDataset(root / args.data_root, args.experiment, 'train', args.families)
+val_data = TrajectoryDataset(root / args.data_root, args.experiment, 'val', args.families)
 meta = train_data.meta
 qidx = make_query_indices(meta['n_points'], args.n_query)
 t = torch.tensor(train_data.arrays['time'], dtype=torch.float32)
@@ -96,6 +98,11 @@ model_config = dict(latent_dim=args.latent_dim, encoder_hidden=args.encoder_hidd
                     dynamics_layers=args.dynamics_layers, decoder_layers=args.decoder_layers,
                     rtol=args.rtol, atol=args.atol, step_size=args.step_size)
 model = LatentODE(**model_config).to(device)
+if args.init_checkpoint:
+    init = torch.load(root / args.init_checkpoint, map_location='cpu', weights_only=True)
+    if init['model'] != model_config:
+        p.error(f'--init-checkpoint architecture {init["model"]} differs from {model_config}')
+    model.load_state_dict(init['state_dict'])
 opt = torch.optim.Adam(model.parameters(), lr=args.lr)
 sched = (torch.optim.lr_scheduler.CosineAnnealingLR(opt, args.epochs, eta_min=args.min_lr)
          if args.lr_schedule == 'cosine' else None)
